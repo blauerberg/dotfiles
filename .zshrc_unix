@@ -1,8 +1,14 @@
-if which brew > /dev/null; then
+command_exists() {
+  return hash $1 2>/dev/null;
+}
+
+command_exists "brew"
+if [ $? -eq 0 ]; then
   export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 fi
 
-if which direnv > /dev/null; then
+command_exists "direnv"
+if [ $? -eq 0 ]; then
   eval "$(direnv hook zsh)"
 fi
 
@@ -10,7 +16,8 @@ fi
 if [ -d "$HOME/.rbenv" ]; then
   export PATH=$HOME/.rbenv/bin:$PATH
 fi
-if which rbenv > /dev/null; then
+command_exists "rbenv"
+if [ $? -eq 0 ]; then
   eval "$(rbenv init -)"
 fi
 
@@ -18,12 +25,14 @@ fi
 if [ -d "$HOME/.phpenv" ]; then
   export PATH=$HOME/.phpenv/bin:$PATH
 fi
-if which phpenv > /dev/null; then
+command_exists "phpenv"
+if [ $? -eq 0 ]; then
   eval "$(phpenv init -)"
 fi
 
 # docker machine
-if which docker-machine > /dev/null; then
+command_exists "docker-machine"
+if [ $? -eq 0 ]; then
   DEFAULT_DOCKERMACHINE_STATE=$(docker-machine ls default|tail -n1|awk '{print $4}')
   if [ DEFAULT_DOCKERMACHINE_STATE = "Running" ]; then
     eval "$(docker-machine env default)"
