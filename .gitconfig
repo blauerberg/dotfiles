@@ -1,0 +1,20 @@
+[core]
+  editor = vi
+  pager = LESSCHARSET=utf-8 less -c
+  filemode = false
+	excludesfile = $HOME/.gitignore_global
+
+[color]
+  ui
+
+[user]
+  name = "Yoshikazu Aoyama"
+  email = "yskz.aoyama@gmail.com"
+
+[alias]
+  d = diff
+  l = log
+  lg = log --graph
+  s = status -sb
+  br = branch
+  co = checkout
