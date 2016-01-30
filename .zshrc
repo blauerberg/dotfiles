@@ -48,6 +48,7 @@ zstyle ':completion:*' list-colors ''
 #
 alias grep="grep --color"
 alias ll="ls -al"
+alias vi="vim"
 
 case "${OSTYPE}" in
 freebsd*|darwin*)
