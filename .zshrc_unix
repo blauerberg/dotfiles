@@ -1,0 +1,36 @@
+if which brew > /dev/null; then
+  export PATH=/usr/local/bin:/usr/local/sbin:$PATH
+fi
+
+if which direnv > /dev/null; then
+  eval "$(direnv hook zsh)"
+fi
+
+# rbenv
+if [ -d "$HOME/.rbenv" ]; then
+  export PATH=$HOME/.rbenv/bin:$PATH
+fi
+if which rbenv > /dev/null; then
+  eval "$(rbenv init -)"
+fi
+
+# phpenv
+if [ -d "$HOME/.phpenv" ]; then
+  export PATH=$HOME/.phpenv/bin:$PATH
+fi
+if which phpenv > /dev/null; then
+  eval "$(phpenv init -)"
+fi
+
+# docker machine
+if which docker-machine > /dev/null; then
+  DEFAULT_DOCKERMACHINE_STATE=$(docker-machine ls default|tail -n1|awk '{print $4}')
+  if [ DEFAULT_DOCKERMACHINE_STATE = "Running" ]; then
+    eval "$(docker-machine env default)"
+  fi
+fi
+
+# DrupalConsole
+if [ -f "$HOME/.console/console.rc" ]; then
+  source "$HOME/.console/console.rc" 2>/dev/null
+fi
