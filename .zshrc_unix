@@ -1,5 +1,5 @@
 command_exists() {
-  return type $1 2>/dev/null;
+  type $1 > /dev/null 2>&1;
 }
 
 command_exists "brew"
