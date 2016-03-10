@@ -112,6 +112,8 @@ HISTSIZE=65535
 SAVEHIST=65535
 setopt hist_ignore_dups
 setopt share_history
+export HISTIGNORE="ls*:pwd:history*:exit:ifconfig"
+alias history="history -i"
 
 #
 # key bind
