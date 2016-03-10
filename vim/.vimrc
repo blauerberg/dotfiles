@@ -235,13 +235,6 @@ augroup templateload
   autocmd BufNewFile *.html 0r ~/.vim/templates/index.html
 augroup END
 
-"augroup phpsyntaxcheck
-"  autocmd!
-"  autocmd BufWrite *.php w !php -l
-"  autocmd BufWrite *.module w !php -l
-"  autocmd BufWrite *.inc w !php -l
-"augroup END
-
 "
 " forcus last position
 "
@@ -304,7 +297,7 @@ NeoBundle 'https://github.com/Shougo/vimproc.git'
 "NeoBundle 'https://github.com/vim-scripts/utl.vim.git'
 "NeoBundle 'Markdown'
 NeoBundle 'https://github.com/scrooloose/nerdtree.git'
-"NeoBundle 'https://github.com/scrooloose/syntastic.git'
+NeoBundle 'https://github.com/scrooloose/syntastic.git'
 "NeoBundle 'https://github.com/tpope/vim-pathogen.git'
 "NeoBundle 'https://github.com/majutsushi/tagbar.git'
 "NeoBundle 'https://github.com/jistr/vim-nerdtree-tabs.git'
@@ -555,6 +548,18 @@ nnoremap <Space>uo :Unite -auto-preview -winheight=15 outline<CR>
 "let QFix_Height = 30
 "let QFix_PreviewOpenCmd = 'vertical leftabove'
 "let QFix_CopenCmd = 'vertical topleft'
+
+"
+" syntastic
+"
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 if filereadable(expand('~/.vimrc.local'))
   source ~/.vimrc.local
