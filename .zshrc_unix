@@ -44,6 +44,11 @@ if [ -f "$HOME/.console/console.rc" ]; then
   source "$HOME/.console/console.rc" 2>/dev/null
 fi
 
+# git-flow-completion
+if [ -d "$HOME/dotfiles/git-flow-completion" ]; then
+  source "$HOME/dotfiles/git-flow-completion/git-flow-completion.zsh" 2>/dev/null
+fi
+
 command_exists "tmux"
 if [ $? -eq 0 ]; then
   case ${OSTYPE} in
