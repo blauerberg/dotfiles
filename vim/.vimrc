@@ -536,7 +536,7 @@ nnoremap <Space>uo :Unite -auto-preview -winheight=15 outline<CR>
 "
 " select after paste
 "
-"nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
+nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
 
 
 "
