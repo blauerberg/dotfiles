@@ -286,6 +286,7 @@ NeoBundle 'https://github.com/thinca/vim-ref.git'
 "NeoBundle 'ZenCoding.vim'
 NeoBundle 'https://github.com/Shougo/unite.vim.git'
 NeoBundle 'https://github.com/SHougo/unite-outline.git'
+NeoBundle 'https://github.com/Shougo/vimfiler.git'
 NeoBundle 'https://github.com/tsukkee/unite-tag.git'
 "NeoBundle 'https://github.com/tsukkee/unite-gtags.git'
 NeoBundle 'https://github.com/Shougo/vimproc.git'
@@ -429,6 +430,13 @@ filetype plugin indent on
 nnoremap <Space>ww :w sudo:%
 
 "
+" vimfiler
+"
+let g:vimfiler_as_default_explorer = 1
+let g:vimfiler_safe_mode_by_default = 0
+nnoremap <silent> <Space>vf :VimFilerExplorer -parent<CR>
+
+"
 " vim-easy-align
 "
 vmap <Enter> <Plug>(EasyAlign)
@@ -466,6 +474,7 @@ endfunction
 " nerdtree
 "
 nnoremap <silent> <Space>ne :NERDTreeToggle<CR>
+let g:NERDTreeHijackNetrw = 0
 
 "
 " YankRing.vim
