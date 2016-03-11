@@ -81,7 +81,7 @@ set grepformat=%f:%l:%m,%f:%l:%m,%f\ \ %l%m,%f
 set grepprg=grep\ -rI\ --exclude-dir=.git
 augroup grepopen
   autocmd!
-  "autocmd QuickFixCmdPost *grep* cw
+  autocmd QuickFixCmdPost *grep* cw
 augroup END
 
 augroup quickfix
@@ -108,12 +108,9 @@ endfunction
 "vnoremap gc :<C-u>normal gc<Enter>
 "onoremap gc :<C-u>normal gc<Enter>
 
-"nnoremap <expr> <Space>G ':vimgrep /\<' . expand('<cword>') . '\>/j **/*.' . expand('%:e')
-nnoremap <expr> <Space>uG ':Unite grep:%<CR>' . expand('<cword>')
-"nnoremap <expr> <Space>g ':sil grep! ' . expand('<cword>') . ' *'
 nnoremap <expr> <Space>ug ':Unite grep:.<CR>' . expand('<cword>')
-"noremap gg :sil grep --exclude-dir=CVS --exclude-dir=.svn --exclude-dir=.git --exclude=*.swp "<C-R><C-W>" .<CR> <CR> <C-w><C-w> <C-W>T
-"noremap gg :sil grep "<C-R><C-W>" .
+nnoremap <expr> <Space>uG ':Unite grep:%<CR>' . expand('<cword>')
+nnoremap <expr> <Space>gr ':sil grep! ' . expand('<cword>') . ' *'
 "noremap gs /<C-R><C-W><CR>
 "imap <nul> <C-x><C-o><C-p>
 
