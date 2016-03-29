@@ -1,3 +1,6 @@
 [submodule "git-flow-completion"]
 	path = git-flow-completion
 	url = https://github.com/bobthecow/git-flow-completion
+[submodule "prezto"]
+	path = prezto
+	url = https://github.com/blauerberg/prezto.git
