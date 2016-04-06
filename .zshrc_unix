@@ -2,6 +2,9 @@ command_exists() {
   type $1 > /dev/null 2>&1;
 }
 
+autoload -Uz compinit
+compinit
+
 command_exists "brew"
 if [ $? -eq 0 ]; then
   export PATH=/usr/local/bin:/usr/local/sbin:$PATH
