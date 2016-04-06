@@ -302,7 +302,6 @@ NeoBundle 'https://github.com/scrooloose/syntastic.git'
 "NeoBundle 'suan/vim-instant-markdown'
 
 "NeoBundle 'jscomplete-vim'
-NeoBundle 'taglist.vim'
 "NeoBundle 'quickfixstatus'
 "NeoBundle 'vim-hier'
 "NeoBundle 'vim-textmanip'
@@ -314,6 +313,7 @@ NeoBundle 'taglist.vim'
 NeoBundle 'https://github.com/joonty/vdebug.git'
 NeoBundle 'https://github.com/ctrlpvim/ctrlp.vim.git'
 NeoBundle 'https://github.com/godlygeek/tabular.git'
+NeoBundle 'https://github.com/majutsushi/tagbar.git'
 
 "NeoBundle 'https://github.com/hsitz/VimOrganizer.git'
 NeoBundle 'https://github.com/tpope/vim-fugitive.git'
@@ -455,18 +455,9 @@ function! s:initialize_ref_viewer()
 endfunction
 
 "
-" taglist
+" tagbar
 "
-let g:Tlist_Show_One_File = 1
-let g:Tlist_Exit_OnlyWindow = 1
-let g:Tlist_GainFocus_On_ToggleOpen = 1
-let g:Tlist_Use_Right_Window = 1
-nnoremap <silent> <Space>tl :TlistToggle<CR>
-let g:tlist_php_settings = 'php;c:class;d:constant;f:function'
-au FileType taglist call s:initialize_taglist()
-function! s:initialize_taglist()
-  setl norelativenumber
-endfunction
+nnoremap <silent> <Space>ta :TagbarToggle<CR>
 
 "
 " nerdtree
