@@ -312,6 +312,7 @@ NeoBundle 'taglist.vim'
 "NeoBundle 'vim-javascript'
 "NeoBundle 'csv.vim'
 NeoBundle 'https://github.com/joonty/vdebug.git'
+NeoBundle 'https://github.com/ctrlpvim/ctrlp.vim.git'
 
 "NeoBundle 'https://github.com/hsitz/VimOrganizer.git'
 NeoBundle 'https://github.com/tpope/vim-fugitive.git'
