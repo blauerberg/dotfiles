@@ -18,3 +18,5 @@
   s = status -sb
   br = branch
   co = checkout
+[push]
+	default = simple
