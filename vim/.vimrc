@@ -470,7 +470,7 @@ endfunction
 "
 " nerdtree
 "
-nnoremap <silent> <Space>ne :NERDTreeToggle<CR>
+nnoremap <silent> <Space>nt :NERDTreeToggle<CR>
 let g:NERDTreeHijackNetrw = 0
 
 "
