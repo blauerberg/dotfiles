@@ -1,2 +1,0 @@
-* ctags
-  - ctags --langmap=php:.engine.inc.module.theme.install.php --php-kinds=cdfi --languages=php --recurse --fields=+l 
