@@ -77,7 +77,7 @@ augroup END
 "  grep
 "
 set grepformat=%f:%l:%m,%f:%l:%m,%f\ \ %l%m,%f
-set grepprg=grep\ -rI\ --exclude-dir=.git
+set grepprg=grep\ -rnI\ --exclude-dir=.git
 augroup grepopen
   autocmd!
   autocmd QuickFixCmdPost *grep* cw
