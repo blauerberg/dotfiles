@@ -12,7 +12,7 @@ for rcfile in $PWD/prezto/runcoms/^README.md(.N); do
 done
 
 ln -fsn $PWD/prezto-override/zpreztorc $HOME/.zpreztorc
-#ln -s $PWD/.zshrc_unix ~/.zshrc_unix
+ln -fsn $PWD/prezto-override/zshrc_unix $HOME/.zshrc_unix
 ln -fsn $PWD/.tmux.conf ~/.tmux.conf
 ln -fsn $PWD/.gitconfig ~/.gitconfig
 ln -fsn $PWD/.gitignore_global ~/.gitignore_global

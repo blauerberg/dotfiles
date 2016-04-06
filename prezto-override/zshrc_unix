@@ -68,3 +68,6 @@ if [ $? -eq 0 ]; then
       ;;
   esac
 fi
+
+alias sshp="ssh -o PreferredAuthentications=password -o PubkeyAuthentication=no"
+alias drupalctags="ctags --langmap=php:.engine.inc.module.theme.install.php --php-kinds=cdfi --languages=php --recurse --fields=+l"
