@@ -12,14 +12,12 @@ for rcfile in $PWD/prezto/runcoms/^README.md(.N); do
 done
 
 ln -fs $PWD/prezto-override/zpreztorc $HOME/.zpreztorc
-#ln -s $PWD/.zshrc ~/.zshrc
 #ln -s $PWD/.zshrc_unix ~/.zshrc_unix
 ln -fs $PWD/.tmux.conf ~/.tmux.conf
 ln -fs $PWD/.gitconfig ~/.gitconfig
 ln -fs $PWD/.gitignore_global ~/.gitignore_global
 ln -fs $PWD/vim ~/.vim
 ln -fs $PWD/vim/.vimrc ~/.vimrc
-
 
 # install neobundle
 source $PWD/vim/bootstrap.sh
