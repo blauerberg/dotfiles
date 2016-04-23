@@ -178,7 +178,8 @@ endif
 "
 " for ruby, rails
 "
-"if has("autocmd")
+if has("autocmd")
+  autocmd BufRead,BufNewFile Vagrantfile set filetype=ruby
 "  autocmd FileType ruby,eruby setl autoindent
 "  autocmd FileType ruby,eruby setl expandtab
 "  autocmd FileType ruby,eruby setl tabstop=2
@@ -190,7 +191,7 @@ endif
 "  autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 "  autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 "  "autocmd BufWrite *.rb w !ruby -c
-"endif
+endif
 
 "
 " for python
