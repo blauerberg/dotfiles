@@ -37,7 +37,7 @@ fi
 command_exists "docker-machine"
 if [ $? -eq 0 ]; then
   DEFAULT_DOCKERMACHINE_STATE=$(docker-machine ls default|tail -n1|awk '{print $4}')
-  if [ DEFAULT_DOCKERMACHINE_STATE = "Running" ]; then
+  if [ $DEFAULT_DOCKERMACHINE_STATE = "Running" ]; then
     eval "$(docker-machine env default)"
   fi
 fi
