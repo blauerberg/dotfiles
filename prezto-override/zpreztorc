@@ -175,6 +175,11 @@ zstyle ':prezto:module:tmux:auto-start' remote 'yes'
 # Integrate with iTerm2.
 # zstyle ':prezto:module:tmux:iterm' integrate 'yes'
 
+
+# prevent to diff -> 'git diff' by utility module
+# see: https://github.com/sorin-ionescu/prezto/blob/master/modules/utility/functions/diff
+alias diff='command diff'
+
 if [ -f ~/.zshrc_unix ]; then
   source ~/.zshrc_unix
 fi
