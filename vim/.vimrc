@@ -320,6 +320,7 @@ NeoBundle 'https://github.com/majutsushi/tagbar.git'
 NeoBundle 'https://github.com/tpope/vim-fugitive.git'
 NeoBundle 'https://github.com/tyru/open-browser.vim.git'
 NeoBundle 'https://github.com/tyru/open-browser-github.vim.git'
+NeoBundle 'https://github.com/kannokanno/previm.git'
 NeoBundle 'https://github.com/thinca/vim-quickrun.git'
 "NeoBundle 'https://github.com/thinca/vim-quickrun.git', {
 "            \ 'lazy': 1,
@@ -569,6 +570,15 @@ nnoremap <Space>er :Errors<CR>
 " open-browser-github
 "
 nnoremap <Space>gho :<C-u>OpenGithubFile<CR>
+
+"
+" previm
+"
+let g:previm_open_cmd = 'open -a Safari'
+augroup PrevimSettings
+  autocmd!
+  autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
+augroup END
 
 if filereadable(expand('~/.vimrc.local'))
   source ~/.vimrc.local
