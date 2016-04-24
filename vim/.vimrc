@@ -35,8 +35,9 @@ set pumheight=10
 "
 " common keymap
 "
-nnoremap <Space>. :<C-u>edit $MYVIMRC<Enter>
-nnoremap <Space>s. :<C-u>source $MYVIMRC<Enter>
+let mapleader = "\<Space>"
+nnoremap <Leader>. :<C-u>edit $MYVIMRC<Enter>
+nnoremap <Leader>s. :<C-u>source $MYVIMRC<Enter>
 nnoremap <C-j> <C-^>
 nnoremap <silent><ESC><ESC> :noh<CR>
 
@@ -107,9 +108,9 @@ endfunction
 "vnoremap gc :<C-u>normal gc<Enter>
 "onoremap gc :<C-u>normal gc<Enter>
 
-nnoremap <expr> <Space>ug ':Unite grep:.<CR>' . expand('<cword>')
-nnoremap <expr> <Space>uG ':Unite grep:%<CR>' . expand('<cword>')
-nnoremap <expr> <Space>gr ':sil grep! ' . expand('<cword>') . ' *'
+nnoremap <expr> <Leader>ug ':Unite grep:.<CR>' . expand('<cword>')
+nnoremap <expr> <Leader>uG ':Unite grep:%<CR>' . expand('<cword>')
+nnoremap <expr> <Leader>gr ':sil grep! ' . expand('<cword>') . ' *'
 "noremap gs /<C-R><C-W><CR>
 "imap <nul> <C-x><C-o><C-p>
 
@@ -430,14 +431,14 @@ filetype plugin indent on
 "
 " sudo.vim
 "
-nnoremap <Space>ww :w sudo:%
+nnoremap <Leader>ww :w sudo:%
 
 "
 " vimfiler
 "
 let g:vimfiler_as_default_explorer = 1
 let g:vimfiler_safe_mode_by_default = 0
-nnoremap <silent> <Space>vf :VimFilerExplorer -parent<CR>
+nnoremap <silent> <Leader>vf :VimFilerExplorer -parent<CR>
 
 "
 " vim-easy-align
@@ -462,12 +463,12 @@ endfunction
 "
 " tagbar
 "
-nnoremap <silent> <Space>ta :TagbarToggle<CR>
+nnoremap <silent> <Leader>ta :TagbarToggle<CR>
 
 "
 " nerdtree
 "
-nnoremap <silent> <Space>nt :NERDTreeToggle<CR>
+nnoremap <silent> <Leader>nt :NERDTreeToggle<CR>
 let g:NERDTreeHijackNetrw = 0
 
 "
@@ -511,7 +512,7 @@ hi IndentGuidesEven ctermbg=darkgrey
 "
 " unite-outline
 "
-nnoremap <Space>uo :Unite -auto-preview -winheight=15 outline<CR>
+nnoremap <Leader>uo :Unite -auto-preview -winheight=15 outline<CR>
 
 "
 " VimOrganizer
@@ -565,12 +566,12 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-nnoremap <Space>er :Errors<CR>
+nnoremap <Leader>er :Errors<CR>
 
 "
 " open-browser-github
 "
-nnoremap <Space>gho :<C-u>OpenGithubFile<CR>
+nnoremap <Leader>gho :<C-u>OpenGithubFile<CR>
 
 "
 " previm
