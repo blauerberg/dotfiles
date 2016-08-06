@@ -74,6 +74,9 @@ if [ $? -eq 0 ]; then
   esac
 fi
 
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+
 alias sshp="ssh -o PreferredAuthentications=password -o PubkeyAuthentication=no"
 alias drupalctags="ctags --langmap=php:.engine.inc.module.theme.install.php --php-kinds=cdfi --languages=php --recurse --fields=+l"
 alias git-my-commit="git commit --author=\"Yoshikazu Aoyama <yskz.aoyama@gmail.com>\""
