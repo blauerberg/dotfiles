@@ -67,6 +67,7 @@ fi
 
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+export PATH=~/.composer/vendor/bin:$PATH
 
 alias sshp="ssh -o PreferredAuthentications=password -o PubkeyAuthentication=no"
 alias drupalctags="ctags --langmap=php:.engine.inc.module.theme.install.php --php-kinds=cdfi --languages=php --recurse --fields=+l"
