@@ -94,6 +94,17 @@ function! s:initialize_quickfix()
   setl norelativenumber
 endfunction
 
+
+function! s:toggle_language(path)
+  let lang = { '/en/': '/ja/', '/ja/': '/en/', '\.en\.': '\.ja\.', '\.ja\.': '\.en\.' }
+  for [key, value] in items(lang)
+    if strlen(matchstr(a:path, key)) != 0
+      return substitute(a:path, key, value, '')
+    endif
+  endfor
+  return a:path
+endfunction
+
 "
 " keymap
 "
@@ -111,6 +122,8 @@ endfunction
 nnoremap <expr> <Leader>ug ':Unite grep:.<CR>' . expand('<cword>')
 nnoremap <expr> <Leader>uG ':Unite grep:%<CR>' . expand('<cword>')
 nnoremap <expr> <Leader>gr ':sil grep! ' . expand('<cword>') . ' *'
+nnoremap <silent> <Leader>te :e <C-r>=<SID>toggle_language(expand("%"))<CR><CR>
+
 "noremap gs /<C-R><C-W><CR>
 "imap <nul> <C-x><C-o><C-p>
 
