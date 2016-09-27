@@ -54,17 +54,6 @@ if [ -d "$HOME/dotfiles/git-flow-completion" ]; then
   source "$HOME/dotfiles/git-flow-completion/git-flow-completion.zsh" 2>/dev/null
 fi
 
-command_exists "tmux"
-if [ $? -eq 0 ]; then
-  case ${OSTYPE} in
-    darwin*)
-      ;;
-    *)
-      test -z "$TMUX" && (tmux attach || tmux new-session)
-      ;;
-  esac
-fi
-
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 export PATH=~/.composer/vendor/bin:$PATH
