@@ -3,7 +3,7 @@ command_exists() {
 }
 
 autoload -Uz compinit
-compinit
+compinit -C
 
 command_exists "brew"
 if [ $? -eq 0 ]; then
