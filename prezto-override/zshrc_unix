@@ -4,6 +4,7 @@ command_exists() {
 
 autoload -Uz compinit
 compinit -C
+setopt transient_rprompt
 
 command_exists "brew"
 if [ $? -eq 0 ]; then
