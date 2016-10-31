@@ -3,3 +3,5 @@ vim/bundle*
 vim/ref*
 vim/.netrwhist
 vim/colors/japanesque.vim
+vim/colors/atom-dark.vim
+vim/colors/atom-dark-256.vim

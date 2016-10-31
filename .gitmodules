@@ -7,3 +7,6 @@
 [submodule "vim/external/colors/vim-colors-japanesque"]
 	path = vim/external/colors/vim-colors-japanesque
 	url = https://github.com/aereal/vim-colors-japanesque.git
+[submodule "vim/external/colors/vim-atom-dark"]
+	path = vim/external/colors/vim-atom-dark
+	url = https://github.com/gosukiwi/vim-atom-dark.git

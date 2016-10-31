@@ -6,3 +6,5 @@ if [ ! -d "~/.vim/bundle/neobundle.vim" ]; then
 fi
 
 ln -fsn ~/.vim/external/colors/vim-colors-japanesque/colors/japanesque.vim ~/.vim/colors/japanesque.vim
+ln -fsn ~/.vim/external/colors/vim-atom-dark/colors/atom-dark.vim ~/.vim/colors/atom-dark.vim
+ln -fsn ~/.vim/external/colors/vim-atom-dark/colors/atom-dark-256.vim ~/.vim/colors/atom-dark-256.vim
