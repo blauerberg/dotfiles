@@ -10,9 +10,6 @@ set ruler
 set relativenumber
 set number
 set modeline
-set cursorline
-set cursorcolumn
-set colorcolumn=80
 set autoindent
 set ts=2
 set sts=2
@@ -65,6 +62,13 @@ au InsertLeave * hi StatusLine
 
 set statusline=%F%m%r%h%w\%=[%l,%v/%L]\[%{&ft}]\[%{&ff}]\[%{&fileencoding}]
 
+augroup auto-cursorline
+  autocmd!
+  autocmd CursorMoved,CursorMovedI,WinLeave * setlocal nocursorline
+  autocmd CursorMoved,CursorMovedI,WinLeave * setlocal nocursorcolumn
+  autocmd CursorHold,CursorHoldI * setlocal cursorline
+  autocmd CursorHold,CursorHoldI * setlocal cursorcolumn
+augroup END
 
 filetype plugin indent on
 if has("syntax")
