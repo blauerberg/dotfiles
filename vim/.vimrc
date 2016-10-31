@@ -32,6 +32,7 @@ set cmdheight=4
 set history=128
 set viminfo='1024,f1,<512
 set pumheight=10
+colorscheme default
 
 "
 " common keymap
