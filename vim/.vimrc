@@ -2,6 +2,7 @@
 " global
 "
 set nocompatible
+set background=dark
 set backspace=eol,indent,start
 set whichwrap=b,s,[,],<,>,~
 set mouse=
@@ -137,7 +138,7 @@ nnoremap <silent> <Leader>te :e <C-r>=<SID>toggle_language(expand("%"))<CR><CR>
 "
 " colorscheme
 "
-colorscheme japanesque
+colorscheme atom-dark-256
 
 "
 " Highlighting trailing white space.
