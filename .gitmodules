@@ -1,6 +1,9 @@
 [submodule "git-flow-completion"]
 	path = git-flow-completion
 	url = https://github.com/bobthecow/git-flow-completion
+[submodule "prezto"]
+	path = prezto
+	url = https://github.com/blauerberg/prezto.git
 [submodule "vim/external/colors/vim-colors-japanesque"]
 	path = vim/external/colors/vim-colors-japanesque
 	url = https://github.com/aereal/vim-colors-japanesque.git
