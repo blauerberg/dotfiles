@@ -266,6 +266,7 @@ endif
 call neobundle#begin(expand('~/.vim/bundle'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
+NeoBundle 'https://github.com/altercation/vim-colors-solarized.git'
 NeoBundle 'sudo.vim'
 NeoBundle 'https://github.com/b4b4r07/vim-buftabs.git'
 NeoBundle 'https://github.com/nathanaelkane/vim-indent-guides.git'
@@ -608,3 +609,8 @@ let g:table_mode_corner = '|'
 if filereadable(expand('~/.vimrc.local'))
   source ~/.vimrc.local
 endif
+
+"
+" solarrized
+"
+let g:solarized_termcolors=256
