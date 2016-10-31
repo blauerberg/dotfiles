@@ -137,7 +137,7 @@ nnoremap <silent> <Leader>te :e <C-r>=<SID>toggle_language(expand("%"))<CR><CR>
 "
 " colorscheme
 "
-colorscheme atom-dark-256
+colorscheme japanesque
 
 "
 " Highlighting trailing white space.
