@@ -37,7 +37,8 @@ zstyle ':prezto:load' pmodule \
   'rsync' \
   'homebrew' \
   'gnu-utility' \
-  'syntax-highlighting'
+  'syntax-highlighting' \
+  'history-substring-search'
 
 #
 # Autosuggestions
