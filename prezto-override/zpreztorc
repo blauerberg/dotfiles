@@ -34,8 +34,6 @@ zstyle ':prezto:load' pmodule \
   'ssh' \
   'tmux' \
   'node' \
-  'ruby' \
-  'rails' \
   'rsync' \
   'homebrew' \
   'osx' \
@@ -107,7 +105,7 @@ zstyle ':prezto:module:prompt' theme 'sorin'
 #
 
 # Auto switch the Ruby version on directory change.
-zstyle ':prezto:module:ruby:chruby' auto-switch 'yes'
+# zstyle ':prezto:module:ruby:chruby' auto-switch 'yes'
 
 #
 # Screen
