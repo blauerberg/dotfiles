@@ -14,7 +14,7 @@
 [alias]
   d = diff
   l = log
-  lg = log --graph
+  lg = log --graph --date-order --all --pretty=format:'%h %Cred%d %Cgreen%ad %Cblue%cn %Creset%s' --date=short
   s = status -sb
   br = branch
   co = checkout
