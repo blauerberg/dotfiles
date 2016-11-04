@@ -19,5 +19,12 @@ ln -fsn $PWD/git/gitignore_global ~/.gitignore_global
 ln -fsn $PWD/vim ~/.vim
 ln -fsn $PWD/vim/.vimrc ~/.vimrc
 
+# set up for neovim
+if [ ! -d "~/.config" ]; then
+  mkdir ~/.config
+fi
+ln -fsn $PWD/vim ~/.config/nvim
+ln -fsn $PWD/vim/.vimrc ~/.config/nvim/init.vim
+
 # install neobundle
 source $PWD/vim/bootstrap.sh
