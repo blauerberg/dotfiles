@@ -64,6 +64,8 @@ CASK_PACKAGES="
   sequel-pro
   sourcetree
   synergy
+  vagrant
+  vagrant-manager
   virtualbox
   visual-studio-code
   wireshark
