@@ -29,6 +29,7 @@ BREW_PACKAGES="
   phpenv
   pwgen
   rbenv
+  re2c
   reattach-to-user-namespace
   ruby-build
   sqlite
@@ -60,10 +61,8 @@ CASK_PACKAGES="
   google-chrome
   google-japanese-ime
   gyazo
-  phpstorm
   scansnap-manager-ix500
   sequel-pro
-  sourcetree
   synergy
   vagrant
   vagrant-manager
