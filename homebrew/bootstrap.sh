@@ -26,7 +26,6 @@ BREW_PACKAGES="
   neovim/neovim/neovim
   nodebrew
   pandoc
-  phpenv
   pwgen
   rbenv
   re2c
