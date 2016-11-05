@@ -16,6 +16,7 @@ BREW_PACKAGES="
   ansible
   awscli
   ctags
+  direnv
   git
   git-flow
   global
