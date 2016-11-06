@@ -17,6 +17,7 @@ BREW_PACKAGES="
   awscli
   ctags
   direnv
+  fswatch
   git
   git-flow
   global
@@ -30,10 +31,12 @@ BREW_PACKAGES="
   rbenv
   re2c
   reattach-to-user-namespace
+  rsync
   ruby-build
   sqlite
   ssh-copy-id
   tmux
+  unison
   vim
   watchman
   zsh
