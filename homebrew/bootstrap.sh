@@ -24,8 +24,13 @@ BREW_PACKAGES="
   go
   hub
   jq
+  libjpeg
+  libmcrypt
+  libpng
+  libxml2
   neovim/neovim/neovim
   nodebrew
+  openssl
   pandoc
   pwgen
   rbenv
