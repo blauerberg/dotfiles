@@ -17,6 +17,7 @@ ln -fsn $PWD/tmux/tmux.conf ~/.tmux.conf
 ln -fsn $PWD/git/gitconfig ~/.gitconfig
 ln -fsn $PWD/git/gitignore_global ~/.gitignore_global
 ln -fsn $PWD/.curlrc ~/.curlrc
+ln -fsn $PWD/.gemrc ~/.gemrc
 ln -fsn $PWD/vim ~/.vim
 ln -fsn $PWD/vim/.vimrc ~/.vimrc
 
