@@ -180,8 +180,14 @@ function _terminal-set-titles-hostname {
   echo -ne "\ek$(hostname|awk 'BEGIN{FS="."}{print $1}'):$mycmd[1]\e\\"
 }
 
+function _terminal-set-titles-idle {
+  mycmd=(${(s: :)${1}})
+  echo -ne "\ek$(hostname|awk 'BEGIN{FS="."}{print $1}'):idle\e\\"
+}
+
 autoload -Uz add-zsh-hook
-add-zsh-hook precmd _terminal-set-titles-hostname
+add-zsh-hook preexec _terminal-set-titles-hostname
+add-zsh-hook precmd _terminal-set-titles-idle
 
 if [ -f ~/.zshrc_unix ]; then
   source ~/.zshrc_unix
