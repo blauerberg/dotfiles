@@ -175,6 +175,14 @@ zstyle ':prezto:module:tmux:auto-start' remote 'yes'
 # see: https://github.com/sorin-ionescu/prezto/blob/master/modules/utility/functions/diff
 alias diff='command diff'
 
+function _terminal-set-titles-hostname {
+  mycmd=(${(s: :)${1}})
+  echo -ne "\ek$(hostname|awk 'BEGIN{FS="."}{print $1}'):$mycmd[1]\e\\"
+}
+
+autoload -Uz add-zsh-hook
+add-zsh-hook precmd _terminal-set-titles-hostname
+
 if [ -f ~/.zshrc_unix ]; then
   source ~/.zshrc_unix
 fi
