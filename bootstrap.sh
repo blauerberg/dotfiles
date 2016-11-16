@@ -13,7 +13,17 @@ done
 
 ln -fsn $PWD/prezto-override/zpreztorc $HOME/.zpreztorc
 ln -fsn $PWD/prezto-override/zshrc_unix $HOME/.zshrc_unix
-ln -fsn $PWD/tmux/tmux.conf ~/.tmux.conf
+
+TMUX_VERSION=$(tmux -V|cut -d " " -f2)
+case $TMUX_VERSION in
+  1*)
+    ln -fsn $PWD/tmux/tmux-1.x.conf ~/.tmux.conf
+    ;;
+  *)
+    ln -fsn $PWD/tmux/tmux-2.x.conf ~/.tmux.conf
+    ;;
+esac
+
 ln -fsn $PWD/git/gitconfig ~/.gitconfig
 ln -fsn $PWD/git/gitignore_global ~/.gitignore_global
 ln -fsn $PWD/.curlrc ~/.curlrc
