@@ -65,6 +65,7 @@ CASK_PACKAGES="
   dropbox
   flux
   iterm2
+  java
   google-chrome
   google-japanese-ime
   gyazo
