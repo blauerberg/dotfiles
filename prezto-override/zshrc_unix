@@ -37,8 +37,8 @@ if [ -f "$HOME/.console/console.rc" ]; then
 fi
 
 # git-flow-completion
-if [ -d "$HOME/dotfiles/git-flow-completion" ]; then
-  source "$HOME/dotfiles/git-flow-completion/git-flow-completion.zsh" 2>/dev/null
+if [ -d "$HOME/.dotfiles/git-flow-completion" ]; then
+  source "$HOME/.dotfiles/git-flow-completion/git-flow-completion.zsh" 2>/dev/null
 fi
 
 export GOPATH=$HOME/go
