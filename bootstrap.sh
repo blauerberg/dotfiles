@@ -30,6 +30,7 @@ ln -fsn $PWD/.curlrc ~/.curlrc
 ln -fsn $PWD/.gemrc ~/.gemrc
 ln -fsn $PWD/vim ~/.vim
 ln -fsn $PWD/vim/.vimrc ~/.vimrc
+ln -fsn $PWD/dircolors-solarized/dircolors.ansi-universal ~/.dir_colors
 
 # set up for neovim
 if [ ! -d "~/.config" ]; then
