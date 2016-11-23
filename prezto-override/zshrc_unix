@@ -41,6 +41,11 @@ if [ -d "$HOME/dotfiles/git-flow-completion" ]; then
   source "$HOME/dotfiles/git-flow-completion/git-flow-completion.zsh" 2>/dev/null
 fi
 
+# dircolors
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+  eval `dircolors ~/.dotfiles/dircolors-solarized/dircolors.256dark`
+fi
+
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
