@@ -39,5 +39,10 @@ fi
 ln -fsn $PWD/vim ~/.config/nvim
 ln -fsn $PWD/vim/.vimrc ~/.config/nvim/init.vim
 
+if [[ $OSTYPE == linux* ]]; then
+  ln -fsn $PWD/.xprofile ~/.xprofile
+  ln -fsn $PWD/.Xmodmap ~/.Xmodmap
+fi
+
 # install neobundle
 source $PWD/vim/bootstrap.sh
