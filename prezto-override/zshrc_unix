@@ -2,6 +2,7 @@ command_exists() {
   type $1 > /dev/null 2>&1;
 }
 
+setopt interactivecomments
 autoload -Uz compinit
 compinit -C
 setopt transient_rprompt
