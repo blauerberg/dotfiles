@@ -48,6 +48,7 @@ alias sshp="ssh -o PreferredAuthentications=password -o PubkeyAuthentication=no"
 alias drupalctags="ctags --langmap=php:.engine.inc.module.theme.install.php --php-kinds=cdfi --languages=php --recurse --fields=+l"
 alias git-my-commit="git commit --author=\"Yoshikazu Aoyama <yskz.aoyama@gmail.com>\""
 alias git-submodule-reset="git submodule foreach --recursive git reset --hard"
+alias dc="docker-compose"
 
 if [[ $OSTYPE == linux* ]]; then
   alias open="xdg-open"
