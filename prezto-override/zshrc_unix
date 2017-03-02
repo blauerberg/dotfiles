@@ -50,6 +50,8 @@ alias drupalctags="ctags --langmap=php:.engine.inc.module.theme.install.php --ph
 alias git-my-commit="git commit --author=\"Yoshikazu Aoyama <yskz.aoyama@gmail.com>\""
 alias git-submodule-reset="git submodule foreach --recursive git reset --hard"
 alias dc="docker-compose"
+alias dcp"docker-compose exec php"
+alias dcd="docker-compose exec php drush"
 
 if [[ $OSTYPE == linux* ]]; then
   alias open="xdg-open"
