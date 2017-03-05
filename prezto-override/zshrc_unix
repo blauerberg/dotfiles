@@ -52,6 +52,7 @@ alias git-submodule-reset="git submodule foreach --recursive git reset --hard"
 alias dc="docker-compose"
 alias dcp"docker-compose exec php"
 alias dcd="docker-compose exec php drush"
+alias dm="docker-machine"
 
 if [[ $OSTYPE == linux* ]]; then
   alias open="xdg-open"
