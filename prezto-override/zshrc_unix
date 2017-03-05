@@ -46,6 +46,7 @@ export GOPATH=$HOME/go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 alias sshp="ssh -o PreferredAuthentications=password -o PubkeyAuthentication=no"
+alias sshc='ssh -F ssh_config'
 alias drupalctags="ctags --langmap=php:.engine.inc.module.theme.install.php --php-kinds=cdfi --languages=php --recurse --fields=+l"
 alias git-my-commit="git commit --author=\"Yoshikazu Aoyama <yskz.aoyama@gmail.com>\""
 alias git-submodule-reset="git submodule foreach --recursive git reset --hard"
