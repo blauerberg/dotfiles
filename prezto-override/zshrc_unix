@@ -26,12 +26,6 @@ if [ $? -eq 0 ]; then
   eval "$(anyenv init -)"
 fi
 
-# grunt-cli
-command_exists "grunt"
-if [ $? -eq 0 ]; then
-  eval "$(grunt --completion=zsh)"
-fi
-
 # DrupalConsole
 if [ -f "$HOME/.console/console.rc" ]; then
   source "$HOME/.console/console.rc" 2>/dev/null
