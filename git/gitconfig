@@ -1,6 +1,5 @@
 [core]
   editor = vi
-  pager = LESSCHARSET=utf-8 less -c
   filemode = false
   excludesfile = $HOME/.gitignore_global
 
