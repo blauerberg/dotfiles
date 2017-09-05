@@ -23,7 +23,7 @@ if [ -d "$HOME/.anyenv" ]; then
 fi
 command_exists "anyenv"
 if [ $? -eq 0 ]; then
-  eval "$(anyenv init -)"
+  eval "$(anyenv init - --no-rehash)"
 fi
 
 # DrupalConsole
