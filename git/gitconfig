@@ -15,6 +15,7 @@
   l = log
   lg = log --graph --date-order --all --pretty=format:'%h %Cred%d %Cgreen%ad %Cblue%cn %Creset%s' --date=short
   s = status -sb
+  smu = submodule update --init --recursive
   br = branch
   co = checkout
 
