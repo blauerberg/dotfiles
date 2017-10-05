@@ -36,18 +36,6 @@ if [ -d "$HOME/.dotfiles/git-flow-completion" ]; then
   source "$HOME/.dotfiles/git-flow-completion/git-flow-completion.zsh" 2>/dev/null
 fi
 
-if [[ $OSTYPE == darwin* ]]; then
-  # docker-machine
-  command_exists "docker-machine"
-  if [ $? -eq 0 ]; then
-    docker() {
-      unset -f docker
-      eval "$(docker-machine env default)"
-      docker "$@"
-    }
-   fi
-fi
-
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 export PATH=~/google-cloud-sdk/bin:$PATH
@@ -65,9 +53,3 @@ alias dm="docker-machine"
 if [[ $OSTYPE == linux* ]]; then
   alias open="xdg-open"
 fi
-
-docker() {
-  unset -f docker
-  eval "$(docker-machine env default)"
-  docker "$@"
-}
