@@ -48,6 +48,7 @@ alias git-submodule-reset="git submodule foreach --recursive git reset --hard"
 alias dc="docker-compose"
 alias dcp"docker-compose exec php"
 alias dcd="docker-compose exec php drush"
+alias dcdc="docker-compose exec php vendor/bin/drupal"
 alias dm="docker-machine"
 
 if [[ $OSTYPE == linux* ]]; then
