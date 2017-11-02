@@ -24,6 +24,7 @@ fi
 command_exists "anyenv"
 if [ $? -eq 0 ]; then
   eval "$(anyenv init - --no-rehash)"
+  export PATH=~/.anyenv/envs/phpenv/versions/$(phpenv version|cut -d" " -f1)/composer/vendor/bin:$PATH
 fi
 
 # DrupalConsole
