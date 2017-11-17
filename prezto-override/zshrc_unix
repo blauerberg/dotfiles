@@ -56,3 +56,9 @@ alias dp="docker ps"
 if [[ $OSTYPE == linux* ]]; then
   alias open="xdg-open"
 fi
+
+case "$(uname -r)" in
+  *ARCH*)
+    zstyle ':prezto:module:tmux:auto-start' local 'yes'
+    ;;
+esac
