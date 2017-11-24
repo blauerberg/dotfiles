@@ -1,0 +1,7 @@
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS="@im=fcitx"
+export DefaultIMModule=fcitx
+#xrandr --output eDP1 --mode 3200x1800 --scale 2.0x2.0
+#xrandr --output eDP1 --mode 3200x1800 --scale 1.0x1.0
+#xrandr --output eDP1 --mode 1920x1080 --scale 1.0x1.0
