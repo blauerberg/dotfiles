@@ -59,6 +59,10 @@ if [[ $OSTYPE == linux* ]]; then
   alias open="xdg-open"
 fi
 
+if [[ $OSTYPE == darwin* ]]; then
+  zstyle ':prezto:module:tmux:auto-start' local 'yes'
+fi
+
 case "$(uname -r)" in
   *ARCH*)
     zstyle ':prezto:module:tmux:auto-start' local 'yes'
