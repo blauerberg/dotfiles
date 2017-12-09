@@ -5,3 +5,4 @@ export DefaultIMModule=fcitx
 #xrandr --output eDP1 --mode 3200x1800 --scale 2.0x2.0
 #xrandr --output eDP1 --mode 3200x1800 --scale 1.0x1.0
 #xrandr --output eDP1 --mode 1920x1080 --scale 1.0x1.0
+xrandr --output eDP1 --mode 3200x1800 --scale 1.2x1.2 --panning 3840x2160
