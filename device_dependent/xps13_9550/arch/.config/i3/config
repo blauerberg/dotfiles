@@ -173,3 +173,4 @@ exec --no-startup-id nm-applet
 exec --no-startup-id dropbox
 exec --no-startup-id parcellite
 #exec --no-startup-id volumeicon
+exec --no-startup-id feh --bg-scale /usr/share/archlinux/wallpaper/archlinux-simplyblack.png 
