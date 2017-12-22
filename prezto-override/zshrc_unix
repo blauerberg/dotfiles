@@ -65,7 +65,7 @@ fi
 
 case "$(uname -r)" in
   *ARCH*)
-    zstyle ':prezto:module:tmux:auto-start' local 'yes'
+    #zstyle ':prezto:module:tmux:auto-start' local 'yes'
     ;;
 esac
 

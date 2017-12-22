@@ -1,0 +1,73 @@
+# i3status configuration file.
+# see "man i3status" for documentation.
+
+# It is important that this file is edited as UTF-8.
+# The following line should contain a sharp s:
+# ß
+# If the above line is not correctly displayed, fix your editor first!
+
+general {
+        colors = true
+        interval = 5
+}
+
+order += "wireless _first_"
+order += "path_exists VPN"
+order += "battery 0"
+order += "cpu_usage"
+order += "load"
+order += "disk /"
+order += "tztime local"
+order += "volume master"
+
+wireless _first_ {
+        format_up = "  %essid (%quality) - %ip"
+        format_down = "down"
+}
+
+volume master {
+        format = " %volume"
+        format_muted = " (%volume)"
+        device = "default"
+        mixer = "Master"
+        mixer_idx = 0
+}
+
+battery 0 {
+        format = "%status %percentage %remaining"
+        status_bat = ""
+        status_chr = ""
+        status_full = ""
+        low_threshold = 30
+        threshold_type = percentage
+        integer_battery_capacity = true
+        color_good = "#0000FF"
+}
+
+run_watch DHCP {
+        pidfile = "/var/run/dhclient*.pid"
+}
+
+path_exists VPN {
+        path = "/proc/sys/net/ipv4/conf/ppp0"
+        format = " %title %status"
+        color_bad = "#FFFFFF"
+}
+
+tztime local {
+        format = " %m-%d %H:%M"
+}
+
+cpu_usage {
+        format = "%usage"
+        max_threshold = 80
+        degraded_threshold = 25
+}
+
+load {
+        format = " %1min"
+}
+
+disk "/" {
+        format = " %avail"
+}
