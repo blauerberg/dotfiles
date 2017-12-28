@@ -168,6 +168,13 @@ bar {
         font pango:DejaVu Sans Mono, Awesome 12
 }
 
+assign [class="Google-chrome-beta"] 1
+assign [class="Slack"] 2
+#assign [class="Terminator"] 3
+assign [class="Franz"] 4
+assign [class="jetbrains-phpstorm"] 5
+assign [class="zoom"] 10
+
 exec --no-startup-id setxkbmap -option ctrl:nocaps
 exec --no-startup-id xinput set-prop 12 "libinput Natural Scrolling Enabled" 1
 exec --no-startup-id dunst
@@ -176,4 +183,9 @@ exec --no-startup-id nm-applet
 exec --no-startup-id dropboxd
 exec --no-startup-id parcellite
 #exec --no-startup-id volumeicon
-exec --no-startup-id feh --bg-scale /usr/share/archlinux/wallpaper/archlinux-simplyblack.png 
+exec --no-startup-id feh --bg-scale /usr/share/archlinux/wallpaper/archlinux-simplyblack.png
+exec --no-startup-id i3-msg 'workspace 3; exec terminator; workspace 1'
+exec --no-startup-id slack
+exec --no-startup-id zoom
+exec --no-startup-id franz-bin
+exec --no-startup-id google-chrome-beta
