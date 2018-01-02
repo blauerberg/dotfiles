@@ -193,6 +193,6 @@ exec --no-startup-id parcellite
 exec --no-startup-id feh --bg-scale /usr/share/archlinux/wallpaper/archlinux-simplyblack.png
 exec --no-startup-id i3-msg 'workspace $ws1; exec urxvtc;'
 exec --no-startup-id slack
-exec --no-startup-id zoom
+#exec --no-startup-id zoom
 exec --no-startup-id franz-bin
 exec --no-startup-id google-chrome-beta
