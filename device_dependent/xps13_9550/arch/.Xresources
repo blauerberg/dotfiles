@@ -1,6 +1,7 @@
 Xft.dpi: 195
 Xft.antialias: 1
 
+URxvt.termName: rxvt-unicode
 URxvt.depth: 32
 URxvt.geometry: 90x30
 URxvt.transparent: false
