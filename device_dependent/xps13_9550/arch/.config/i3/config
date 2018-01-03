@@ -31,7 +31,7 @@ font pango:DejaVu Sans Mono, Awesome 9
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec urxvtc
+bindsym $mod+Return exec terminator
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -184,7 +184,7 @@ assign [class="Slack"] $ws10
 
 exec --no-startup-id setxkbmap -option ctrl:nocaps
 exec --no-startup-id xinput set-prop 12 "libinput Natural Scrolling Enabled" 1
-exec --no-startup-id /usr/bin/urxvtd -q -o -f
+#exec --no-startup-id /usr/bin/urxvtd -q -o -f
 exec --no-startup-id dunst
 exec --no-startup-id fcitx
 exec --no-startup-id nm-applet
@@ -192,7 +192,7 @@ exec --no-startup-id dropboxd
 exec --no-startup-id parcellite
 #exec --no-startup-id volumeicon
 exec --no-startup-id feh --bg-scale /usr/share/archlinux/wallpaper/archlinux-simplyblack.png
-exec --no-startup-id i3-msg 'workspace $ws1; exec urxvtc;'
+exec --no-startup-id i3-msg 'workspace $ws1; exec terminator;'
 exec --no-startup-id slack
 #exec --no-startup-id zoom
 exec --no-startup-id franz-bin
