@@ -29,17 +29,19 @@ set cmdheight=4
 set history=128
 set viminfo='1024,f1,<512
 set pumheight=10
-colorscheme default
+set hidden
+set updatetime=500
+"colorscheme default
 
 "
-" common keymap
+" keymap
 "
 let mapleader = "\<Space>"
 nnoremap <Leader>. :<C-u>edit $MYVIMRC<Enter>
 nnoremap <Leader>s. :<C-u>source $MYVIMRC<Enter>
 nnoremap <C-j> <C-^>
+nnoremap <Tab> <C-w><C-w>
 nnoremap <silent><ESC><ESC> :noh<CR>
-
 
 "
 " status line
@@ -146,15 +148,9 @@ nnoremap <silent> <Leader>te :e <C-r>=<SID>toggle_language(expand("%"))<CR><CR>
 colorscheme atom-dark-256
 
 "
-" Highlighting trailing white space.
+" auto forcus at last position
 "
-augroup hilightExtraWhitespace
-  autocmd!
-  autocmd ColorScheme * highlight ExtraWhitespace term=underline ctermbg=Red guibg=Red
-  autocmd ColorScheme * highlight IdegraphicSpace term=underline ctermbg=Red guibg=Red
-  autocmd VimEnter,WinEnter * match ExtraWhitespace /\s\+$/
-  autocmd VimEnter,WinEnter * match IdegraphicSpace /　/
-augroup END
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line ("$") | exe "normal! g'\"" | endif
 
 "
 " completion
@@ -200,62 +196,8 @@ endif
 "
 if has("autocmd")
   autocmd BufRead,BufNewFile Vagrantfile set filetype=ruby
-"  autocmd FileType ruby,eruby setl autoindent
-"  autocmd FileType ruby,eruby setl expandtab
-"  autocmd FileType ruby,eruby setl tabstop=2
-"  autocmd FileType ruby,eruby setl shiftwidth=2
-"  autocmd FileType ruby,eruby setl softtabstop=2
-"  autocmd FileType ruby,eruby let g:rails_level = 4
-"  autocmd FileType ruby,eruby let g:rails_syntax = 1
-"  autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
-"  autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
-"  autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
-"  "autocmd BufWrite *.rb w !ruby -c
 endif
 
-"
-" for python
-"
-"if has("autocmd")
-"  autocmd FileType python setl autoindent
-"  autocmd FileType python setl smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
-"  autocmd FileType python setl expandtab
-"  autocmd FileType python setl tabstop=4
-"  autocmd FileType python setl shiftwidth=4
-"  autocmd FileType python setl softtabstop=4
-"  autocmd FileType python let g:pydiction_location = '~/.vim/dict/complete-dict'
-"endif
-
-"
-" for c/c++
-"
-"if has("autocmd")
-"  autocmd FileType c,cpp setl autoindent
-"  autocmd FileType c,cpp setl cindent
-"  autocmd FileType c,cpp setl tabstop=8
-"  autocmd FileType c,cpp setl shiftwidth=8
-"  autocmd FileType c,cpp setl noexpandtab
-"endif
-
-"
-" for xml
-"
-"if has("autocmd")
-  "autocmd Filetype xml,html,php,eruby inoremap <buffer> </ </<C-x><C-o>
-"endif
-
-"
-" load template
-"
-augroup templateload
-  autocmd!
-  autocmd BufNewFile *.html 0r ~/.vim/templates/index.html
-augroup END
-
-"
-" forcus last position
-"
-au BufReadPost * if line("'\"") > 1 && line("'\"") <= line ("$") | exe "normal! g'\"" | endif
 
 "
 " neobundle
@@ -264,27 +206,69 @@ if has('vim_starting')
   if &compatible
     set nocompatible
   endif
-
   set runtimepath+=~/.vim/bundle/neobundle.vim
 endif
 
 call neobundle#begin(expand('~/.vim/bundle'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
-NeoBundle 'https://github.com/altercation/vim-colors-solarized.git'
-NeoBundle 'sudo.vim'
+"
+" bundles (common)
+"
+NeoBundle 'https://github.com/scrooloose/nerdtree.git'
+NeoBundle 'https://github.com/majutsushi/tagbar.git'
+NeoBundle 'https://github.com/ctrlpvim/ctrlp.vim.git'
 NeoBundle 'https://github.com/b4b4r07/vim-buftabs.git'
+NeoBundle 'https://github.com/vim-scripts/netrw.vim.git'
+NeoBundle 'https://github.com/Shougo/vimfiler.git'
+NeoBundle 'https://github.com/vim-scripts/sudo.vim.git'
+"
+" bundles (editor)
+"
+NeoBundle 'https://github.com/altercation/vim-colors-solarized.git'
 NeoBundle 'https://github.com/nathanaelkane/vim-indent-guides.git'
+NeoBundle 'https://github.com/bronson/vim-trailing-whitespace.git'
+NeoBundle 'https://github.com/kana/vim-smartchr.git'
 NeoBundle 'https://github.com/junegunn/vim-easy-align.git'
-NeoBundle 'ConradIrwin/vim-bracketed-paste'
+NeoBundle 'https://github.com/godlygeek/tabular.git'
+NeoBundle 'https://github.com/ConradIrwin/vim-bracketed-paste.git'
+NeoBundle 'https://github.com/tpope/vim-surround.git'
+"
+" bundles (unite)
+"
+NeoBundle 'https://github.com/Shougo/unite.vim.git'
+NeoBundle 'https://github.com/Shougo/unite-outline.git'
+NeoBundle 'https://github.com/tsukkee/unite-tag.git'
+"
+" bundles (git)
+"
+NeoBundle 'https://github.com/tpope/vim-fugitive.git'
+NeoBundle 'https://github.com/airblade/vim-gitgutter.git'
+NeoBundle 'https://github.com/tyru/open-browser.vim.git'
+NeoBundle 'https://github.com/tyru/open-browser-github.vim.git'
+NeoBundle 'https://github.com/rhysd/github-complete.vim.git'
+"
+" bundles (development)
+"
+NeoBundle 'https://github.com/scrooloose/syntastic.git'
+NeoBundle 'https://github.com/joonty/vdebug.git'
+
+"NeoBundle 'https://github.com/taku-o/vim-vis.git'
+"NeoBundle 'https://github.com/thinca/vim-ref.git'
+NeoBundle 'https://github.com/Shougo/vimproc.git'
+
+"NeoBundle 'https://github.com/hsitz/VimOrganizer.git'
+"NeoBundle 'https://github.com/thinca/vim-visualstar.git'
+"NeoBundle 'https://github.com/jceb/vim-orgmode.git'
+"NeoBundle 'https://github.com/tpope/vim-speeddating.git'
+"NeoBundle 'https://github.com/kannokanno/previm.git'
+"NeoBundle 'https://github.com/dhruvasagar/vim-table-mode.git'
+"NeoBundle 'https://github.com/thinca/vim-quickrun.git'
 "NeoBundle 'https://github.com/tpope/vim-rails.git'
-NeoBundle 'https://github.com/taku-o/vim-vis.git'
-NeoBundle 'netrw.vim'
 "NeoBundle 'c.vim'
 "NeoBundle 'YankRing.vim'
 "NeoBundle 'https://github.com/houtsnip/vim-emacscommandline.git'
 "NeoBundle 'matchit.zip'
-NeoBundle 'https://github.com/tpope/vim-surround.git'
 "NeoBundle 'https://github.com/kana/vim-textobj-user.git'
 "NeoBundle 'https://github.com/kana/vim-textobj-indent.git'
 "NeoBundle 'https://github.com/kana/vim-textobj-lastpat.git'
@@ -299,31 +283,17 @@ NeoBundle 'https://github.com/tpope/vim-surround.git'
 "NeoBundle 'operator-camelize.vim'
 "NeoBundle 'operator-sort.vim'
 "NeoBundle 'operator-reverse.vim'
-NeoBundle 'https://github.com/thinca/vim-ref.git'
-"NeoBundle 'smartchr'
 "NeoBundle 'ZenCoding.vim'
-NeoBundle 'https://github.com/Shougo/unite.vim.git'
-NeoBundle 'https://github.com/SHougo/unite-outline.git'
-NeoBundle 'https://github.com/Shougo/vimfiler.git'
-NeoBundle 'https://github.com/tsukkee/unite-tag.git'
 "NeoBundle 'https://github.com/tsukkee/unite-gtags.git'
-NeoBundle 'https://github.com/Shougo/vimproc.git'
-NeoBundle 'https://github.com/thinca/vim-visualstar.git'
-"NeoBundle 'The-NERD-tree'
 "NeoBundle 'Align'
 "NeoBundle 'https://github.com/itchyny/calendar.vim.git'
 "NeoBundle 'https://github.com/chrisbra/NrrwRgn.git'
 "NeoBundle 'https://github.com/vim-scripts/utl.vim.git'
 "NeoBundle 'Markdown'
-NeoBundle 'https://github.com/scrooloose/nerdtree.git'
-NeoBundle 'https://github.com/scrooloose/syntastic.git'
-NeoBundle 'https://github.com/jceb/vim-orgmode.git'
-NeoBundle 'https://github.com/tpope/vim-speeddating.git'
 "NeoBundle 'https://github.com/tpope/vim-pathogen.git'
 "NeoBundle 'https://github.com/majutsushi/tagbar.git'
 "NeoBundle 'https://github.com/jistr/vim-nerdtree-tabs.git'
 "NeoBundle 'https://github.com/krisajenkins/vim-pipe.git'
-"NeoBundle 'suan/vim-instant-markdown'
 
 "NeoBundle 'jscomplete-vim'
 "NeoBundle 'quickfixstatus'
@@ -334,29 +304,6 @@ NeoBundle 'https://github.com/tpope/vim-speeddating.git'
 "NeoBundle 'gtags.vim'
 "NeoBundle 'vim-javascript'
 "NeoBundle 'csv.vim'
-NeoBundle 'https://github.com/joonty/vdebug.git'
-NeoBundle 'https://github.com/ctrlpvim/ctrlp.vim.git'
-NeoBundle 'https://github.com/godlygeek/tabular.git'
-NeoBundle 'https://github.com/majutsushi/tagbar.git'
-
-"NeoBundle 'https://github.com/hsitz/VimOrganizer.git'
-NeoBundle 'https://github.com/tpope/vim-fugitive.git'
-NeoBundle 'https://github.com/tyru/open-browser.vim.git'
-NeoBundle 'https://github.com/tyru/open-browser-github.vim.git'
-NeoBundle 'https://github.com/tyru/open-browser-github.vim.git'
-"NeoBundle 'https://github.com/rhysd/github-complete.vim.git'
-NeoBundle 'https://github.com/mattn/webapi-vim.git'
-NeoBundle 'https://github.com/mattn/gist-vim.git'
-NeoBundle 'https://github.com/kannokanno/previm.git'
-NeoBundle 'https://github.com/dhruvasagar/vim-table-mode.git'
-NeoBundle 'https://github.com/thinca/vim-quickrun.git'
-"NeoBundle 'https://github.com/thinca/vim-quickrun.git', {
-"            \ 'lazy': 1,
-"            \ 'autoload': {
-"            \   'commands': [{'name': 'QuickRun',
-"                            \  'complete': 'customlist,quickrun#complete', }],
-"            \   'mappings': ['nxo', '<Plug>(quickrun)'],
-"            \ }}
 
 if has('lua') && ((v:version >= 703 && has('patch885')) || v:version >= 704)
   NeoBundleLazy "Shougo/neocomplete.vim", {
@@ -455,9 +402,42 @@ NeoBundleCheck
 filetype plugin indent on
 
 "
+" solarized
+"
+let g:solarized_termcolors=256
+
+"
 " sudo.vim
 "
 nnoremap <Leader>ww :w sudo:%
+
+"
+" indent-guides
+"
+let g:indent_guides_auto_colors = 0
+let g:indent_guides_enable_on_vim_startup=1
+let g:indent_guides_color_change_percent=31
+let g:indent_guides_start_level=2
+let g:indent_guides_guide_size=1
+hi IndentGuidesOdd  ctermbg=white
+hi IndentGuidesEven ctermbg=darkgrey
+
+"
+" smartchr
+"
+inoremap <expr> = smartchr#loop(' = ', '=', ' == ')
+inoremap <expr> , smartchr#loop(', ', ',')
+
+"
+" NERDTree
+"
+nnoremap <silent> <Leader>n :NERDTreeToggle<CR>
+let g:NERDTreeHijackNetrw = 0
+
+"
+" tagbar
+"
+nnoremap <silent> <Leader>t :TagbarToggle<CR>
 
 "
 " vimfiler
@@ -473,6 +453,34 @@ vmap <Enter> <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 "
+" ctrlp
+"
+let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp'
+let g:ctrlp_clear_cache_on_exit = 0
+let g:ctrlp_lazy_update = 1
+let g:ctrlp_root_markers = ['install.php']
+"let g:ctrlp_max_height = 10
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ }
+
+"
+" unite-outline
+"
+nnoremap <Leader>uo :Unite -auto-preview -winheight=8 outline<CR>
+
+"
+" vim-gitgutter
+" @see https://github.com/airblade/vim-gitgutter
+let g:gitgutter_realtime = 1
+let g:gitgutter_eager = 1
+let g:gitgutter_eager = 1
+
+
+
+
+
+"
 " vim-ref
 "
 let g:ref_phpmanual_path = $HOME . '/.vim/ref/phpmanual/'
@@ -486,16 +494,11 @@ function! s:initialize_ref_viewer()
   ".... and more settings ...
 endfunction
 
-"
-" tagbar
-"
-nnoremap <silent> <Leader>ta :TagbarToggle<CR>
+
 
 "
-" nerdtree
+" ここから下は消していいかも
 "
-nnoremap <silent> <Leader>nt :NERDTreeToggle<CR>
-let g:NERDTreeHijackNetrw = 0
 
 "
 " YankRing.vim
@@ -512,33 +515,6 @@ let g:NERDTreeHijackNetrw = 0
 "let b:match_ignorecase=1
 "let b:match_words=&matchpairs . ",if:endif,begin:end,do:end"
 
-"
-" indent-guides
-"
-let g:indent_guides_auto_colors = 0
-let g:indent_guides_enable_on_vim_startup=1
-let g:indent_guides_color_change_percent=30
-let g:indent_guides_start_level=2
-let g:indent_guides_guide_size=1
-hi IndentGuidesOdd  ctermbg=white
-hi IndentGuidesEven ctermbg=darkgrey
-
-"
-" smartchr
-"
-"inoremap <expr> = smartchr#loop(' = ', '=', ' == ')
-"inoremap <expr> , smartchr#loop(', ', ',')
-
-"
-" vim-instant-markdown-d
-"
-"let g:instant_markdown_slow = 1
-
-
-"
-" unite-outline
-"
-nnoremap <Leader>uo :Unite -auto-preview -winheight=15 outline<CR>
 
 "
 " VimOrganizer
@@ -557,17 +533,12 @@ nnoremap <Leader>uo :Unite -auto-preview -winheight=15 outline<CR>
 "
 " select after paste
 "
-nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
-
+"nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
 
 "
 " ctags
 "
 "set tags=~/.tags/tags
-
-"
-" vim-pipe
-"
 
 "
 " QFixGrep
@@ -582,42 +553,37 @@ nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
 "
 " syntastic
 "
-set statusline+=%#warningmsg#
-if exists('*SyntasticStatuslineFlag')
-  set statusline+=%{SyntasticStatuslineFlag()}
-endif
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-nnoremap <Leader>er :Errors<CR>
+"set statusline+=%#warningmsg#
+"if exists('*SyntasticStatuslineFlag')
+"  set statusline+=%{SyntasticStatuslineFlag()}
+"endif
+"set statusline+=%*
+"
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 0
+"let g:syntastic_check_on_wq = 0
+"nnoremap <Leader>er :Errors<CR>
 
 "
 " open-browser-github
 "
-nnoremap <Leader>gho :<C-u>OpenGithubFile<CR>
+"nnoremap <Leader>gho :<C-u>OpenGithubFile<CR>
 
 "
 " previm
 "
-let g:previm_open_cmd = 'open -a Safari'
-augroup PrevimSettings
-  autocmd!
-  autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
-augroup END
+"let g:previm_open_cmd = 'open -a Safari'
+"augroup PrevimSettings
+"  autocmd!
+"  autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
+"augroup END
 
 "
 " vim-table-mode
 "
-let g:table_mode_corner = '|'
+"let g:table_mode_corner = '|'
 
 if filereadable(expand('~/.vimrc.local'))
   source ~/.vimrc.local
 endif
-
-"
-" solarrized
-"
-let g:solarized_termcolors=256
