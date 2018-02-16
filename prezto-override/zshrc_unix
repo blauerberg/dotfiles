@@ -62,7 +62,7 @@ if [[ $OSTYPE == linux* ]]; then
 fi
 
 if [[ $OSTYPE == darwin* ]]; then
-  zstyle ':prezto:module:tmux:auto-start' local 'yes'
+  #zstyle ':prezto:module:tmux:auto-start' local 'yes'
 fi
 
 case "$(uname -r)" in
