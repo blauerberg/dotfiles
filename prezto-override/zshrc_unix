@@ -58,6 +58,7 @@ alias dp="docker ps"
 
 if [[ $OSTYPE == linux* ]]; then
   alias open="xdg-open"
+  alias pbcopy="xsel --clipboard --input"
 fi
 
 if [[ $OSTYPE == darwin* ]]; then
