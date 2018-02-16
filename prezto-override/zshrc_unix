@@ -42,6 +42,7 @@ fi
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 export PATH=~/google-cloud-sdk/bin:$PATH
+export PATH=~/.local/bin:$PATH
 
 alias sshp="ssh -o PreferredAuthentications=password -o PubkeyAuthentication=no"
 alias sshc='ssh -F ssh_config'
