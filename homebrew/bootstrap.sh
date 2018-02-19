@@ -68,7 +68,7 @@ CASK_PACKAGES="
   java
   google-chrome
   google-japanese-ime
-  gyazo
+  minikube
   scansnap-manager-ix500
   sequel-pro
   synergy
