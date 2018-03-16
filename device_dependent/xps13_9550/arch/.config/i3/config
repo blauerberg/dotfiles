@@ -178,6 +178,7 @@ bar {
 #assign [class="Terminator"] $ws1
 assign [class="Google-chrome-beta"] $ws2
 assign [class="jetbrains-phpstorm"] $ws3
+assign [class="Code"] $ws3
 assign [class="Franz"] $ws8
 assign [class="zoom"] $ws9
 assign [class="Slack"] $ws10
