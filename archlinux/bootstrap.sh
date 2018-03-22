@@ -13,12 +13,14 @@ PACMAN_PACKAGES="
   git
   rsync
   openssh
-  openssh-server
   networkmanager
   networkmanager-pptp
+  pulseaudio
+  pulseaudio-bluetooth
   neovim
   git-flow
   htop
+  ntp
   diffstat
   sysstat
   pwgen
@@ -45,10 +47,11 @@ PACMAN_PACKAGES="
   docker-compose
   docker-machine
   virtualbox
-  mariadb
+  virtualbox-host-dkms
+  mariadb-clients
   jre8-openjdk
   xorg-server
-  xorg-server-utils
+  xorg-apps
   xorg-xinit
   xorg-xclock
   xterm
@@ -58,9 +61,6 @@ PACMAN_PACKAGES="
   fcitx-mozc
   fcitx-configtool
   fcitx-im
-  gnome-open
-  slack-desktop
-  dropbox
   mysql-workbench
   xorg-xev
   terminator
@@ -75,6 +75,14 @@ PACMAN_PACKAGES="
   feh
   xsel
   pavucontrol
+  firefox
+  archlinux-wallpaper
+  ttf-dejavu
+  conky
+  bluez
+  ctags
+  jq
+  nmap
 "
 
 installed=$(sudo pacman -Qe | awk '{print $1}')
@@ -82,7 +90,7 @@ for package in $PACMAN_PACKAGES; do
   if echo "$installed" | grep -q "$package"; then
     echo "${package} already installed."
   else
-    sudo pacman -S $package --noconfirm
+    sudo pacman -S $package --noconfirm --needed
   fi
 done
 
@@ -90,6 +98,7 @@ AUR_PACKAGES="
   i3-wm
   i3lock
   i3status
+  i3blocks
   dmenu
   lightdm
   lightdm-mini-greeter
@@ -97,6 +106,7 @@ AUR_PACKAGES="
   ttf-font-awesome
   ttf-font-awesome-4
   j4-dmenu-desktop-git
+  rofi
   visual-studio-code-bin
   zoom
   nautilus-dropbox
@@ -113,6 +123,12 @@ AUR_PACKAGES="
   kubectl-bin
   kompose-bin
   icu59
+  python-azure-cli
+  python-azure-multiapi-storage
+  redshift
+  terraform
+  slack-desktop
+  dropbox
 "
 
 installed=$(yaourt -Qe | awk '{print $1}')
@@ -120,7 +136,7 @@ for package in $AUR_PACKAGES; do
   if echo "$installed" | grep -q "$package"; then
     echo "${package} already installed."
   else
-    yaourt -S $package --noconfirm
+    yaourt -S $package --noconfirm --needed
   fi
 done
 
