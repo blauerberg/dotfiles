@@ -83,6 +83,7 @@ PACMAN_PACKAGES="
   ctags
   jq
   nmap
+  pdnsd
 "
 
 installed=$(sudo pacman -Qe | awk '{print $1}')
