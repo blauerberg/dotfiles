@@ -18,7 +18,9 @@ PACMAN_PACKAGES="
   pulseaudio
   pulseaudio-bluetooth
   neovim
+  python-neovim
   git-flow
+  wget
   htop
   ntp
   diffstat
@@ -42,12 +44,16 @@ PACMAN_PACKAGES="
   vagrant
   ansible
   python-pip
+  python-tox
   bind-tools
   docker
   docker-compose
   docker-machine
+  python-dockerpty
+  python-docker
   virtualbox
   virtualbox-host-dkms
+  virtualbox-guest-modules-arch
   mariadb-clients
   jre8-openjdk
   xorg-server
@@ -61,6 +67,8 @@ PACMAN_PACKAGES="
   fcitx-mozc
   fcitx-configtool
   fcitx-im
+  blueman
+  blueman-applet
   mysql-workbench
   xorg-xev
   terminator
@@ -84,6 +92,8 @@ PACMAN_PACKAGES="
   jq
   nmap
   pdnsd
+  re2c
+  iotop
 "
 
 installed=$(sudo pacman -Qe | awk '{print $1}')
@@ -130,6 +140,8 @@ AUR_PACKAGES="
   terraform
   slack-desktop
   dropbox
+  libreoffice-fresh
+  libreoffice-fresh-ja
 "
 
 installed=$(yaourt -Qe | awk '{print $1}')
