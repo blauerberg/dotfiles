@@ -94,6 +94,8 @@ PACMAN_PACKAGES="
   pdnsd
   re2c
   iotop
+  compton
+  i3-gaps
 "
 
 installed=$(sudo pacman -Qe | awk '{print $1}')
@@ -106,7 +108,6 @@ for package in $PACMAN_PACKAGES; do
 done
 
 AUR_PACKAGES="
-  i3-wm
   i3lock
   i3status
   i3blocks
@@ -119,6 +120,7 @@ AUR_PACKAGES="
   j4-dmenu-desktop-git
   rofi
   visual-studio-code-bin
+  direnv
   zoom
   nautilus-dropbox
   google-chrome-beta
