@@ -202,6 +202,7 @@ assign [class="Slack"] $ws10
 for_window [class="zoom"] floating enable
 for_window [class="Nautilus$"] floating enable
 
+exec --no-startup-id compton -b --config ~/.config/compton.conf
 exec --no-startup-id setxkbmap -option ctrl:nocaps
 exec --no-startup-id xinput set-prop 10 "libinput Natural Scrolling Enabled" 1
 exec --no-startup-id dunst
