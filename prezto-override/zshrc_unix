@@ -55,6 +55,7 @@ alias dcd="docker-compose exec php drush"
 alias dcdc="docker-compose exec php vendor/bin/drupal"
 alias dm="docker-machine"
 alias dp="docker ps"
+alias drupal_ctags="ctags --langmap=php:.engine.inc.module.theme.install.php --php-kinds=cdfi --languages=php --recurse --fields=+l"
 
 if [[ $OSTYPE == linux* ]]; then
   alias open="xdg-open"
