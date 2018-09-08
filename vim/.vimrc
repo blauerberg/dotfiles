@@ -31,7 +31,6 @@ set viminfo='1024,f1,<512
 set pumheight=10
 set hidden
 set updatetime=500
-"colorscheme default
 
 "
 " keymap
@@ -47,21 +46,20 @@ nnoremap <silent><ESC><ESC> :noh<CR>
 " status line
 "
 au InsertEnter * hi StatusLine
-      \ guifg=DarkBlue
-      \ guibg=DarkYellow
-      \ gui=none
-      \ ctermfg=Blue
-      \ ctermbg=Yellow
-      \ cterm=none
+  \ guifg=DarkBlue
+  \ guibg=DarkYellow
+  \ gui=none
+  \ ctermfg=Blue
+  \ ctermbg=Yellow
+  \ cterm=none
 
 au InsertLeave * hi StatusLine
-      \ guifg=DarkBlue
-      \ guibg=White
-      \ gui=none
-      \ ctermfg=Blue
-      \ ctermbg=White
-      \ cterm=none
-
+  \ guifg=DarkBlue
+  \ guibg=White
+  \ gui=none
+  \ ctermfg=Blue
+  \ ctermbg=White
+  \ cterm=none
 set statusline=%F%m%r%h%w\%=[%l,%v/%L]\[%{&ft}]\[%{&ff}]\[%{&fileencoding}]
 
 augroup auto-cursorline
@@ -113,42 +111,18 @@ function! s:toggle_language(path)
   return a:path
 endfunction
 
-"
-" keymap
-"
-"nmap <silent> <C-n> :update<CR>:bn<CR>
-"imap <silent> <C-n> :update<CR>:bn<CR>
-"vmap <silent> <C-n> <ESC>:update<CR>:bn<CR>
-"cmap <silent> <C-n> <ESC>:update<CR>:bn<CR>
-
-"nnoremap <C-h> :<C-u>h<Space>
-"nnoremap <C-h><C-h> :<C-u>h<Space><C-r><C-w><Enter>
-"nnoremap gc `[v`]
-"vnoremap gc :<C-u>normal gc<Enter>
-"onoremap gc :<C-u>normal gc<Enter>
-
 nnoremap <expr> <Leader>ug ':Unite grep:.<CR>' . expand('<cword>')
 nnoremap <expr> <Leader>uG ':Unite grep:%<CR>' . expand('<cword>')
 nnoremap <expr> <Leader>gr ':sil grep! ' . expand('<cword>') . ' *'
 nnoremap <silent> <Leader>te :e <C-r>=<SID>toggle_language(expand("%"))<CR><CR>
 
-"noremap gs /<C-R><C-W><CR>
-"imap <nul> <C-x><C-o><C-p>
-
-"autocmd!
-"autocmd FileType php vmap // <C-V>#\^I//<ESC>
-"autocmd FileType ruby,python vmap // <C-V>OI#<ESC>
-"autocmd FileType php vmap <Bslash><Bslash> :s/^\(\s*\t*\)\/\//\1/<CR>:noh<CR>
-"autocmd FileType ruby,python vmap <Bslash><Bslash> :s/^\(\s*\t*\)#/\1/<CR>:noh<CR>
-"autocmd FileType html,xml,php vmap /b :<ESC>:'<s/\(.*\)/<!--<C-v><C-m>\1/<CR>:<ESC>:'>s/\(.*\)/\1<C-v><C-m>-->/<CR>:noh<CR>
-"
 "
 " colorscheme
 "
 colorscheme atom-dark-256
 
 "
-" auto forcus at last position
+" auto forcus to lastest position
 "
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line ("$") | exe "normal! g'\"" | endif
 
@@ -158,7 +132,6 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line ("$") | exe "normal! 
 set completeopt=menu,menuone,preview
 set showfulltag
 
-
 if has("syntax")
   syntax on
 endif
@@ -167,16 +140,9 @@ endif
 " for php
 "
 if has("autocmd")
-  "autocmd FileType php :set dictionary+=~/.vim/dict/php.dict
   autocmd FileType php let php_sql_query=1
   autocmd FileType php let php_htmlInStrings=1
   autocmd FileType php let php_folding=1
-  autocmd FileType php setl fdm=indent
-  autocmd FileType php normal zR
-  autocmd FileType php set omnifunc=phpcomplete#CompletePHP
-  "autocmd FileType php let g:AutoComplPop_CompleteOption = '.,w,b,u,t,i,k~/.vim/dict/php.dict'
-  "autocmd CmdwinEnter * AutoComplPopDisable
-  "autocmd CmdwinLeave * AutoComplPopEnable
 endif
 
 "
@@ -188,16 +154,9 @@ if has("autocmd")
     autocmd BufRead,BufNewFile *.inc set filetype=php
     autocmd BufRead,BufNewFile *.install set filetype=php
     autocmd BufRead,BufNewFile *.test set filetype=php
+    autocmd BufRead,BufNewFile *.theme set filetype=php
   augroup END
 endif
-
-"
-" for ruby, rails
-"
-if has("autocmd")
-  autocmd BufRead,BufNewFile Vagrantfile set filetype=ruby
-endif
-
 
 "
 " neobundle
@@ -423,12 +382,6 @@ hi IndentGuidesOdd  ctermbg=white
 hi IndentGuidesEven ctermbg=darkgrey
 
 "
-" smartchr
-"
-inoremap <expr> = smartchr#loop(' = ', '=', ' == ')
-inoremap <expr> , smartchr#loop(', ', ',')
-
-"
 " NERDTree
 "
 nnoremap <silent> <Leader>n :NERDTreeToggle<CR>
@@ -476,10 +429,6 @@ let g:gitgutter_realtime = 1
 let g:gitgutter_eager = 1
 let g:gitgutter_eager = 1
 
-
-
-
-
 "
 " vim-ref
 "
@@ -493,96 +442,6 @@ function! s:initialize_ref_viewer()
   setlocal nonumber
   ".... and more settings ...
 endfunction
-
-
-
-"
-" ここから下は消していいかも
-"
-
-"
-" YankRing.vim
-"
-"let g:yankring_history_dir = expand('~')
-"let g:yankring_history_file = '.yankring_history'
-"let g:yankring_max_history = 10
-"let g:yankring_window_height = 13
-
-"
-" matchhit
-"
-"runtime bundle/matchit.zip/plugin
-"let b:match_ignorecase=1
-"let b:match_words=&matchpairs . ",if:endif,begin:end,do:end"
-
-
-"
-" VimOrganizer
-"
-"au! BufRead,BufWrite,BufWritePost,BufNewFile *.org
-"au BufEnter *.org            call org#SetOrgFileType()
-"let g:org_command_for_emacsclient = '/usr/bin/emacs'
-"let g:org_agenda_select_dirs=["~/.vim_junk/org_files"]
-"let g:org_agenda_files = split(glob("~/.vim_junk/org_files/*.org"),"\n")
-
-"
-" xdebug
-"
-"let g:debuggerMaxDepth = 10
-
-"
-" select after paste
-"
-"nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
-
-"
-" ctags
-"
-"set tags=~/.tags/tags
-
-"
-" QFixGrep
-"
-"let QFixWin_EnableMode = 1
-"let QFix_PreviewEnable = 1
-"let QFix_UseLocationList = 1
-"let QFix_Height = 30
-"let QFix_PreviewOpenCmd = 'vertical leftabove'
-"let QFix_CopenCmd = 'vertical topleft'
-
-"
-" syntastic
-"
-"set statusline+=%#warningmsg#
-"if exists('*SyntasticStatuslineFlag')
-"  set statusline+=%{SyntasticStatuslineFlag()}
-"endif
-"set statusline+=%*
-"
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 0
-"let g:syntastic_check_on_wq = 0
-"nnoremap <Leader>er :Errors<CR>
-
-"
-" open-browser-github
-"
-"nnoremap <Leader>gho :<C-u>OpenGithubFile<CR>
-
-"
-" previm
-"
-"let g:previm_open_cmd = 'open -a Safari'
-"augroup PrevimSettings
-"  autocmd!
-"  autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
-"augroup END
-
-"
-" vim-table-mode
-"
-"let g:table_mode_corner = '|'
 
 if filereadable(expand('~/.vimrc.local'))
   source ~/.vimrc.local
