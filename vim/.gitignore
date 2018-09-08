@@ -1,0 +1,7 @@
+netrwhist
+bundle*
+ref*
+.netrwhist
+colors/atom-dark.vim
+colors/atom-dark-256.vim
+init.vim
