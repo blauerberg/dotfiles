@@ -76,11 +76,6 @@ if has("syntax")
   syntax on
 endif
 
-augroup helpgrepopen
-  autocmd!
-  autocmd QuickFixCmdPost helpgrep cw
-augroup END
-
 "
 "  grep
 "
@@ -93,18 +88,14 @@ augroup END
 
 augroup quickfix
   au!
-  au BufReadPost uuickfix call s:initialize_quickfix()
+  au BufReadPost quickfix call s:initialize_quickfix()
 augroup END
 
 function! s:initialize_quickfix()
   nnoremap <buffer> q <C-w>c
   setl norelativenumber
 endfunction
-
-nnoremap <expr> <Leader>ug ':Unite grep:.<CR>' . expand('<cword>')
-nnoremap <expr> <Leader>uG ':Unite grep:%<CR>' . expand('<cword>')
 nnoremap <expr> <Leader>gr ':sil grep! ' . expand('<cword>') . ' *'
-nnoremap <silent> <Leader>te :e <C-r>=<SID>toggle_language(expand("%"))<CR><CR>
 
 "
 " colorscheme
@@ -181,6 +172,7 @@ if dein#load_state('~/.cache/dein')
  call dein#add('junegunn/vim-easy-align')
  call dein#add('ConradIrwin/vim-bracketed-paste')
  call dein#add('tpope/vim-surround')
+ call dein#add('Shougo/denite.nvim')
  call dein#add('Shougo/unite.vim')
  call dein#add('Shougo/unite-outline')
  call dein#add('Shougo/neomru.vim')
