@@ -248,6 +248,7 @@ let g:ctrlp_custom_ignore = {
 "
 nnoremap <Leader>uo :Unite -auto-preview -winheight=9 outline<CR>
 nnoremap <expr> <Leader>ug ':Unite -auto-preview -winheight=9 grep:.<CR>' . expand('<cword>')
+nnoremap <expr> <Leader>dg ':Denite -auto-preview -winheight=9 grep:.<CR>' . expand('<cword>')
 
 "
 " unite buffer
