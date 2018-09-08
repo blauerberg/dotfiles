@@ -1,0 +1,15 @@
+--recurse=yes
+--exclude=.git
+--exclude=node_modules/*
+--fields=+laimS
+--languages=php
+--langmap=php:.engine.inc.module.theme.install.php
+--totals=yes
+--tag-relative=yes
+--PHP-kinds=+cfit-va
+--tag-relative=yes
+--regex-PHP=/abstract class ([^ ]*)/\1/c/
+--regex-PHP=/interface ([^ ]*)/\1/c/
+--regex-PHP=/trait ([^ ]*)/\1/c/
+--regex-PHP=/(public |static |abstract |protected |private )+ function +([^ \(]*)/\2/f/
+--regex-php=/^[ \t]*trait[ \t]+([a-z0_9_]+)/\1/t,traits/i

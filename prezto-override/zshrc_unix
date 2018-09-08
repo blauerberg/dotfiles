@@ -46,7 +46,6 @@ export PATH=~/.local/bin:$PATH
 
 alias sshp="ssh -o PreferredAuthentications=password -o PubkeyAuthentication=no"
 alias sshc='ssh -F ssh_config'
-alias drupalctags="ctags --langmap=php:.engine.inc.module.theme.install.php --php-kinds=cdfi --languages=php --recurse --fields=+l"
 alias git-my-commit="git commit --author=\"Yoshikazu Aoyama <yskz.aoyama@gmail.com>\""
 alias git-submodule-reset="git submodule foreach --recursive git reset --hard"
 alias dc="docker-compose"
@@ -55,7 +54,6 @@ alias dcd="docker-compose exec php drush"
 alias dcdc="docker-compose exec php vendor/bin/drupal"
 alias dm="docker-machine"
 alias dp="docker ps"
-alias drupal_ctags="ctags --langmap=php:.engine.inc.module.theme.install.php --php-kinds=cdfi --languages=php --recurse --fields=+l"
 
 if [[ $OSTYPE == linux* ]]; then
   alias open="xdg-open"
