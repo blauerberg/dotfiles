@@ -174,6 +174,7 @@ if dein#load_state('~/.cache/dein')
  call dein#add('tpope/vim-surround')
  call dein#add('Shougo/denite.nvim')
  call dein#add('Shougo/unite.vim')
+ call dein#add('Shougo/vimproc.vim')
  call dein#add('Shougo/unite-outline')
  call dein#add('Shougo/neomru.vim')
  call dein#add('tsukkee/unite-tag')
@@ -246,7 +247,8 @@ let g:ctrlp_custom_ignore = {
 "
 " unite-outline
 "
-nnoremap <Leader>uo :Unite -auto-preview -winheight=8 outline<CR>
+nnoremap <Leader>uo :Unite -auto-preview -winheight=9 outline<CR>
+nnoremap <expr> <Leader>ug ':Unite -auto-preview -winheight=9 grep:.<CR>' . expand('<cword>')
 
 "
 " unite buffer
