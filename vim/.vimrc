@@ -123,7 +123,6 @@ endif
 if has("autocmd")
   autocmd FileType php let php_sql_query=1
   autocmd FileType php let php_htmlInStrings=1
-  autocmd FileType php let php_folding=1
   autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 endif
 
