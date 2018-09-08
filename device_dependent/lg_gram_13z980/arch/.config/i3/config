@@ -100,6 +100,7 @@ bindsym $mod+a focus parent
 set $ws1 1:
 set $ws2 2:
 set $ws3 3:
+set $ws4 4:
 set $ws8 8:
 set $ws9 9:"
 set $ws10 10:
@@ -108,7 +109,7 @@ set $ws10 10:
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
 bindsym $mod+3 workspace $ws3
-bindsym $mod+4 workspace 4
+bindsym $mod+4 workspace $ws4
 bindsym $mod+5 workspace 5
 bindsym $mod+6 workspace 6
 bindsym $mod+7 workspace 7
@@ -123,7 +124,7 @@ bindsym $mod+Right workspace next
 bindsym $mod+Shift+1 move container to workspace $ws1
 bindsym $mod+Shift+2 move container to workspace $ws2
 bindsym $mod+Shift+3 move container to workspace $ws3
-bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+4 move container to workspace $ws4
 bindsym $mod+Shift+5 move container to workspace 5
 bindsym $mod+Shift+6 move container to workspace 6
 bindsym $mod+Shift+7 move container to workspace 7
@@ -194,8 +195,8 @@ bar {
 }
 
 assign [class="Google-chrome-beta"] $ws2
-assign [class="jetbrains-phpstorm"] $ws3
 assign [class="Code"] $ws3
+assign [class="jetbrains-phpstorm"] $ws4
 assign [class="Franz"] $ws8
 assign [class="zoom"] $ws9
 assign [class="Slack"] $ws10
