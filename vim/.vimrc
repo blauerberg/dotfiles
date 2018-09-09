@@ -43,26 +43,6 @@ nnoremap <C-k> :split<CR> :exe("tjump ".expand('<cword>'))<CR>
 nnoremap <Tab> <C-w><C-w>
 nnoremap <silent><ESC><ESC> :noh<CR>
 
-"
-" status line
-"
-au InsertEnter * hi StatusLine
-  \ guifg=DarkBlue
-  \ guibg=DarkYellow
-  \ gui=none
-  \ ctermfg=Blue
-  \ ctermbg=Yellow
-  \ cterm=none
-
-au InsertLeave * hi StatusLine
-  \ guifg=DarkBlue
-  \ guibg=White
-  \ gui=none
-  \ ctermfg=Blue
-  \ ctermbg=White
-  \ cterm=none
-set statusline=%F%m%r%h%w\%=[%l,%v/%L]\[%{&ft}]\[%{&ff}]\[%{&fileencoding}]
-
 augroup auto-cursorline
   autocmd!
   autocmd CursorMoved,CursorMovedI,WinLeave * setlocal nocursorline
@@ -164,6 +144,7 @@ if dein#load_state('~/.cache/dein')
  call dein#add('scrooloose/nerdtree')
  call dein#add('majutsushi/tagbar')
  call dein#add('ctrlpvim/ctrlp.vim')
+ call dein#add('itchyny/lightline.vim')
  call dein#add('b4b4r07/vim-buftabs')
  call dein#add('vim-scripts/sudo.vim')
  call dein#add('nathanaelkane/vim-indent-guides')
