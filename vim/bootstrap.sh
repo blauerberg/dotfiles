@@ -3,16 +3,18 @@
 # install dein
 if [ ! -d ~/.cache/dein ]; then
   mkdir -p ~/.cache/dein
-  case "$(uname -r)" in
-    *ARCH*)
-      curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > /tmp/installer.sh
-      ;;
-    *)
-      curl https://raw.githubusercontent.com/Shougo/dein.vim/1.5/bin/installer.sh > /tmp/installer.sh
-      ;;
-  esac
+  curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > /tmp/installer.sh
   sh /tmp/installer.sh ~/.cache/dein
   rm -f /tmp/installer.sh
+
+  case "$(uname -r)" in
+    *ARCH*)
+      ;;
+    *)
+      cd ~/.cache/dein/repos/github.com/Shougo/dein.vim
+      git checkout 1.5
+      ;;
+  esac
 fi
 
 if [ ! -d ~/.vim/colors ]; then
