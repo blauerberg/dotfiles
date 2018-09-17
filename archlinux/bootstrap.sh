@@ -96,6 +96,7 @@ PACMAN_PACKAGES="
   iotop
   compton
   i3-gaps
+  simplescreenrecorder
 "
 
 installed=$(sudo pacman -Qe | awk '{print $1}')
