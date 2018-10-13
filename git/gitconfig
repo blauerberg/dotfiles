@@ -3,9 +3,6 @@
   filemode = false
   excludesfile = $HOME/.gitignore_global
 
-[color]
-  ui
-
 [user]
   name = "Yoshikazu Aoyama"
   email = "yskz.aoyama@gmail.com"
