@@ -34,7 +34,6 @@ PACMAN_PACKAGES="
   openssl
   tidy
   tree
-  unzip
   lsof
   nfs-utils
   traceroute
@@ -88,7 +87,6 @@ PACMAN_PACKAGES="
   ttf-dejavu
   conky
   bluez
-  ctags
   jq
   nmap
   pdnsd
@@ -97,6 +95,7 @@ PACMAN_PACKAGES="
   compton
   i3-gaps
   simplescreenrecorder
+  w3m
 "
 
 installed=$(sudo pacman -Qe | awk '{print $1}')
@@ -122,6 +121,7 @@ AUR_PACKAGES="
   rofi
   visual-studio-code-bin
   direnv
+  unzip-iconv
   zoom
   nautilus-dropbox
   google-chrome-beta
@@ -145,6 +145,8 @@ AUR_PACKAGES="
   dropbox
   libreoffice-fresh
   libreoffice-fresh-ja
+  universal-ctags-git
+  ranger
 "
 
 installed=$(yaourt -Qe | awk '{print $1}')
