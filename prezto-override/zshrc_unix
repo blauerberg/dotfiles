@@ -6,6 +6,7 @@ setopt interactivecomments
 autoload -Uz compinit
 compinit -C
 setopt transient_rprompt
+setopt nonomatch
 
 command_exists "brew"
 if [ $? -eq 0 ]; then
