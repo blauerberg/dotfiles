@@ -67,6 +67,7 @@ fi
 
 case "$(uname -r)" in
   *ARCH*)
+    alias unzip="unzip -O CP932"
     #zstyle ':prezto:module:tmux:auto-start' local 'yes'
     ;;
 esac
