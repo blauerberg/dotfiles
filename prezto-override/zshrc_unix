@@ -71,18 +71,3 @@ case "$(uname -r)" in
     #zstyle ':prezto:module:tmux:auto-start' local 'yes'
     ;;
 esac
-
-function df_sql_sync() {
-  docker-compose exec php drush -y sql-sync $1 @local
-}
-
-function df_rsync() {
-  docker-compose exec php drush -y rsync $1:%files @local:%files
-}
-
-function df_all_sync() {
-  df_sql_sync $1
-  df_rsync $1
-  docker-compose exec php chown -R www-data:www-data /var/www/html/sites/default/files
-  docker-compose exec php /usr/local/bin/drush cr
-}
