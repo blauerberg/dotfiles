@@ -203,6 +203,7 @@ assign [class="Slack"] $ws10
 for_window [class="zoom"] floating enable
 for_window [class="Nautilus$"] floating enable
 for_window [class="SimpleScreenRecorder"] floating enable
+for_window [class="Blueman-manager"] floating enable
 
 exec --no-startup-id compton -b --config ~/.config/compton.conf
 exec --no-startup-id setxkbmap -option ctrl:nocaps
@@ -210,7 +211,7 @@ exec --no-startup-id xinput set-prop 10 "libinput Natural Scrolling Enabled" 1
 exec --no-startup-id dunst
 exec --no-startup-id fcitx
 exec --no-startup-id nm-applet
-exec --no-startup-id blueman-applet
+#exec --no-startup-id blueman-applet
 exec --no-startup-id dropboxd
 exec --no-startup-id parcellite
 exec --no-startup-id feh --bg-scale /usr/share/archlinux/wallpaper/archlinux-simplyblack.png
