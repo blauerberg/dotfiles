@@ -219,3 +219,4 @@ exec --no-startup-id i3-msg 'workspace $ws1; exec terminator;'
 exec --no-startup-id slack
 exec --no-startup-id zoom
 exec --no-startup-id google-chrome-beta
+exec --no-startup-id redshift
