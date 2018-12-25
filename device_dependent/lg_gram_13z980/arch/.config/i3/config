@@ -102,7 +102,7 @@ set $ws2 2:
 set $ws3 3:
 set $ws4 4:
 set $ws8 8:
-set $ws9 9:"
+set $ws9 9:
 set $ws10 10:
 
 # switch to workspace
@@ -186,13 +186,13 @@ bindsym Print exec import -window "$(xdotool getwindowfocus -f)" /tmp/$(date +%Y
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-        #mode hide
-        #hidden_state hide
-        status_command i3blocks
-        position top
-        font pango:DejaVu Sans Mono, Awesome 11
-}
+#bar {
+#        #mode hide
+#        #hidden_state hide
+#        status_command i3blocks
+#        position top
+#        font pango:DejaVu Sans Mono, Awesome 11
+#}
 
 assign [class="Google-chrome-beta"] $ws2
 assign [class="Code"] $ws3
@@ -202,12 +202,14 @@ assign [class="zoom"] $ws9
 assign [class="Slack"] $ws10
 for_window [class="zoom"] floating enable
 for_window [class="Nautilus$"] floating enable
-for_window [class="SimpleScreenRecorder"] floating enable
-for_window [class="Blueman-manager"] floating enable
+for_window [class="SimpleScreenRecorder"] floating enable, resize set 800 600
+for_window [class="Blueman-manager"] floating enable, resize set 800 600
+for_window [class="VirtualBox Manager"] floating enable, resize set 800 600
 
 exec --no-startup-id compton -b --config ~/.config/compton.conf
 exec --no-startup-id setxkbmap -option ctrl:nocaps
 exec --no-startup-id xinput set-prop 10 "libinput Natural Scrolling Enabled" 1
+exec_always --no-startup-id polybar system
 exec --no-startup-id dunst
 exec --no-startup-id fcitx
 exec --no-startup-id nm-applet

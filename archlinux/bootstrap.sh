@@ -111,6 +111,7 @@ AUR_PACKAGES="
   i3lock
   i3status
   i3blocks
+  polybar-git
   dmenu
   lightdm
   lightdm-mini-greeter
