@@ -9,6 +9,7 @@ if [ ! -d ~/.cache/dein ]; then
 
   case "$(uname -r)" in
     *ARCH*)
+    *Microsoft*)
       ;;
     *)
       cd ~/.cache/dein/repos/github.com/Shougo/dein.vim
