@@ -2,7 +2,6 @@
 " global
 "
 set nocompatible
-set background=dark
 set backspace=eol,indent,start
 set whichwrap=b,s,[,],<,>,~
 set mouse=
@@ -78,11 +77,6 @@ endfunction
 nnoremap <expr> <Leader>gr ':sil grep! ' . expand('<cword>') . ' *'
 
 "
-" colorscheme
-"
-colorscheme atom-dark-256
-
-"
 " auto forcus to lastest position
 "
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line ("$") | exe "normal! g'\"" | endif
@@ -140,6 +134,7 @@ if dein#load_state('~/.cache/dein')
   call dein#begin('~/.cache/dein')
 
   call dein#add('~/.cache/dein')
+  call dein#add('morhetz/gruvbox')
   call dein#add('Shougo/deoplete.nvim')
   call dein#add('scrooloose/nerdtree')
   call dein#add('majutsushi/tagbar')
@@ -179,6 +174,14 @@ endif
 
 filetype plugin indent on
 syntax enable
+
+"
+" colorscheme
+"
+colorscheme gruvbox
+set background=dark
+set t_Co=256
+let g:ligthline = { 'colorscheme': 'gruvbox' }
 
 "
 " solarized
