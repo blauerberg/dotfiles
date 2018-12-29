@@ -171,6 +171,10 @@ if dein#load_state('~/.cache/dein')
 
   call dein#end()
   call dein#save_state()
+
+  if dein#check_install()
+    call dein#install()
+  endif
 endif
 
 filetype plugin indent on
