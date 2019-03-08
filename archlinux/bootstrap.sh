@@ -148,6 +148,7 @@ AUR_PACKAGES="
   libreoffice-fresh-ja
   universal-ctags-git
   ranger
+  arandr
 "
 
 installed=$(yaourt -Qe | awk '{print $1}')
