@@ -194,7 +194,7 @@ bindsym Print exec import -window "$(xdotool getwindowfocus -f)" /tmp/$(date +%Y
 #        font pango:DejaVu Sans Mono, Awesome 11
 #}
 
-assign [class="Google-chrome-beta"] $ws2
+assign [class="Google-chrome"] $ws2
 assign [class="Code"] $ws3
 assign [class="jetbrains-phpstorm"] $ws4
 assign [class="Franz"] $ws8
@@ -221,5 +221,5 @@ exec --no-startup-id feh --bg-scale /usr/share/backgrounds/archlinux/archlinux-f
 exec --no-startup-id i3-msg 'workspace $ws1; exec urxvt;'
 exec --no-startup-id slack
 #exec --no-startup-id zoom
-exec --no-startup-id google-chrome-beta
+exec --no-startup-id google-chrome
 exec --no-startup-id redshift
