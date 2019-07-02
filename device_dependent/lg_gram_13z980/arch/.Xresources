@@ -26,8 +26,12 @@ URxvt.visualBell: true
 URxvt.perl-ext-common: default,matcher,selection-to-clipboard,xim-onthespot,resize-font
 URxvt.inputMethod: fcitx
 URxvt.preeditType: OnTheSpot
+URxvt.iso14755: false
+URxvt.iso14755_52: false
 URxvt.resize-font.smaller: C-minus
 URxvt.resize-font.bigger: C-plus
+URxvt.url-launcher: /usr/bin/xdg-open
+URxvt.matcher.button: 1
 URxvt.keysym.M-c: eval:selection_to_clipboard
 URxvt.keysym.M-v: eval:paste_clipboard
 
