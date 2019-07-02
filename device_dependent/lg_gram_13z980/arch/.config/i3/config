@@ -35,7 +35,7 @@ for_window [class=".*"] border pixel 1
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec terminator
+bindsym $mod+Return exec urxvtc
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -210,6 +210,7 @@ exec --no-startup-id compton -b --config ~/.config/compton.conf
 exec --no-startup-id setxkbmap -option ctrl:nocaps
 exec --no-startup-id xinput set-prop 10 "libinput Natural Scrolling Enabled" 1
 exec_always --no-startup-id polybar system
+exec --no-startup-id urxvtd --quiet --fork --opendisplay
 exec --no-startup-id dunst
 exec --no-startup-id fcitx
 exec --no-startup-id nm-applet
@@ -217,7 +218,7 @@ exec --no-startup-id nm-applet
 exec --no-startup-id dropbox
 exec --no-startup-id parcellite
 exec --no-startup-id feh --bg-scale /usr/share/backgrounds/archlinux/archlinux-firestarter.jpg
-exec --no-startup-id i3-msg 'workspace $ws1; exec terminator;'
+exec --no-startup-id i3-msg 'workspace $ws1; exec urxvt;'
 exec --no-startup-id slack
 #exec --no-startup-id zoom
 exec --no-startup-id google-chrome-beta
