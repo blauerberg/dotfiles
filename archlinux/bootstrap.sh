@@ -70,6 +70,9 @@ PACMAN_PACKAGES="
   blueman-applet
   mysql-workbench
   xorg-xev
+  rxvt-unicode
+  rxvt-unicode-terminfo
+  urxvt-perls
   terminator
   imagemagick
   xsel
@@ -149,6 +152,7 @@ AUR_PACKAGES="
   universal-ctags-git
   ranger
   arandr
+  urxvt-resize-font-git
 "
 
 installed=$(yaourt -Qe | awk '{print $1}')
