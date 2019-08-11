@@ -25,6 +25,8 @@ PACMAN_PACKAGES="
   ntp
   diffstat
   sysstat
+  expac
+  pacman-contrib
   pwgen
   acpi
   libjpeg
@@ -54,7 +56,7 @@ PACMAN_PACKAGES="
   virtualbox-host-dkms
   virtualbox-guest-modules-arch
   mariadb-clients
-  jre8-openjdk
+  jre-openjdk
   xorg-server
   xorg-apps
   xorg-xinit
@@ -128,10 +130,8 @@ AUR_PACKAGES="
   unzip-iconv
   zoom
   nautilus-dropbox
-  google-chrome-beta
+  chromium
   profile-sync-daemon
-  franz-bin
-  asix-ax88179-dkms
   apache-tools
   google-cloud-sdk
   phpstorm
