@@ -5,21 +5,17 @@ PACMAN_PACKAGES="
   dosfstools
   efibootmgr
   dialog
+  wpa_supplicant
   linux-firmware
   sudo
   zsh
   zsh-completions
   tmux
-  git
   rsync
-  openssh
-  networkmanager
-  networkmanager-pptp
-  pulseaudio
-  pulseaudio-bluetooth
-  neovim
-  python-neovim
+  git
   git-flow
+  neovim
+  openssh
   wget
   htop
   ntp
@@ -39,14 +35,23 @@ PACMAN_PACKAGES="
   lsof
   nfs-utils
   traceroute
+  bind-tools
   avahi
   screenfetch
   fortune-mod
-  vagrant
-  ansible
   python-pip
   python-tox
-  bind-tools
+  jq
+  nmap
+  pdnsd
+  w3m
+  ranger
+  xsel
+  networkmanager
+  pulseaudio
+  pulseaudio-bluetooth
+  vagrant
+  ansible
   docker
   docker-compose
   docker-machine
@@ -55,6 +60,10 @@ PACMAN_PACKAGES="
   virtualbox
   virtualbox-host-dkms
   virtualbox-guest-modules-arch
+  terraform
+  minikube
+  kubectl
+  imagemagick
   mariadb-clients
   jre-openjdk
   xorg-server
@@ -64,43 +73,48 @@ PACMAN_PACKAGES="
   xterm
   xf86-video-intel
   xf86-input-libinput
+  xorg-xev
   fcitx
   fcitx-mozc
   fcitx-configtool
   fcitx-im
-  blueman
-  blueman-applet
-  mysql-workbench
-  xorg-xev
   rxvt-unicode
   rxvt-unicode-terminfo
   urxvt-perls
   terminator
-  imagemagick
   xsel
-  synergy
+  blueman
+  blueman-applet
+  mysql-workbench
+  archlinux-wallpaper
   cloc
   dunst
   volumeicon
   network-manager-applet
   parcellite
   feh
-  xsel
   pavucontrol
-  firefox
-  archlinux-wallpaper
   ttf-dejavu
-  conky
   bluez
-  jq
-  nmap
-  pdnsd
   re2c
   iotop
   compton
+  lightdm
+  lightdm-mini-greeter
+  lightdm-webkit2-greeter
   i3-gaps
+  i3lock
+  i3status
+  i3blocks
+  dmenu
+  nemo
+  redshift
   simplescreenrecorder
-  w3m
+  arandr
+  ttf-font-awesome
+  firefox
+  libreoffice-fresh
+  libreoffice-fresh-ja
 "
 
 installed=$(sudo pacman -Qe | awk '{print $1}')
@@ -112,16 +126,15 @@ for package in $PACMAN_PACKAGES; do
   fi
 done
 
+# install yay if isn't exists.
+type yay > /dev/null 2>&1
+if [ $? -ne 0 ]; then
+  git clone https://aur.archlinux.org/yay.git
+  cd yay
+  makepkg -si --noconfirm --needed
+fi
+
 AUR_PACKAGES="
-  i3lock
-  i3status
-  i3blocks
-  polybar-git
-  dmenu
-  lightdm
-  lightdm-mini-greeter
-  lightdm-webkit2-greeter
-  ttf-font-awesome
   ttf-font-awesome-4
   j4-dmenu-desktop-git
   rofi
@@ -129,38 +142,28 @@ AUR_PACKAGES="
   direnv
   unzip-iconv
   zoom
-  nautilus-dropbox
-  chromium
-  profile-sync-daemon
   apache-tools
   google-cloud-sdk
   phpstorm
   googler
   pm-utils
-  minikube
-  kubectl-bin
   kompose-bin
   icu59
-  python-azure-cli
-  python-azure-multiapi-storage
-  redshift
-  terraform
   slack-desktop
   dropbox
-  libreoffice-fresh
-  libreoffice-fresh-ja
   universal-ctags-git
-  ranger
-  arandr
   urxvt-resize-font-git
+  networkmanager-l2tp
+  libreswan
+  google-chrome
 "
 
-installed=$(yaourt -Qe | awk '{print $1}')
+installed=$(yay -Qe | awk '{print $1}')
 for package in $AUR_PACKAGES; do
   if echo "$installed" | grep -q "$package"; then
     echo "${package} already installed."
   else
-    yaourt -S $package --noconfirm --needed
+    yay -S $package --noconfirm --needed
   fi
 done
 
