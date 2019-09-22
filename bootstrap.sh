@@ -38,6 +38,7 @@ if [ ! -d "~/.config" ]; then
 fi
 ln -fsn $PWD/vim ~/.config/nvim
 ln -fsn $PWD/vim/.vimrc ~/.config/nvim/init.vim
+ln -fsn $PWD/ranger ~/.config/ranger
 
 # install neobundle
 source $PWD/vim/bootstrap.sh
