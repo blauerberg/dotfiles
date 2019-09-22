@@ -9,6 +9,7 @@ if [ ! -d ~/.cache/dein ]; then
 
   case "$(uname -r)" in
     *ARCH*)
+      ;;
     *Microsoft*)
       ;;
     *)
