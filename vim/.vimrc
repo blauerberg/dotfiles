@@ -42,6 +42,11 @@ nnoremap <C-k> :split<CR> :exe("tjump ".expand('<cword>'))<CR>
 nnoremap <Tab> <C-w><C-w>
 nnoremap <silent><ESC><ESC> :noh<CR>
 
+nnoremap [q :cprevious<CR>
+nnoremap ]q :cnext<CR>
+nnoremap [Q :<C-u>cfirst<CR>
+nnoremap ]Q :<C-u>clast<CR>
+
 augroup auto-cursorline
   autocmd!
   autocmd CursorMoved,CursorMovedI,WinLeave * setlocal nocursorline
@@ -97,7 +102,6 @@ endif
 if has("autocmd")
   autocmd FileType php let php_sql_query=1
   autocmd FileType php let php_htmlInStrings=1
-  autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 endif
 
 "
@@ -156,6 +160,9 @@ if dein#load_state('~/.cache/dein')
   call dein#add('tpope/vim-fugitive')
   call dein#add('airblade/vim-gitgutter')
   call dein#add('scrooloose/syntastic')
+
+  " php support
+  call dein#add('shawncplus/phpcomplete.vim')
   if has('python3')
     call dein#add('joonty/vdebug')
   endif
@@ -253,3 +260,10 @@ let g:gitgutter_eager = 1
 if filereadable(expand('~/.vimrc.local'))
   source ~/.vimrc.local
 endif
+
+"
+" deoplate
+"
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#ignore_sources = get(g:, 'deoplete#ignore_sources', {})
+let g:deoplete#ignore_sources.php = ['omni']
