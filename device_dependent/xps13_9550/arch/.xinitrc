@@ -1,1 +1,0 @@
-export XINIT="xinitrc"
