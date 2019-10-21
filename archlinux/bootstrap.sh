@@ -13,7 +13,6 @@ PACMAN_PACKAGES="
   tmux
   rsync
   git
-  git-flow
   neovim
   openssh
   wget
@@ -135,6 +134,7 @@ if [ $? -ne 0 ]; then
 fi
 
 AUR_PACKAGES="
+  gitflow-avh
   ttf-font-awesome-4
   j4-dmenu-desktop-git
   rofi
