@@ -39,7 +39,7 @@ ln -fsn $PWD/vim/.vimrc ~/.vimrc
 ln -fsn $PWD/dircolors-solarized/dircolors.ansi-universal ~/.dir_colors
 
 # set up for neovim
-if [ ! -d "~/.config" ]; then
+if [ ! -d "$HOME/.config" ]; then
   mkdir ~/.config
 fi
 ln -fsn $PWD/vim ~/.config/nvim
