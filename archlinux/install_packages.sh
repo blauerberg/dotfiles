@@ -24,6 +24,7 @@ PACMAN_PACKAGES="
   pacman-contrib
   pwgen
   acpi
+  base-devel
   libjpeg
   libpng
   libmcrypt
