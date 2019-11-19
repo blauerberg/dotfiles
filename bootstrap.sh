@@ -26,14 +26,14 @@ esac
 
 ln -fsn $PWD/git/gitconfig ~/.gitconfig
 ln -fsn $PWD/git/gitignore_global ~/.gitignore_global
-ln -fsn $PWD/.curlrc ~/.curlrc
-ln -fsn $PWD/.gemrc ~/.gemrc
-ln -fsn $PWD/.xprofile ~/.xprofile
-ln -fsn $PWD/.Xresources ~/.Xresources
-ln -fsn $PWD/.i3blocks.conf ~/.i3blocks.conf
-ln -fsn $PWD/.config/i3 ~/.config/i3
-ln -fsn $PWD/.config/i3status ~/.config/i3status
-ln -fsn $PWD/.config/dunst ~/.config/dunst
+ln -fsn $PWD/curlrc ~/.curlrc
+ln -fsn $PWD/gemrc ~/.gemrc
+ln -fsn $PWD/xprofile ~/.xprofile
+ln -fsn $PWD/Xresources ~/.Xresources
+ln -fsn $PWD/i3blocks.conf ~/.i3blocks.conf
+ln -fsn $PWD/config/i3 ~/.config/i3
+ln -fsn $PWD/config/i3status ~/.config/i3status
+ln -fsn $PWD/config/dunst ~/.config/dunst
 ln -fsn $PWD/vim ~/.vim
 ln -fsn $PWD/vim/.vimrc ~/.vimrc
 ln -fsn $PWD/dircolors-solarized/dircolors.ansi-universal ~/.dir_colors
