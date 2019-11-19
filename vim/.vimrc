@@ -139,7 +139,9 @@ if dein#load_state('~/.cache/dein')
 
   call dein#add('~/.cache/dein')
   call dein#add('morhetz/gruvbox')
-  call dein#add('Shougo/deoplete.nvim')
+  if has("python3")
+    call dein#add('Shougo/deoplete.nvim')
+  endif
   call dein#add('scrooloose/nerdtree')
   call dein#add('majutsushi/tagbar')
   call dein#add('ctrlpvim/ctrlp.vim')
