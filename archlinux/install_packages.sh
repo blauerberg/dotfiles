@@ -14,7 +14,7 @@ PACMAN_PACKAGES="
   rsync
   git
   neovim
-  openssh
+  python-neovim
   wget
   htop
   ntp
@@ -98,7 +98,7 @@ PACMAN_PACKAGES="
   bluez
   re2c
   iotop
-  compton
+  picom
   lightdm
   lightdm-mini-greeter
   lightdm-webkit2-greeter
@@ -110,6 +110,7 @@ PACMAN_PACKAGES="
   nemo
   redshift
   simplescreenrecorder
+  peek
   arandr
   ttf-font-awesome
   firefox
