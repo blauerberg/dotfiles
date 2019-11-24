@@ -29,6 +29,7 @@ ln -fsn $PWD/git/gitignore_global ~/.gitignore_global
 ln -fsn $PWD/curlrc ~/.curlrc
 ln -fsn $PWD/gemrc ~/.gemrc
 ln -fsn $PWD/xprofile ~/.xprofile
+ln -fsn $PWD/xinitrc ~/.xinitrc
 ln -fsn $PWD/Xresources ~/.Xresources
 ln -fsn $PWD/i3blocks.conf ~/.i3blocks.conf
 ln -fsn $PWD/config/i3 ~/.config/i3
