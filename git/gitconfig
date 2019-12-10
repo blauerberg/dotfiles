@@ -1,7 +1,7 @@
 [core]
   editor = vi
   filemode = false
-  excludesfile = $HOME/.gitignore_global
+  excludesfile = ~/.gitignore_global
 
 [user]
   name = "Yoshikazu Aoyama"
