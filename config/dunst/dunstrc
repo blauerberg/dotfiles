@@ -30,7 +30,7 @@
     # The width can be negative.  In this case the actual width is the
     # screen width minus the width defined in within the geometry option.
     #geometry = "300x5-30+20"
-    geometry = "600x5+10+60"
+    geometry = "600x10-5+25"
 
     # Show how many messages are currently hidden (because of geometry).
     indicate_hidden = yes
@@ -42,7 +42,7 @@
     # The transparency of the window.  Range: [0; 100].
     # This option will only work if a compositing window manager is
     # present (e.g. xcompmgr, compiz, etc.).
-    transparency = 10
+    transparency = 15
 
     # The height of the entire notification.  If the height is smaller
     # than the font height and padding combined, it will be raised
@@ -62,7 +62,7 @@
 
     # Defines width in pixels of frame around the notification window.
     # Set to 0 to disable.
-    frame_width = 1
+    frame_width = 0
 
     # Defines color of the frame around the notification window.
     frame_color = "#83a598"
@@ -125,7 +125,7 @@
     #   %n  progress value if set without any extra characters
     # Markup is allowed
     # format = "<b>%s</b>\n%b"
-    format = "%a\n%s\n\n%b"
+    format = "%a\n<b>%s</b>\n\n%b"
 
     # Alignment of message text.
     # Possible values are "left", "center" and "right".
@@ -178,7 +178,7 @@
     dmenu = /usr/bin/dmenu -p dunst:
 
     # Browser for opening urls in context menu.
-    browser = /usr/bin/firefox -new-tab
+    browser = /usr/bin/google-chrome-stable -new-tab
 
     # Always run rule-defined scripts, even if the notification is suppressed
     always_run_script = true
