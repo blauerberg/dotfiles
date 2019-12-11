@@ -206,7 +206,7 @@ for_window [class="SimpleScreenRecorder"] floating enable, resize set 800 600
 for_window [class="Blueman-manager"] floating enable, resize set 800 600
 for_window [class="VirtualBox Manager"] floating enable, resize set 800 600
 
-exec --no-startup-id compton -b --config ~/.config/compton.conf
+exec --no-startup-id picom -b --config ~/.config/picom.conf
 exec --no-startup-id setxkbmap -option ctrl:nocaps
 exec --no-startup-id urxvtd --quiet --fork --opendisplay
 exec --no-startup-id dunst
