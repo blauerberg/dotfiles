@@ -199,12 +199,16 @@ assign [class="Code"] $ws3
 assign [class="jetbrains-phpstorm"] $ws4
 assign [class="zoom"] $ws9
 assign [class="Slack"] $ws10
+
+floating_maximum_size 1200 x 1040
 for_window [class="zoom"] floating enable
-for_window [class="Nautilus$"] floating enable
-for_window [class="Nemo$"] floating enable, resize set 1100 900
+for_window [class="Nautilus$"] floating enable, resize set 1100 800
+for_window [class="Nemo$"] floating enable, resize set 1100 800
 for_window [class="SimpleScreenRecorder"] floating enable, resize set 800 600
 for_window [class="Blueman-manager"] floating enable, resize set 800 600
-for_window [class="VirtualBox Manager"] floating enable, resize set 800 600
+for_window [class="VirtualBox Manager"] floating enable, resize set 1100 800
+for_window [class="Nm-connection-editor"] floating enable, resize set 800 600
+for_window [class="Slack"] floating enable, resize set 1200 1040
 
 exec --no-startup-id picom -b --config ~/.config/picom.conf
 exec --no-startup-id setxkbmap -option ctrl:nocaps
