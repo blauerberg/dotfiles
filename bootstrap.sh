@@ -24,6 +24,10 @@ case $TMUX_VERSION in
     ;;
 esac
 
+if [ ! -d "$HOME/.config" ]; then
+  mkdir ~/.config
+fi
+
 ln -fsn $PWD/git/gitconfig ~/.gitconfig
 ln -fsn $PWD/git/gitignore_global ~/.gitignore_global
 ln -fsn $PWD/curlrc ~/.curlrc
@@ -32,23 +36,20 @@ ln -fsn $PWD/xprofile ~/.xprofile
 ln -fsn $PWD/xinitrc ~/.xinitrc
 ln -fsn $PWD/Xresources ~/.Xresources
 ln -fsn $PWD/i3blocks.conf ~/.i3blocks.conf
+ln -fsn $PWD/ranger ~/.config/ranger
+ln -fsn $PWD/dircolors-solarized/dircolors.ansi-universal ~/.dir_colors
 ln -fsn $PWD/config/i3 ~/.config/i3
 ln -fsn $PWD/config/i3status ~/.config/i3status
 ln -fsn $PWD/config/dunst ~/.config/dunst
 ln -fsn $PWD/config/parcellite ~/.config/parcellite
 ln -fsn $PWD/config/redshift.conf ~/.config/redshift.conf
 ln -fsn $PWD/config/picom.conf ~/.config/picom.conf
-ln -fsn $PWD/vim ~/.vim
-ln -fsn $PWD/vim/.vimrc ~/.vimrc
-ln -fsn $PWD/dircolors-solarized/dircolors.ansi-universal ~/.dir_colors
 
 # set up for neovim
-if [ ! -d "$HOME/.config" ]; then
-  mkdir ~/.config
-fi
 ln -fsn $PWD/vim ~/.config/nvim
 ln -fsn $PWD/vim/.vimrc ~/.config/nvim/init.vim
-ln -fsn $PWD/ranger ~/.config/ranger
+ln -fsn $PWD/vim ~/.vim
+ln -fsn $PWD/vim/.vimrc ~/.vimrc
 
 # install neobundle
 source $PWD/vim/bootstrap.sh
