@@ -178,8 +178,8 @@ function _terminal-set-titles-hostname {
 autoload -Uz add-zsh-hook
 add-zsh-hook precmd _terminal-set-titles-hostname
 
-if [ -f ~/.zshrc_unix ]; then
-  source ~/.zshrc_unix
+if [ -f ~/.zshrc_override ]; then
+  source ~/.zshrc_override
 fi
 
 if [ -f ~/.zshrc_local ]; then
