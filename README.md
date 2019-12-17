@@ -1,6 +1,6 @@
 # dotfiles
 
-My dotfile is optimized for Archlinux, i3wm, zsh(based by prezto) and Full HD display.
+My dotfile is optimized for Archlinux, i3wm, zsh(based by [prezto](https://github.com/sorin-ionescu/prezto)) and Full HD display.
 
 # Getting Started
 
