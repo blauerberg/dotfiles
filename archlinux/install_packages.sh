@@ -136,6 +136,7 @@ if [ $? -ne 0 ]; then
 fi
 
 AUR_PACKAGES="
+  laptop-mode-tools
   gitflow-avh
   ttf-font-awesome-4
   j4-dmenu-desktop-git
