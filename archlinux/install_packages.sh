@@ -95,6 +95,10 @@ PACMAN_PACKAGES="
   feh
   pavucontrol
   ttf-dejavu
+  ttf-font-awesome
+  noto-fonts
+  noto-fonts-cjk
+  noto-fonts-emoji
   bluez
   re2c
   iotop
@@ -112,7 +116,6 @@ PACMAN_PACKAGES="
   simplescreenrecorder
   peek
   arandr
-  ttf-font-awesome
   firefox
   libreoffice-fresh
   libreoffice-fresh-ja
@@ -138,7 +141,6 @@ fi
 AUR_PACKAGES="
   laptop-mode-tools
   gitflow-avh
-  ttf-font-awesome-4
   j4-dmenu-desktop-git
   rofi
   visual-studio-code-bin
