@@ -17,6 +17,9 @@ PACMAN_PACKAGES="
   python-neovim
   wget
   htop
+  powertop
+  tlp
+  cpupower
   ntp
   diffstat
   sysstat
@@ -139,7 +142,6 @@ if [ $? -ne 0 ]; then
 fi
 
 AUR_PACKAGES="
-  laptop-mode-tools
   gitflow-avh
   j4-dmenu-desktop-git
   rofi
