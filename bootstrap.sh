@@ -40,6 +40,7 @@ ln -fsn $PWD/ranger ~/.config/ranger
 ln -fsn $PWD/dircolors-solarized/dircolors.ansi-universal ~/.dir_colors
 ln -fsn $PWD/config/i3 ~/.config/i3
 ln -fsn $PWD/config/i3status ~/.config/i3status
+ln -fsn $PWD/config/polybar ~/.config/polybar
 ln -fsn $PWD/config/dunst ~/.config/dunst
 ln -fsn $PWD/config/parcellite ~/.config/parcellite
 ln -fsn $PWD/config/redshift.conf ~/.config/redshift.conf
