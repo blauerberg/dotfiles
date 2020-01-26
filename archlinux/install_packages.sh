@@ -112,7 +112,6 @@ PACMAN_PACKAGES="
   i3-gaps
   i3lock
   i3status
-  i3blocks
   dmenu
   nemo
   redshift
@@ -145,6 +144,7 @@ AUR_PACKAGES="
   gitflow-avh
   j4-dmenu-desktop-git
   rofi
+  polybar
   visual-studio-code-bin
   direnv
   unzip-iconv
