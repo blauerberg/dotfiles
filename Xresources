@@ -1,4 +1,4 @@
-#Xft.dpi: 195
+!Xft.dpi: 195
 Xft.antialias: 1
 
 URxvt.termName: xterm-256color
@@ -31,7 +31,6 @@ URxvt.iso14755_52: false
 URxvt.resize-font.smaller: C-minus
 URxvt.resize-font.bigger: C-plus
 URxvt.url-launcher: /usr/bin/xdg-open
-URxvt.matcher.button: 1
 URxvt.keysym.M-c: eval:selection_to_clipboard
 URxvt.keysym.M-v: eval:paste_clipboard
 
