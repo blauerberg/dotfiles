@@ -44,3 +44,10 @@ sudo apt-get -y install docker-ce docker-ce-cli containerd.io
 sudo usermod -aG docker ${USER}
 sudo systemctl enable docker
 sudo systemctl restart docker
+
+# install DejaVu Sans Mono for Powerline
+# see: https://github.com/powerline/fonts/tree/master/DejaVuSansMono
+mkdir -p ${HOME}/.local/share/fonts
+curl -o "${HOME}/.local/share/fonts/DejaVu Sans Mono for Powerline.ttf" https://github.com/powerline/fonts/raw/master/DejaVuSansMono/DejaVu%20Sans%20Mono%20for%20Powerline.ttf
+fc-cache -f
+
