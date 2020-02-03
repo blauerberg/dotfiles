@@ -8,6 +8,7 @@ zsh
 tmux
 vim
 rsync
+rxvt-unicode-256color
 fonts-font-awesome
 fonts-noto-cjk
 ttf-dejavu"
