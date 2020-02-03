@@ -18,8 +18,9 @@ sudo apt-get -y install $PACKAGES
 
 # install vscode
 # see: https://code.visualstudio.com/docs/setup/linux
-curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
-sudo install -y -o root -g root -m 644 packages.microsoft.gpg /usr/share/keyrings/
+curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > /tmp/packages.microsoft.gpg
+sudo install -o root -g root -m 644 /tmp/packages.microsoft.gpg /usr/share/keyrings/
+sudo rm -f /tmp/packages.microsoft.gpg
 sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
 sudo apt-get -y install apt-transport-https
 sudo apt-get update
