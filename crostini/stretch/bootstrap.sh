@@ -51,3 +51,8 @@ mkdir -p ${HOME}/.local/share/fonts
 curl -o "${HOME}/.local/share/fonts/DejaVu Sans Mono for Powerline.ttf" https://github.com/powerline/fonts/raw/master/DejaVuSansMono/DejaVu%20Sans%20Mono%20for%20Powerline.ttf
 fc-cache -f
 
+# install urxvt-resize-font
+# see: https://github.com/simmel/urxvt-resize-font
+mkdir -p ${HOME}/.urxvt/ext/
+curl -o ${HOME}/.urxvt/ext/resize-font https://raw.githubusercontent.com/simmel/urxvt-resize-font/master/resize-font
+
