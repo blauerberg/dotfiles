@@ -7,12 +7,14 @@ primary = #ffb52a
 secondary = #e60053
 alert = #bd2c40
 
+[settings]
+screenchange-reload = true
+
 [bar/bottom]
 bottom = true
-width = 100%
 height = 27
-radius = 6.0
-fixed-center = false
+fixed-center = true
+;override-redirect = true
 
 background = ${colors.background}
 foreground = ${colors.foreground}
@@ -23,74 +25,75 @@ line-color = #f00
 border-size = 4
 border-color = #00000000
 
-padding-left = 0
-padding-right = 2
-
+padding = 3
 module-margin-left = 1
 module-margin-right = 2
+font-0 = NotoSans-Regular:size=11
+font-1 = MaterialIcons:size=11
+font-2 = Font Awesome 5 Free Regular:size=11
+font-3 = Font Awesome 5 Free Solid:size=11
+font-4 = Font Awesome 5 Brands:size=11
 
-font-0 = fixed:pixelsize=10;1
-font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-font-2 = siji:pixelsize=10;1
+;wm-restack = i3
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
 
 modules-left = i3
 modules-center =
 modules-right = xbacklight pulseaudio wlan battery battery-time date
 
 tray-position = right
-tray-padding = 2
-;tray-background = #0063ff
+tray-padding = 8
 
-;wm-restack = bspwm
-;wm-restack = i3
-
-;override-redirect = true
-
-;scroll-up = bspwm-desknext
-;scroll-down = bspwm-deskprev
-
-;scroll-up = i3wm-wsnext
-;scroll-down = i3wm-wsprev
-
-cursor-click = pointer
-cursor-scroll = ns-resize
+[global/wm]
+margin-top = 0
+margin-bottom = 0
 
 [module/i3]
 type = internal/i3
 format = <label-state> <label-mode>
 index-sort = true
-wrapping-scroll = false
+;fuzzy-match = true
+strip-wsnumbers = true
 
-; Only show workspaces on the same output as the bar
-;pin-workspaces = true
-
+label-mode = %mode%
 label-mode-padding = 2
 label-mode-foreground = #000
 label-mode-background = ${colors.primary}
 
 ; focused = Active workspace on focused monitor
-label-focused = %index%
+label-focused = %index%: %icon%
 label-focused-background = ${colors.background-alt}
 label-focused-underline= ${colors.primary}
 label-focused-padding = 2
 
 ; unfocused = Inactive workspace on any monitor
-label-unfocused = %index%
+label-unfocused = %index%: %icon%
 label-unfocused-padding = 2
 
 ; visible = Active workspace on unfocused monitor
-label-visible = %index%
+label-visible = %index%: %icon%
 label-visible-background = ${self.label-focused-background}
 label-visible-underline = ${self.label-focused-underline}
 label-visible-padding = ${self.label-focused-padding}
 
 ; urgent = Workspace with urgency hint set
-label-urgent = %index%
+label-urgent = %index%: %icon%
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 
-; Separator in between workspaces
-; label-separator = |
+; ws-icon-[0-9]+ = label;icon
+; NOTE: The label needs to match the name of the i3 workspace
+ws-icon-0 = "1:;"
+ws-icon-1 = "2:;"
+ws-icon-2 = "3:;"
+ws-icon-3 = "4:;"
+ws-icon-4 = "5:;"
+ws-icon-5 = "6:;6"
+ws-icon-6 = "7:;7"
+ws-icon-7 = "8:;8"
+ws-icon-8 = "9:;"
+ws-icon-9 = "10:;"
 
 [module/xbacklight]
 type = internal/xbacklight
@@ -214,15 +217,3 @@ format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #0a6cf5
 
 label = %date% %time%
-
-[settings]
-screenchange-reload = true
-;compositing-background = xor
-;compositing-background = screen
-;compositing-foreground = source
-;compositing-border = over
-;pseudo-transparency = false
-
-[global/wm]
-margin-top = 5
-margin-bottom = 5
