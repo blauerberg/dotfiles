@@ -12,7 +12,7 @@ for rcfile in $PWD/prezto/runcoms/^README.md(.N); do
 done
 
 ln -fsn $PWD/prezto-override/zpreztorc $HOME/.zpreztorc
-ln -fsn $PWD/prezto-override/zshrc $HOME/.zshrc_override
+ln -fsn $PWD/prezto-override/zshrc $HOME/.zshrc
 
 TMUX_VERSION=$(tmux -V|cut -d " " -f2)
 case $TMUX_VERSION in

@@ -1,6 +1,6 @@
-command_exists() {
-  type $1 > /dev/null 2>&1;
-}
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
 
 setopt interactivecomments
 autoload -Uz compinit
@@ -8,36 +8,35 @@ compinit -C
 setopt transient_rprompt
 setopt nonomatch
 
-command_exists "brew"
-if [ $? -eq 0 ]; then
-  export PATH=/usr/local/bin:/usr/local/sbin:$PATH
-fi
+autoload -Uz add-zsh-hook
+add-zsh-hook precmd _terminal-set-titles-hostname
 
-command_exists "direnv"
-if [ $? -eq 0 ]; then
-  eval "$(direnv hook zsh)"
-fi
-
-# any
-if [ -d "$HOME/.anyenv" ]; then
-  export PATH=$HOME/.anyenv/bin:$PATH
-fi
-command_exists "anyenv"
-if [ $? -eq 0 ]; then
-  eval "$(anyenv init - --no-rehash)"
-  export PATH=~/.anyenv/envs/phpenv/versions/$(phpenv version|cut -d" " -f1)/composer/vendor/bin:$PATH
-  export PATH=~/.anyenv/envs/nodenv/versions/$(nodenv version|cut -d" " -f1)/bin:$PATH
-  export PATH=~/.anyenv/envs/rbenv/versions/$(rbenv version|cut -d" " -f1)/bin:$PATH
-fi
+# dircolors
+eval `dircolors ~/.dircolors`
 
 # git-flow-completion
 if [ -d "$HOME/.dotfiles/git-flow-completion" ]; then
   source "$HOME/.dotfiles/git-flow-completion/git-flow-completion.zsh" 2>/dev/null
 fi
 
-export PATH=~/google-cloud-sdk/bin:$PATH
+# gcloud-sdk
+if [ -d "/usr/share/google-cloud-sdk" ]; then
+  source "/usr/share/google-cloud-sdk/completion.zsh.inc"
+fi
+
+# anyenv
+if [ -d "$HOME/.anyenv" ]; then
+  export PATH=$HOME/.anyenv/bin:$PATH
+  eval "$(anyenv init - --no-rehash zsh)"
+  export PATH=~/.anyenv/envs/phpenv/versions/$(phpenv version|cut -d" " -f1)/composer/vendor/bin:$PATH
+  #export PATH=~/.anyenv/envs/nodenv/versions/$(nodenv version|cut -d" " -f1)/bin:$PATH
+  #export PATH=~/.anyenv/envs/rbenv/versions/$(rbenv version|cut -d" " -f1)/bin:$PATH
+fi
+
+# PATH
 export PATH=~/.local/bin:$PATH
 
+# alias
 alias sshp="ssh -o PreferredAuthentications=password -o PubkeyAuthentication=no"
 alias sshc='ssh -F ssh_config'
 alias dc="docker-compose"
@@ -53,6 +52,15 @@ fi
 case "$(uname -r)" in
   *ARCH*)
     alias unzip="unzip -O CP932"
-    #zstyle ':prezto:module:tmux:auto-start' local 'yes'
     ;;
 esac
+
+if [ -f ~/.zshrc.local ]; then
+  source ~/.zshrc.local
+fi
+
+function _terminal-set-titles-hostname {
+  mycmd=(${(s: :)${1}})
+  echo -ne "\ek$(hostname|awk 'BEGIN{FS="."}{print $1}'):$mycmd[1]\e\\"
+}
+
