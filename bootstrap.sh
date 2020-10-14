@@ -37,7 +37,7 @@ ln -fsn $PWD/xinitrc ~/.xinitrc
 ln -fsn $PWD/Xresources ~/.Xresources
 ln -fsn $PWD/i3blocks.conf ~/.i3blocks.conf
 ln -fsn $PWD/ranger ~/.config/ranger
-ln -fsn $PWD/dircolors-solarized/dircolors.ansi-universal ~/.dir_colors
+ln -fsn $PWD/dircolors-solarized/dircolors.ansi-universal ~/.dircolors
 ln -fsn $PWD/config/i3 ~/.config/i3
 ln -fsn $PWD/config/i3status ~/.config/i3status
 ln -fsn $PWD/config/polybar ~/.config/polybar
