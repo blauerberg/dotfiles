@@ -53,6 +53,9 @@ case "$(uname -r)" in
   *ARCH*)
     alias unzip="unzip -O CP932"
     ;;
+  *microsoft-standard*)
+    alias pbcopy="clip"
+    ;;
 esac
 
 if [ -f ~/.zshrc.local ]; then
