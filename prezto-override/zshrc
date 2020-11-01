@@ -2,6 +2,7 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
+# zsh
 setopt interactivecomments
 autoload -Uz compinit
 compinit -C
@@ -10,6 +11,7 @@ setopt nonomatch
 
 autoload -Uz add-zsh-hook
 add-zsh-hook precmd _terminal-set-titles-hostname
+export HISTORY_IGNORE="(cd|pwd|exit|l[sal]|ls -*)"
 
 # dircolors
 eval `dircolors ~/.dircolors`
