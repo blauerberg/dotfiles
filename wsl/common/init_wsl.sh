@@ -16,3 +16,6 @@ fi
 
 # symbolic link for clip.exe
 sudo ln -fs  "/mnt/c/Windows/system32/clip.exe" /usr/local/bin/clip
+
+# symbolic link for Docker Desktop
+sudo ln -fs "/mnt/c/Program Files/Docker/Docker/resources/bin/docker-credential-desktop.exe" /usr/local/bin/docker-credential-desktop.exe
