@@ -46,14 +46,11 @@ alias dcd="docker-compose exec php drush"
 alias dcdc="docker-compose exec php vendor/bin/drupal"
 alias dp="docker ps"
 
-if [[ $OSTYPE == linux* ]]; then
-  alias open="xdg-open"
-  alias pbcopy="xsel --clipboard --input"
-fi
-
 case "$(uname -r)" in
   *ARCH*)
-    alias unzip="unzip -O CP932"
+    alias unzip="unzip -O CP933"
+    alias open="xdg-open"
+    alias pbcopy="xsel --clipboard --input"
     ;;
   *microsoft-standard*)
     alias pbcopy="clip"
