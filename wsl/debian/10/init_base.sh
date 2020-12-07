@@ -17,6 +17,7 @@ ranger
 python3-pip
 sqlite3
 mariadb-client
+dnsutils
 "
 
 sudo apt-get update
@@ -40,8 +41,10 @@ sudo apt-get update
 sudo apt-get -y install docker-ce docker-ce-cli containerd.io
 sudo usermod -aG docker ${USER}
 
-# install DejaVu Sans Mono for Powerline
-# see: https://github.com/powerline/fonts/tree/master/DejaVuSansMono
-#mkdir -p ${HOME}/.local/share/fonts
-#curl -o "${HOME}/.local/share/fonts/DejaVu Sans Mono for Powerline.ttf" https://github.com/powerline/fonts/raw/master/DejaVuSansMono/DejaVu%20Sans%20Mono%20for%20Powerline.ttf
-#fc-cache -f
+# install gcloud SDK
+# see: https://cloud.google.com/sdk/docs/install#deb
+echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+sudo apt-get -y install apt-transport-https ca-certificates gnupg
+curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
+sudo apt-get update && sudo apt-get -y install google-cloud-sdk
+
