@@ -19,3 +19,9 @@ sudo ln -fs  "/mnt/c/Windows/system32/clip.exe" /usr/local/bin/clip
 
 # symbolic link for Docker Desktop
 sudo ln -fs "/mnt/c/Program Files/Docker/Docker/resources/bin/docker-credential-desktop.exe" /usr/local/bin/docker-credential-desktop.exe
+
+# symbolic link for cmd.exe
+sudo ln -fs /mnt/c/Windows/system32/cmd.exe /usr/local/bin/cmd.exe
+
+# symbolic link for powershell.exe
+sudo ln -fs /mnt/c/Windows/system32/WindowsPowerShell/v1.0/powershell.exe /usr/local/bin/powershell.exe

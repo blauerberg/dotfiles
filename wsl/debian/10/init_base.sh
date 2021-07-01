@@ -18,6 +18,13 @@ python3-pip
 sqlite3
 mariadb-client
 dnsutils
+man
+unzip
+nmap
+tree
+traceroute
+net-tools
+dnsutils
 "
 
 sudo apt-get update

@@ -25,7 +25,7 @@ libbz2-dev
 libcurl4-openssl-dev
 libjpeg-dev
 libpng-dev
-libeadline-dev
+libreadline-dev
 libtidy-dev
 libmcrypt-dev
 libonig-dev
