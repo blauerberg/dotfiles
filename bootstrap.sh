@@ -1,9 +1,5 @@
 #!/bin/zsh
 
-PWD=$(pwd)
-HOME="${ZDOTDIR:-$HOME}"
-git submodule update --init --recursive
-
 # install prezto
 ln -fsn $PWD/prezto $HOME/.zprezto
 setopt EXTENDED_GLOB
@@ -31,18 +27,7 @@ fi
 ln -fsn $PWD/git/gitconfig ~/.gitconfig
 ln -fsn $PWD/git/gitignore_global ~/.gitignore_global
 ln -fsn $PWD/curlrc ~/.curlrc
-ln -fsn $PWD/xprofile ~/.xprofile
-ln -fsn $PWD/xinitrc ~/.xinitrc
-ln -fsn $PWD/Xresources ~/.Xresources
-ln -fsn $PWD/i3blocks.conf ~/.i3blocks.conf
 ln -fsn $PWD/dircolors-solarized/dircolors.ansi-universal ~/.dircolors
-ln -fsn $PWD/config/i3 ~/.config/i3
-ln -fsn $PWD/config/i3status ~/.config/i3status
-ln -fsn $PWD/config/polybar ~/.config/polybar
-ln -fsn $PWD/config/dunst ~/.config/dunst
-ln -fsn $PWD/config/parcellite ~/.config/parcellite
-ln -fsn $PWD/config/redshift.conf ~/.config/redshift.conf
-ln -fsn $PWD/config/picom.conf ~/.config/picom.conf
 
 # set up for neovim
 ln -fsn $PWD/vim ~/.config/nvim
