@@ -31,7 +31,6 @@ fi
 ln -fsn $PWD/git/gitconfig ~/.gitconfig
 ln -fsn $PWD/git/gitignore_global ~/.gitignore_global
 ln -fsn $PWD/curlrc ~/.curlrc
-ln -fsn $PWD/gemrc ~/.gemrc
 ln -fsn $PWD/xprofile ~/.xprofile
 ln -fsn $PWD/xinitrc ~/.xinitrc
 ln -fsn $PWD/Xresources ~/.Xresources
