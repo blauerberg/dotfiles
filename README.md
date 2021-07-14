@@ -9,7 +9,7 @@ My dotfiles.
 - tmux
 - curl
 - neovim
-- coreutils (iSH only)
+- coreutils, procps (iSH only)
 
 # Getting Started
 
