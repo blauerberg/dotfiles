@@ -5,7 +5,7 @@ fi
 # zsh
 setopt interactivecomments
 autoload -Uz compinit
-compinit -C
+compinit -iC
 setopt transient_rprompt
 setopt nonomatch
 
