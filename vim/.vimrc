@@ -139,9 +139,6 @@ if dein#load_state('~/.cache/dein')
 
   call dein#add('~/.cache/dein')
   call dein#add('morhetz/gruvbox')
-  if has("python3")
-    call dein#add('Shougo/deoplete.nvim')
-  endif
   call dein#add('scrooloose/nerdtree')
   call dein#add('majutsushi/tagbar')
   call dein#add('ctrlpvim/ctrlp.vim')
@@ -162,16 +159,6 @@ if dein#load_state('~/.cache/dein')
   call dein#add('tpope/vim-fugitive')
   call dein#add('airblade/vim-gitgutter')
   call dein#add('scrooloose/syntastic')
-
-  " php support
-  call dein#add('shawncplus/phpcomplete.vim')
-  if has('python3')
-    call dein#add('joonty/vdebug')
-  endif
-  if !has('nvim')
-    call dein#add('roxma/nvim-yarp')
-    call dein#add('roxma/vim-hug-neovim-rpc')
-  endif
 
   call dein#end()
   call dein#save_state()
@@ -263,9 +250,3 @@ if filereadable(expand('~/.vimrc.local'))
   source ~/.vimrc.local
 endif
 
-"
-" deoplate
-"
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#ignore_sources = get(g:, 'deoplete#ignore_sources', {})
-let g:deoplete#ignore_sources.php = ['omni']
