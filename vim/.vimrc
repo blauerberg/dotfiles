@@ -97,35 +97,6 @@ if has("syntax")
 endif
 
 "
-" for php
-"
-if has("autocmd")
-  autocmd FileType php let php_sql_query=1
-  autocmd FileType php let php_htmlInStrings=1
-endif
-
-"
-" for drupal
-"
-if has("autocmd")
-  " Drupal *.module and *.install files.
-  augroup module
-    autocmd BufRead,BufNewFile *.module set filetype=php
-    autocmd BufRead,BufNewFile *.install set filetype=php
-    autocmd BufRead,BufNewFile *.test set filetype=php
-    autocmd BufRead,BufNewFile *.inc set filetype=php
-    autocmd BufRead,BufNewFile *.profile set filetype=php
-    autocmd BufRead,BufNewFile *.view set filetype=php
-    autocmd BufRead,BufNewFile *.theme set filetype=php
-  augroup END
-endif
-
-"
-" ctags
-"
-set tags=./tags;,tags;
-
-"
 " dein
 "
 if &compatible
