@@ -5,7 +5,6 @@
 
 [user]
   name = "Yoshikazu Aoyama"
-  email = "yskz.aoyama@gmail.com"
 
 [alias]
   d = diff
