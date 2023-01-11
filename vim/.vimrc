@@ -249,4 +249,3 @@ let g:gitgutter_eager = 1
 if filereadable(expand('~/.vimrc.local'))
   source ~/.vimrc.local
 endif
-
