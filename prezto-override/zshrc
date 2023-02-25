@@ -13,6 +13,10 @@ autoload -Uz add-zsh-hook
 add-zsh-hook precmd _terminal-set-titles-hostname
 export HISTORY_IGNORE="(cd|pwd|exit|l[sal]|ls -*)"
 
+# PATH
+export PATH=~/.local/bin:$PATH
+export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
+
 # dircolors
 eval `dircolors ~/.dircolors`
 
@@ -34,9 +38,6 @@ if [ -d "$HOME/.anyenv" ]; then
   #export PATH=~/.anyenv/envs/nodenv/versions/$(nodenv version|cut -d" " -f1)/bin:$PATH
   #export PATH=~/.anyenv/envs/rbenv/versions/$(rbenv version|cut -d" " -f1)/bin:$PATH
 fi
-
-# PATH
-export PATH=~/.local/bin:$PATH
 
 # alias
 alias sshp="ssh -o PreferredAuthentications=password -o PubkeyAuthentication=no"
