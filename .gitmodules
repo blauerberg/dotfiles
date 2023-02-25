@@ -1,9 +1,6 @@
 [submodule "git-flow-completion"]
 	path = git-flow-completion
 	url = https://github.com/bobthecow/git-flow-completion
-[submodule "vim/external/colors/vim-atom-dark"]
-	path = vim/external/colors/vim-atom-dark
-	url = https://github.com/gosukiwi/vim-atom-dark.git
 [submodule "tmux/tmux-colors-solarized"]
 	path = tmux/tmux-colors-solarized
 	url = https://github.com/seebi/tmux-colors-solarized.git

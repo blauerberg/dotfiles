@@ -30,10 +30,6 @@ ln -fsn $PWD/curlrc ~/.curlrc
 ln -fsn $PWD/dircolors-solarized/dircolors.ansi-universal ~/.dircolors
 
 # set up for neovim
-ln -fsn $PWD/vim ~/.config/nvim
-ln -fsn $PWD/vim/.vimrc ~/.config/nvim/init.vim
-ln -fsn $PWD/vim ~/.vim
-ln -fsn $PWD/vim/.vimrc ~/.vimrc
-
-# install neobundle
-source $PWD/vim/bootstrap.sh
+mkdir -p ~/.config/nvim
+ln -fsn $PWD/.vimrc ~/.config/nvim/init.vim
+ln -fsn $PWD/.vimrc ~/.vimrc
