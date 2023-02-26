@@ -10,16 +10,6 @@ done
 ln -fsn $PWD/prezto-override/zpreztorc $HOME/.zpreztorc
 ln -fsn $PWD/prezto-override/zshrc $HOME/.zshrc
 
-TMUX_VERSION=$(tmux -V|cut -d " " -f2)
-case $TMUX_VERSION in
-  1*)
-    ln -fsn $PWD/tmux/tmux-1.x.conf ~/.tmux.conf
-    ;;
-  *)
-    ln -fsn $PWD/tmux/tmux-2.x.conf ~/.tmux.conf
-    ;;
-esac
-
 if [ ! -d "$HOME/.config" ]; then
   mkdir ~/.config
 fi
