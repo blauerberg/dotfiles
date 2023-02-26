@@ -18,6 +18,7 @@ ln -fsn $PWD/git/.gitconfig ~/.gitconfig
 ln -fsn $PWD/git/.gitignore_global ~/.gitignore_global
 ln -fsn $PWD/.curlrc ~/.curlrc
 ln -fsn $PWD/dircolors-solarized/dircolors.ansi-universal ~/.dircolors
+ln -fsn $PWD/Brewfile ~/.Brewfile
 
 # set up for neovim
 mkdir -p ~/.config/nvim
