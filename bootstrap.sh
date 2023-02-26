@@ -24,9 +24,9 @@ if [ ! -d "$HOME/.config" ]; then
   mkdir ~/.config
 fi
 
-ln -fsn $PWD/git/gitconfig ~/.gitconfig
-ln -fsn $PWD/git/gitignore_global ~/.gitignore_global
-ln -fsn $PWD/curlrc ~/.curlrc
+ln -fsn $PWD/git/.gitconfig ~/.gitconfig
+ln -fsn $PWD/git/.gitignore_global ~/.gitignore_global
+ln -fsn $PWD/.curlrc ~/.curlrc
 ln -fsn $PWD/dircolors-solarized/dircolors.ansi-universal ~/.dircolors
 
 # set up for neovim
