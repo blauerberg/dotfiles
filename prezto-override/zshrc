@@ -4,10 +4,14 @@ fi
 
 # zsh
 setopt interactivecomments
+autoload bashcompinit && bashcompinit
 autoload -Uz compinit
 compinit -iC
 setopt transient_rprompt
 setopt nonomatch
+
+AWS_COMPLETER=$(which aws_completer)
+complete -C "${AWS_COMPLETER}" aws
 
 autoload -Uz add-zsh-hook
 add-zsh-hook precmd _terminal-set-titles-hostname
@@ -15,6 +19,7 @@ export HISTORY_IGNORE="(cd|pwd|exit|l[sal]|ls -*)"
 
 # PATH
 export PATH=~/.local/bin:$PATH
+export PATH=~/.docker/bin:$PATH
 export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
 
 # dircolors
@@ -69,3 +74,4 @@ function _terminal-set-titles-hostname {
   echo -ne "\ek$(hostname|awk 'BEGIN{FS="."}{print $1}'):$mycmd[1]\e\\"
 }
 
+eval "$(~/.local/bin/mise activate zsh)"
