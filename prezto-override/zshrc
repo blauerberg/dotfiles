@@ -76,3 +76,4 @@ function _terminal-set-titles-hostname {
 }
 
 eval "$(~/.local/bin/mise activate zsh)"
+eval "$(~/.local/bin/mise completion zsh)"
