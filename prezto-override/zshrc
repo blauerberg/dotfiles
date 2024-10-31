@@ -36,15 +36,6 @@ if [ -d "/usr/share/google-cloud-sdk" ]; then
   source "/usr/share/google-cloud-sdk/completion.zsh.inc"
 fi
 
-# anyenv
-if [ -d "$HOME/.anyenv" ]; then
-  export PATH=$HOME/.anyenv/bin:$PATH
-  eval "$(anyenv init - --no-rehash zsh)"
-  export PATH=~/.anyenv/envs/phpenv/versions/$(phpenv version|cut -d" " -f1)/composer/vendor/bin:$PATH
-  #export PATH=~/.anyenv/envs/nodenv/versions/$(nodenv version|cut -d" " -f1)/bin:$PATH
-  #export PATH=~/.anyenv/envs/rbenv/versions/$(rbenv version|cut -d" " -f1)/bin:$PATH
-fi
-
 # alias
 alias sshp="ssh -o PreferredAuthentications=password -o PubkeyAuthentication=no"
 alias sshc='ssh -F ssh_config'
