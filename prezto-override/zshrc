@@ -40,9 +40,6 @@ fi
 alias sshp="ssh -o PreferredAuthentications=password -o PubkeyAuthentication=no"
 alias sshc='ssh -F ssh_config'
 alias dc="docker-compose"
-alias dcd="docker-compose exec php drush"
-alias dcdc="docker-compose exec php vendor/bin/drupal"
-alias dp="docker ps"
 
 case "$(uname -r)" in
   *ARCH*)
