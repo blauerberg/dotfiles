@@ -21,7 +21,6 @@ export HISTORY_IGNORE="(cd|pwd|exit|l[sal]|ls -*)"
 export PATH=~/.local/bin:$PATH
 export PATH=~/.docker/bin:$PATH
 export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
-export PATH="/opt/homebrew/opt/m4/bin:$PATH"
 
 # dircolors
 eval `dircolors ~/.dircolors`
