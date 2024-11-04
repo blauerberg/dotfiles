@@ -1,0 +1,36 @@
+# Layout settings
+yabai -m space 1 --label main
+yabai -m space 2 --label sub
+yabai -m config --space main layout bsp
+yabai -m config --space sub layout float
+
+# New window spawns to the right if vertical split, or bottom if horizontal split
+yabai -m config window_placement second_child
+
+# Padding
+yabai -m config top_padding 12
+yabai -m config bottom_padding 12
+yabai -m config left_padding 12
+yabai -m config right_padding 12
+yabai -m config window_gap 12
+
+# Mouse settings
+yabai -m config mouse_modifier alt
+yabai -m config mouse_follows_focus on
+yabai -m config mouse_action1 move
+yabai -m config mouse_action2 resize
+
+# Floating mode for specific apps
+yabai -m rule --add app="^Safari$" manage=off
+yabai -m rule --add app="^Finder$" manage=off
+yabai -m rule --add app="^System Settings$" manage=off
+yabai -m rule --add app="^システム設定$" manage=offßßßß
+yabai -m rule --add app="^Preview$" manage=off
+yabai -m rule --add app="^プレビュー$" manage=off
+yabai -m rule --add app="^Calculator$" manage=off
+yabai -m rule --add app="^計算機$" manage=off
+yabai -m rule --add app="^Calendar$" manage=off
+yabai -m rule --add app="^カレンダー$" manage=off
+yabai -m rule --add app="^BetterTouchTool$" manage=off
+yabai -m rule --add app="^Docker Desktop$" manage=off
+yabai -m rule --add app="^OrbStack$" manage=off
