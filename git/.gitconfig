@@ -1,6 +1,7 @@
 [core]
   editor = vi
   filemode = false
+  pager = delta
   excludesfile = ~/.gitignore_global
 
 [user]
@@ -21,8 +22,14 @@
   process = git-lfs filter-process
   required = true
 
+[interactive]
+  diffFilter = delta --color-only
+
 [init]
   defaultBranch = main
+
+[delta]
+  navigate = true
 
 [include]
   path = ~/.gitconfig_local
