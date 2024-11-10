@@ -1,7 +1,7 @@
 [core]
   editor = vi
   filemode = false
-  pager = delta
+  pager = delta || less -RFX
   excludesfile = ~/.gitignore_global
 
 [alias]
@@ -22,7 +22,7 @@
   required = true
 
 [interactive]
-  diffFilter = delta --color-only
+  diffFilter = delta --color-only || less -RFX
 
 [init]
   defaultBranch = main
