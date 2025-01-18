@@ -24,7 +24,7 @@ yabai -m config mouse_action2 resize
 yabai -m rule --add app="^Safari$" manage=off
 yabai -m rule --add app="^Finder$" manage=off
 yabai -m rule --add app="^System Settings$" manage=off
-yabai -m rule --add app="^システム設定$" manage=offßßßß
+yabai -m rule --add app="^システム設定$" manage=off
 yabai -m rule --add app="^Preview$" manage=off
 yabai -m rule --add app="^プレビュー$" manage=off
 yabai -m rule --add app="^Calculator$" manage=off
@@ -34,3 +34,4 @@ yabai -m rule --add app="^カレンダー$" manage=off
 yabai -m rule --add app="^BetterTouchTool$" manage=off
 yabai -m rule --add app="^Docker Desktop$" manage=off
 yabai -m rule --add app="^OrbStack$" manage=off
+
