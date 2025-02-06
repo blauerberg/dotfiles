@@ -1,5 +1,6 @@
 theme = "Monokai Pro"
 split-divider-color = #808080
 window-save-state = always
+macos-option-as-alt = true
 keybind = global:alt+f12=toggle_quick_terminal
 
