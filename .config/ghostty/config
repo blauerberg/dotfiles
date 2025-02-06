@@ -1,0 +1,5 @@
+theme = "Monokai Pro"
+split-divider-color = #808080
+window-save-state = always
+keybind = global:alt+f12=toggle_quick_terminal
+

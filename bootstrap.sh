@@ -21,6 +21,7 @@ ln -fsn $PWD/dircolors-solarized/dircolors.ansi-universal ~/.dircolors
 ln -fsn $PWD/.Brewfile ~/.Brewfile
 ln -fsn $PWD/.config/yabai ~/.config/yabai
 ln -fsn $PWD/.config/borders ~/.config/borders
+ln -fsn $PWD/.config/ghostty ~/.config/ghostty
 
 # set up for neovim
 mkdir -p ~/.config/nvim
