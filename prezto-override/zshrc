@@ -39,6 +39,7 @@ fi
 alias sshp="ssh -o PreferredAuthentications=password -o PubkeyAuthentication=no"
 alias sshc='ssh -F ssh_config'
 alias dc="docker-compose"
+alias ls="ls --color=auto"
 
 case "$(uname -r)" in
   *ARCH*)
