@@ -1,5 +1,7 @@
 #!/bin/zsh
 
+git submodule update --init --recursive
+
 # install prezto
 ln -fsn $PWD/prezto $HOME/.zprezto
 setopt EXTENDED_GLOB

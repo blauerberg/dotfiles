@@ -59,11 +59,6 @@ function _terminal-set-titles-hostname {
   echo -ne "\ek$(hostname|awk 'BEGIN{FS="."}{print $1}'):$mycmd[1]\e\\"
 }
 
-eval "$(~/.local/bin/mise activate zsh)"
-eval "$(~/.local/bin/mise completion zsh)"
-
-eval "$(fzf --zsh)"
-
 # -- Use fd instead of fzf --
 export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
@@ -81,7 +76,13 @@ _fzf_compgen_dir() {
   fd --type=d --hidden --exclude .git . "$1"
 }
 
-source ~/.dotfiles/fzf-git.sh/fzf-git.sh
+if [ ! -n "$REMOTE_CONTAINERS" ]; then
+  eval "$(~/.local/bin/mise activate zsh)"
+  eval "$(~/.local/bin/mise completion zsh)"
+  eval "$(fzf --zsh)"
+  source ~/.dotfiles/fzf-git.sh/fzf-git.sh
+fi
+
 
 if [ -f ~/.zshrc.local ]; then
   source ~/.zshrc.local
