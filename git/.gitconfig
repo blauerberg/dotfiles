@@ -1,8 +1,11 @@
 [core]
   editor = vi
   filemode = false
-  pager = delta || less -RFX
   excludesfile = ~/.gitignore_global
+
+[user]
+  email = "175681+blauerberg@users.noreply.github.com"
+  name  = "Yoshikazu Aoyama"
 
 [alias]
   d = diff
@@ -21,14 +24,8 @@
   process = git-lfs filter-process
   required = true
 
-[interactive]
-  diffFilter = delta --color-only || less -RFX
-
 [init]
   defaultBranch = main
-
-[delta]
-  navigate = true
 
 [include]
   path = ~/.gitconfig_local
