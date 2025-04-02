@@ -77,8 +77,8 @@ _fzf_compgen_dir() {
 }
 
 if [ ! -n "$REMOTE_CONTAINERS" ]; then
-  eval "$(~/.local/bin/mise activate zsh)"
-  eval "$(~/.local/bin/mise completion zsh)"
+  eval "$(mise activate zsh)"
+  eval "$(mise completion zsh)"
   eval "$(fzf --zsh)"
   source ~/.dotfiles/fzf-git.sh/fzf-git.sh
 fi
