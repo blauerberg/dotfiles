@@ -4,3 +4,4 @@ window-save-state = always
 macos-option-as-alt = true
 keybind = global:alt+f12=toggle_quick_terminal
 
+keybind = shift+enter=text:\n
