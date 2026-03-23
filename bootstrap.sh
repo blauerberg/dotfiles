@@ -24,6 +24,8 @@ ln -fsn $PWD/.Brewfile ~/.Brewfile
 ln -fsn $PWD/.config/yabai ~/.config/yabai
 ln -fsn $PWD/.config/borders ~/.config/borders
 ln -fsn $PWD/.config/ghostty ~/.config/ghostty
+mkdir -p ~/.config/tmux
+ln -fsn $PWD/tmux.conf ~/.config/tmux/tmux.conf
 
 # set up for neovim
 mkdir -p ~/.config/nvim
