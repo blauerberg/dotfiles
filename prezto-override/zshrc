@@ -52,6 +52,9 @@ case "$(uname -r)" in
     export VAGRANT_WSL_ENABLE_WINDOWS_ACCESS="1"
     export PATH="$PATH:/mnt/c/Program Files/Oracle/VirtualBox"
     ;;
+  *)
+    _ghostty_precmd() {}
+    ;;
 esac
 
 function _terminal-set-titles-hostname {
