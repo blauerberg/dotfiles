@@ -79,7 +79,9 @@ _fzf_compgen_dir() {
   fd --type=d --hidden --exclude .git . "$1"
 }
 
-if [ ! -n "$REMOTE_CONTAINERS" ]; then
+if [[ -n "$REMOTE_CONTAINERS" || -n "$SSH_CONNECTION" ]]; then
+  # nothing to do
+else
   eval "$(mise activate zsh)"
   eval "$(mise completion zsh)"
   eval "$(fzf --zsh)"
