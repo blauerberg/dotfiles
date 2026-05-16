@@ -30,6 +30,7 @@ set viminfo='1024,f1,<512
 set pumheight=10
 set hidden
 set updatetime=500
+set backupcopy=yes
 
 "
 " keymap
