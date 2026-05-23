@@ -1,5 +1,4 @@
 [core]
-  editor = vi
   filemode = false
   pager = less
   excludesfile = ~/.gitignore_global
@@ -14,16 +13,9 @@
   lp = log -p
   lg = log --graph --date-order --all --pretty=format:'%h %Cred%d %Cgreen%ad %Cblue%an %Creset%s' --date=short
   s = status -sb
-  smu = submodule update --init --recursive
   br = branch
   co = checkout
   sw = switch
-
-[filter "lfs"]
-  clean = git-lfs clean -- %f
-  smudge = git-lfs smudge -- %f
-  process = git-lfs filter-process
-  required = true
 
 [init]
   defaultBranch = main
