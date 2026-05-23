@@ -16,9 +16,35 @@ ensure_file() {
   fi
 }
 
+install_zsh_plugin() {
+  name=$1
+  url=$2
+  custom_dir=${ZSH_CUSTOM:-"$repo_root/zsh/custom"}
+  plugin_dir="$custom_dir/plugins/$name"
+
+  mkdir -p "$custom_dir/plugins"
+
+  if ! command -v git >/dev/null 2>&1; then
+    echo "git not found; skipping zsh plugin install: $name" >&2
+    return 0
+  fi
+
+  if [ -d "$plugin_dir/.git" ]; then
+    git -C "$plugin_dir" pull --ff-only
+  elif [ -e "$plugin_dir" ]; then
+    echo "zsh plugin already exists; skipping install: $plugin_dir" >&2
+  else
+    git clone "$url" "$plugin_dir"
+  fi
+}
+
 mkdir -p "$HOME/.config"
 mkdir -p "$HOME/.config/nvim"
 mkdir -p "$HOME/.config/tmux"
+
+install_zsh_plugin \
+  zsh-autosuggestions \
+  https://github.com/zsh-users/zsh-autosuggestions.git
 
 link_file "$repo_root/zsh/zshrc" "$HOME/.zshrc"
 link_file "$repo_root/git/.gitconfig" "$HOME/.gitconfig"

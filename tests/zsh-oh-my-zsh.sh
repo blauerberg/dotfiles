@@ -83,3 +83,24 @@ case "$output" in
     exit 1
     ;;
 esac
+
+default_output=$(
+  HOME="$tmp_home" \
+  ZSH="$tmp_home/.oh-my-zsh" \
+  ZSH_THEME="" \
+  ZSH_CUSTOM="" \
+  PATH="/bin" \
+  DOTFILES_DISABLE_TMUX_AUTO=1 \
+  DOTFILES_SKIP_INTEGRATIONS=1 \
+  DOTFILES_ZSH_THEME="bira" \
+  zsh -f -i -c "source '$repo_root/zsh/zshrc'"
+)
+
+case "$default_output" in
+  *"plugins=git zsh-autosuggestions"* ) ;;
+  * )
+    echo "$default_output" >&2
+    echo "zsh-autosuggestions was not included in the default Oh My Zsh plugins" >&2
+    exit 1
+    ;;
+esac

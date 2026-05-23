@@ -10,8 +10,9 @@ My dotfiles.
 
 ## Responsibility
 
-This repository links and loads configuration only. It does not install system
-packages, Homebrew packages, language runtimes, or shell frameworks.
+This repository links and loads configuration, and installs zsh plugins managed
+by this repository. It does not install system packages, Homebrew packages,
+language runtimes, or shell frameworks.
 
 Install tools with the host package manager, `devcontainer.json`, or a
 Dockerfile. Shell startup checks whether optional commands exist before loading
@@ -24,8 +25,8 @@ their integration.
   `DOTFILES_ZSH_THEME` is chosen per environment (macOS, Linux,
   devcontainer); override it in `~/.zshrc.env` to pick another theme
   without replacing the upstream `ZSH_THEME` variable directly.
-- Oh My Zsh plugins: set `DOTFILES_OMZ_PLUGINS` to a space-separated plugin
-  list. It defaults to `git`.
+- Oh My Zsh plugins: managed by `bootstrap.sh`. Set `DOTFILES_OMZ_PLUGINS` to
+  a space-separated plugin list to override the defaults.
 - fzf: loaded when `fzf` exists and the shell has an interactive line editor.
 - mise: loaded in shim mode by default. Set `DOTFILES_MISE_MODE=full` before
   zsh starts if you want full `mise activate zsh` hook behavior.

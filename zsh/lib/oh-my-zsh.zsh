@@ -23,7 +23,7 @@ for _dotfiles_omz_dir in "${_dotfiles_omz_candidates[@]}"; do
     export ZSH_CUSTOM="${ZSH_CUSTOM:-$DOTFILES_ZSH_DIR/custom}"
     export ZSH_THEME="${ZSH_THEME:-$DOTFILES_ZSH_THEME}"
     zstyle ':omz:update' mode disabled
-    plugins=(${=DOTFILES_OMZ_PLUGINS:-git})
+    plugins=(${=DOTFILES_OMZ_PLUGINS:-git zsh-autosuggestions})
     source "$ZSH/oh-my-zsh.sh"
     typeset -g DOTFILES_OMZ_LOADED=1
     # oh-my-zsh forces `alias ls='ls -G'`, which means --no-group on GNU ls.

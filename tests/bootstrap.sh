@@ -4,8 +4,36 @@ set -eu
 repo_root=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
 tmp_home=$(mktemp -d)
 trap 'rm -rf "$tmp_home"' EXIT INT TERM
+tmp_custom="$tmp_home/zsh-custom"
+fake_bin="$tmp_home/bin"
+git_log="$tmp_home/git.log"
 
-HOME="$tmp_home" "$repo_root/bootstrap.sh"
+mkdir -p "$fake_bin"
+cat > "$fake_bin/git" <<'EOF'
+#!/bin/sh
+set -eu
+
+printf '%s\n' "$*" >> "$DOTFILES_TEST_GIT_LOG"
+
+case "$1" in
+  clone)
+    mkdir -p "$3"
+    ;;
+  -C)
+    ;;
+  *)
+    echo "unexpected git command: $*" >&2
+    exit 1
+    ;;
+esac
+EOF
+chmod +x "$fake_bin/git"
+
+HOME="$tmp_home" \
+PATH="$fake_bin:$PATH" \
+DOTFILES_TEST_GIT_LOG="$git_log" \
+ZSH_CUSTOM="$tmp_custom" \
+"$repo_root/bootstrap.sh"
 
 assert_link() {
   path=$1
@@ -25,6 +53,14 @@ assert_file() {
   path=$1
   if [ ! -f "$path" ]; then
     echo "missing file: $path" >&2
+    exit 1
+  fi
+}
+
+assert_dir() {
+  path=$1
+  if [ ! -d "$path" ]; then
+    echo "missing directory: $path" >&2
     exit 1
   fi
 }
@@ -50,7 +86,14 @@ assert_link "$tmp_home/.config/ghostty" "$repo_root/.config/ghostty"
 assert_file "$tmp_home/.zshrc.local"
 assert_file "$tmp_home/.zshrc.env"
 assert_file "$tmp_home/.gitconfig_local"
+assert_dir "$tmp_custom/plugins/zsh-autosuggestions"
 assert_absent "$tmp_home/.zprezto"
 assert_absent "$tmp_home/.zpreztorc"
 assert_absent "$tmp_home/.Brewfile"
 assert_absent "$tmp_home/.dircolors"
+
+if ! grep -qx "clone https://github.com/zsh-users/zsh-autosuggestions.git $tmp_custom/plugins/zsh-autosuggestions" "$git_log"; then
+  cat "$git_log" >&2
+  echo "zsh-autosuggestions was not cloned to the custom plugin directory" >&2
+  exit 1
+fi

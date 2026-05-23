@@ -15,6 +15,7 @@ check_theme() {
   actual=$(zsh -f -c "
     unset DOTFILES_ZSH_THEME REMOTE_CONTAINERS CODESPACES DEVCONTAINER
     $setup
+    DOTFILES_OMZ_PLUGINS=git
     source '$repo_root/zsh/lib/oh-my-zsh.zsh' 2>/dev/null
     print -r -- \"\$DOTFILES_ZSH_THEME\"
   ")
