@@ -5,3 +5,4 @@ macos-option-as-alt = true
 keybind = global:alt+f12=toggle_quick_terminal
 
 keybind = shift+enter=text:\n
+shell-integration-features = ssh-terminfo,ssh-env
