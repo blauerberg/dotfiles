@@ -20,7 +20,11 @@ their integration.
 ## Optional Tools
 
 - Oh My Zsh: used when it is already installed. zsh falls back to native
-  completion and a simple prompt when it is not available.
+  completion and a simple prompt when it is not available. Set
+  `DOTFILES_ZSH_THEME` to choose a theme without replacing the upstream
+  `ZSH_THEME` variable directly.
+- Oh My Zsh plugins: set `DOTFILES_OMZ_PLUGINS` to a space-separated plugin
+  list. It defaults to `git`.
 - fzf: loaded when `fzf` exists and the shell has an interactive line editor.
 - mise: loaded in shim mode by default. Set `DOTFILES_MISE_MODE=full` before
   zsh starts if you want full `mise activate zsh` hook behavior.
@@ -29,6 +33,8 @@ their integration.
   file exist.
 - tmux: auto-attaches on non-macOS interactive zsh sessions when `tmux` exists.
   Set `DOTFILES_DISABLE_TMUX_AUTO=1` to disable this.
+- Tests and one-off checks: set `DOTFILES_SKIP_INTEGRATIONS=1` to skip optional
+  command integrations while still loading the base zsh config.
 
 ## Local Files
 
@@ -49,6 +55,7 @@ cd ~/.dotfiles
 
 ```
 sh tests/bootstrap.sh
+sh tests/zsh-oh-my-zsh.sh
 zsh -n zsh/zshrc
 ```
 
