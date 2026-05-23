@@ -7,8 +7,8 @@ setopt inc_append_history
 setopt share_history
 
 export HISTFILE="${HISTFILE:-$HOME/.zsh_history}"
-export HISTSIZE="${HISTSIZE:-10000}"
-export SAVEHIST="${SAVEHIST:-10000}"
+export HISTSIZE="${HISTSIZE:-1000000}"
+export SAVEHIST="${SAVEHIST:-1000000}"
 export HISTORY_IGNORE="${HISTORY_IGNORE:-"(cd|pwd|exit|l[sal]|ls -*)"}"
 
 typeset -U path PATH
