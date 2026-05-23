@@ -45,10 +45,32 @@ case "$output" in
 esac
 
 case "$output" in
-  *"custom=$repo_root/zsh/themes"* ) ;;
+  *"custom=$repo_root/zsh/custom"* ) ;;
   * )
     echo "$output" >&2
-    echo "ZSH_CUSTOM was not set to the bundled themes directory" >&2
+    echo "ZSH_CUSTOM was not set to the bundled custom directory" >&2
+    exit 1
+    ;;
+esac
+
+custom_output=$(
+  HOME="$tmp_home" \
+  ZSH="$tmp_home/.oh-my-zsh" \
+  ZSH_THEME="" \
+  ZSH_CUSTOM="$tmp_home/custom-override" \
+  PATH="/bin" \
+  DOTFILES_DISABLE_TMUX_AUTO=1 \
+  DOTFILES_SKIP_INTEGRATIONS=1 \
+  DOTFILES_ZSH_THEME="bira" \
+  DOTFILES_OMZ_PLUGINS="git" \
+  zsh -f -i -c "source '$repo_root/zsh/zshrc'"
+)
+
+case "$custom_output" in
+  *"custom=$tmp_home/custom-override"* ) ;;
+  * )
+    echo "$custom_output" >&2
+    echo "Existing ZSH_CUSTOM was not respected" >&2
     exit 1
     ;;
 esac
