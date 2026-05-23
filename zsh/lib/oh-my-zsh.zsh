@@ -3,7 +3,7 @@ if [[ -z "${DOTFILES_ZSH_THEME:-}" ]]; then
   if [[ -n "${REMOTE_CONTAINERS:-}" || -n "${CODESPACES:-}" || -n "${DEVCONTAINER:-}" ]]; then
     DOTFILES_ZSH_THEME=ys
   elif [[ "$OSTYPE" == darwin* ]]; then
-    DOTFILES_ZSH_THEME=simple
+    DOTFILES_ZSH_THEME=amuse
   elif [[ "$OSTYPE" == linux* ]]; then
     DOTFILES_ZSH_THEME=ys
   else
