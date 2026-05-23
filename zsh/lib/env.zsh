@@ -33,6 +33,6 @@ if command ls --color=auto / >/dev/null 2>&1; then
   alias ls="ls --color=auto"
 fi
 
-if [[ "$OSTYPE" == linux* ]] && command -v nvim >/dev/null 2>&1; then
+if command -v nvim >/dev/null 2>&1; then
   alias vi="nvim"
 fi
