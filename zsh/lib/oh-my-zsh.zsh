@@ -15,9 +15,6 @@ typeset -ga _dotfiles_omz_candidates
 _dotfiles_omz_candidates=(
   "${ZSH:-}"
   "$HOME/.oh-my-zsh"
-  "/usr/share/oh-my-zsh"
-  "/usr/local/share/oh-my-zsh"
-  "/opt/oh-my-zsh"
 )
 
 for _dotfiles_omz_dir in "${_dotfiles_omz_candidates[@]}"; do
