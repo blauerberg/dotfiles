@@ -1,6 +1,6 @@
 [core]
   filemode = false
-  pager = less
+  pager = "LESSCHARSET=utf-8 less"
   excludesfile = ~/.gitignore_global
 
 [user]
