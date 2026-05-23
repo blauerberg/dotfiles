@@ -16,6 +16,7 @@
   br = branch
   co = checkout
   sw = switch
+  cleanup = "!git for-each-ref --format '%(refname:short)' --merged=HEAD refs/heads/ | grep -vE '^(main|master|develop)$' | xargs -r git branch -d"
 
 [init]
   defaultBranch = main
