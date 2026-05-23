@@ -14,7 +14,6 @@ fi
 
 source "$DOTFILES_ZSH_DIR/lib/env.zsh"
 source "$DOTFILES_ZSH_DIR/lib/oh-my-zsh.zsh"
-source "$DOTFILES_ZSH_DIR/lib/prompt.zsh"
 if [[ -z ${DOTFILES_SKIP_INTEGRATIONS:-} ]]; then
   source "$DOTFILES_ZSH_DIR/lib/integrations.zsh"
 fi

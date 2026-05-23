@@ -20,9 +20,10 @@ their integration.
 ## Optional Tools
 
 - Oh My Zsh: used when it is already installed. zsh falls back to native
-  completion and a simple prompt when it is not available. Set
-  `DOTFILES_ZSH_THEME` to choose a theme without replacing the upstream
-  `ZSH_THEME` variable directly.
+  completion and a simple prompt when it is not available. A default
+  `DOTFILES_ZSH_THEME` is chosen per environment (macOS, Linux,
+  devcontainer); override it in `~/.zshrc.env` to pick another theme
+  without replacing the upstream `ZSH_THEME` variable directly.
 - Oh My Zsh plugins: set `DOTFILES_OMZ_PLUGINS` to a space-separated plugin
   list. It defaults to `git`.
 - fzf: loaded when `fzf` exists and the shell has an interactive line editor.
@@ -44,32 +45,6 @@ These files are created if missing and are intentionally not managed here:
 - `~/.zshrc.env`: early shell environment settings loaded before Oh My Zsh.
 - `~/.gitconfig_local`: machine-specific Git includes and identities.
 
-## Prompt Themes
-
-Preview all available Oh My Zsh themes without changing the current shell:
-
-```
-dot_prompt_preview
-```
-
-Preview selected themes:
-
-```
-dot_prompt_preview ys bira robbyrussell
-```
-
-Use a theme for the next zsh only:
-
-```
-DOTFILES_ZSH_THEME=ys zsh
-```
-
-Set a persistent machine-specific theme in `~/.zshrc.env`:
-
-```
-export DOTFILES_ZSH_THEME=ys
-```
-
 ## Getting Started
 
 ```
@@ -84,7 +59,7 @@ cd ~/.dotfiles
 sh tests/bootstrap.sh
 sh tests/zsh-early-env.sh
 sh tests/zsh-oh-my-zsh.sh
-sh tests/zsh-prompt-preview.sh
+sh tests/zsh-theme-defaults.sh
 zsh -n zsh/zshrc
 ```
 
