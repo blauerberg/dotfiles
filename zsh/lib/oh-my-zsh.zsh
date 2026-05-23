@@ -1,3 +1,16 @@
+# Per-env default theme. Honors DOTFILES_ZSH_THEME set in ~/.zshrc.env.
+if [[ -z "${DOTFILES_ZSH_THEME:-}" ]]; then
+  if [[ -n "${REMOTE_CONTAINERS:-}" || -n "${CODESPACES:-}" || -n "${DEVCONTAINER:-}" ]]; then
+    DOTFILES_ZSH_THEME=ys
+  elif [[ "$OSTYPE" == darwin* ]]; then
+    DOTFILES_ZSH_THEME=simple
+  elif [[ "$OSTYPE" == linux* ]]; then
+    DOTFILES_ZSH_THEME=bira
+  else
+    DOTFILES_ZSH_THEME=robbyrussell
+  fi
+fi
+
 typeset -ga _dotfiles_omz_candidates
 _dotfiles_omz_candidates=(
   "${ZSH:-}"
@@ -11,7 +24,7 @@ for _dotfiles_omz_dir in "${_dotfiles_omz_candidates[@]}"; do
   if [[ -n "$_dotfiles_omz_dir" && -r "$_dotfiles_omz_dir/oh-my-zsh.sh" ]]; then
     export ZSH="$_dotfiles_omz_dir"
     export ZSH_CUSTOM="${ZSH_CUSTOM:-$DOTFILES_ZSH_DIR/themes}"
-    export ZSH_THEME="${ZSH_THEME:-${DOTFILES_ZSH_THEME:-robbyrussell}}"
+    export ZSH_THEME="${ZSH_THEME:-$DOTFILES_ZSH_THEME}"
     export DISABLE_AUTO_UPDATE="${DISABLE_AUTO_UPDATE:-true}"
     zstyle ':omz:update' mode disabled
     plugins=(${=DOTFILES_OMZ_PLUGINS:-git})
