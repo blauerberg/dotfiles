@@ -15,6 +15,8 @@ EOF
 
 output=$(
   HOME="$tmp_home" \
+  ZSH="$tmp_home/.oh-my-zsh" \
+  ZSH_THEME="" \
   PATH="/bin" \
   DOTFILES_DISABLE_TMUX_AUTO=1 \
   DOTFILES_SKIP_INTEGRATIONS=1 \
