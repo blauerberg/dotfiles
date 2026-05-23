@@ -27,7 +27,6 @@ do
 done
 
 alias sshp="ssh -o PreferredAuthentications=password -o PubkeyAuthentication=no"
-alias sshc="ssh -F ssh_config"
 alias dc="docker compose"
 
 if command ls --color=auto / >/dev/null 2>&1; then
