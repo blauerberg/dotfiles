@@ -41,6 +41,7 @@ their integration.
 These files are created if missing and are intentionally not managed here:
 
 - `~/.zshrc.local`: machine-specific shell settings and secrets.
+- `~/.zshrc.env`: early shell environment settings loaded before Oh My Zsh.
 - `~/.gitconfig_local`: machine-specific Git includes and identities.
 
 ## Prompt Themes
@@ -63,6 +64,12 @@ Use a theme for the next zsh only:
 DOTFILES_ZSH_THEME=ys zsh
 ```
 
+Set a persistent machine-specific theme in `~/.zshrc.env`:
+
+```
+export DOTFILES_ZSH_THEME=ys
+```
+
 ## Getting Started
 
 ```
@@ -75,6 +82,7 @@ cd ~/.dotfiles
 
 ```
 sh tests/bootstrap.sh
+sh tests/zsh-early-env.sh
 sh tests/zsh-oh-my-zsh.sh
 sh tests/zsh-prompt-preview.sh
 zsh -n zsh/zshrc

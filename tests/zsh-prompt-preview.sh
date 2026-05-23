@@ -34,6 +34,25 @@ case "$output" in
     ;;
 esac
 
+default_output=$(
+  HOME="$tmp_home" \
+  ZSH="$tmp_home/.oh-my-zsh" \
+  PATH="/bin" \
+  DOTFILES_DISABLE_TMUX_AUTO=1 \
+  DOTFILES_SKIP_INTEGRATIONS=1 \
+  DOTFILES_PROMPT_PREVIEW_THEMES="sample sample" \
+  zsh -f -i -c "source '$repo_root/zsh/zshrc'; dot_prompt_preview"
+)
+
+case "$default_output" in
+  *"== sample =="*"== sample =="* ) ;;
+  * )
+    echo "$default_output" >&2
+    echo "default preview themes were not expanded as separate themes" >&2
+    exit 1
+    ;;
+esac
+
 case "$output" in
   *"sample-theme:"* ) ;;
   * )

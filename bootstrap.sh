@@ -34,4 +34,5 @@ if [ -d "$repo_root/.config/ghostty" ]; then
 fi
 
 ensure_file "$HOME/.zshrc.local"
+ensure_file "$HOME/.zshrc.env"
 ensure_file "$HOME/.gitconfig_local"

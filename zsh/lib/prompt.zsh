@@ -1,7 +1,11 @@
+_dotfiles_prompt_preview_theme_list="${DOTFILES_PROMPT_PREVIEW_THEMES:-}"
 typeset -ga DOTFILES_PROMPT_PREVIEW_THEMES
-DOTFILES_PROMPT_PREVIEW_THEMES=(
-  "${DOTFILES_PROMPT_PREVIEW_THEMES[@]:-ys bira robbyrussell agnoster}"
-)
+if (( ${#DOTFILES_PROMPT_PREVIEW_THEMES[@]} == 0 )); then
+  DOTFILES_PROMPT_PREVIEW_THEMES=(${=${_dotfiles_prompt_preview_theme_list:-ys bira robbyrussell agnoster}})
+elif (( ${#DOTFILES_PROMPT_PREVIEW_THEMES[@]} == 1 )); then
+  DOTFILES_PROMPT_PREVIEW_THEMES=(${=DOTFILES_PROMPT_PREVIEW_THEMES[1]})
+fi
+unset _dotfiles_prompt_preview_theme_list
 
 dot_prompt_preview() {
   emulate -L zsh

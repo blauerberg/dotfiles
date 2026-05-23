@@ -8,6 +8,10 @@ fi
 
 typeset -g DOTFILES_ZSH_DIR="${${(%):-%x}:A:h}"
 
+if [[ -f "$HOME/.zshrc.env" ]]; then
+  source "$HOME/.zshrc.env"
+fi
+
 source "$DOTFILES_ZSH_DIR/lib/env.zsh"
 source "$DOTFILES_ZSH_DIR/lib/oh-my-zsh.zsh"
 source "$DOTFILES_ZSH_DIR/lib/prompt.zsh"

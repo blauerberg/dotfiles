@@ -48,6 +48,7 @@ assert_link "$tmp_home/.config/tmux/tmux.conf" "$repo_root/tmux.conf"
 assert_link "$tmp_home/.config/ghostty" "$repo_root/.config/ghostty"
 
 assert_file "$tmp_home/.zshrc.local"
+assert_file "$tmp_home/.zshrc.env"
 assert_file "$tmp_home/.gitconfig_local"
 assert_absent "$tmp_home/.zprezto"
 assert_absent "$tmp_home/.zpreztorc"
