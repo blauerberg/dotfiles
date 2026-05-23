@@ -30,6 +30,10 @@ for _dotfiles_omz_dir in "${_dotfiles_omz_candidates[@]}"; do
     plugins=(${=DOTFILES_OMZ_PLUGINS:-git})
     source "$ZSH/oh-my-zsh.sh"
     typeset -g DOTFILES_OMZ_LOADED=1
+    # oh-my-zsh forces `alias ls='ls -G'`, which means --no-group on GNU ls.
+    if command ls --color=auto / >/dev/null 2>&1; then
+      alias ls="ls --color=auto"
+    fi
     break
   fi
 done
