@@ -1,11 +1,7 @@
 if [[ "$OSTYPE" == darwin* ]]; then
-  for _dotfiles_brew in /opt/homebrew/bin/brew /usr/local/bin/brew; do
-    if [[ -x "$_dotfiles_brew" ]]; then
-      eval "$("$_dotfiles_brew" shellenv)"
-      break
-    fi
-  done
-  unset _dotfiles_brew
+  if [[ -x /opt/homebrew/bin/brew ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+  fi
 fi
 
 if command -v mise >/dev/null 2>&1; then
