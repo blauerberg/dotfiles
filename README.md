@@ -46,16 +46,16 @@ These files are created if missing and are intentionally not managed here:
 
 ## Prompt Themes
 
-Preview one or more Oh My Zsh themes without changing the current shell:
-
-```
-dot_prompt_preview ys bira robbyrussell
-```
-
-Preview the default shortlist:
+Preview all available Oh My Zsh themes without changing the current shell:
 
 ```
 dot_prompt_preview
+```
+
+Preview selected themes:
+
+```
+dot_prompt_preview ys bira robbyrussell
 ```
 
 Use a theme for the next zsh only:

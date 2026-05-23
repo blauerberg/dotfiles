@@ -15,6 +15,9 @@ EOF
 cat > "$tmp_home/.oh-my-zsh/themes/sample.zsh-theme" <<'EOF'
 PROMPT="sample-theme:%m:%~ %# "
 EOF
+cat > "$tmp_home/.oh-my-zsh/themes/other.zsh-theme" <<'EOF'
+PROMPT="other-theme:%m:%~ %# "
+EOF
 
 output=$(
   HOME="$tmp_home" \
@@ -40,15 +43,14 @@ default_output=$(
   PATH="/bin" \
   DOTFILES_DISABLE_TMUX_AUTO=1 \
   DOTFILES_SKIP_INTEGRATIONS=1 \
-  DOTFILES_PROMPT_PREVIEW_THEMES="sample sample" \
   zsh -f -i -c "source '$repo_root/zsh/zshrc'; dot_prompt_preview"
 )
 
 case "$default_output" in
-  *"== sample =="*"== sample =="* ) ;;
+  *"== other =="*"== sample =="* | *"== sample =="*"== other =="* ) ;;
   * )
     echo "$default_output" >&2
-    echo "default preview themes were not expanded as separate themes" >&2
+    echo "default preview did not include all available themes" >&2
     exit 1
     ;;
 esac
