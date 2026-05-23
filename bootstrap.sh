@@ -1,33 +1,37 @@
-#!/bin/zsh
+#!/bin/sh
+set -eu
 
-git submodule update --init --recursive
+repo_root=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
 
-# install prezto
-ln -fsn $PWD/prezto $HOME/.zprezto
-setopt EXTENDED_GLOB
-for rcfile in $PWD/prezto/runcoms/^README.md(.N); do
-  ln -fsn "$rcfile" $HOME/.${rcfile:t}
-done
+link_file() {
+  src=$1
+  dst=$2
+  ln -fsn "$src" "$dst"
+}
 
-ln -fsn $PWD/prezto-override/zpreztorc $HOME/.zpreztorc
-ln -fsn $PWD/prezto-override/zshrc $HOME/.zshrc
+ensure_file() {
+  path=$1
+  if [ ! -e "$path" ]; then
+    : > "$path"
+  fi
+}
 
-if [ ! -d "$HOME/.config" ]; then
-  mkdir ~/.config
+mkdir -p "$HOME/.config"
+mkdir -p "$HOME/.config/nvim"
+mkdir -p "$HOME/.config/tmux"
+
+link_file "$repo_root/zsh/zshrc" "$HOME/.zshrc"
+link_file "$repo_root/git/.gitconfig" "$HOME/.gitconfig"
+link_file "$repo_root/git/.gitignore_global" "$HOME/.gitignore_global"
+link_file "$repo_root/.curlrc" "$HOME/.curlrc"
+link_file "$repo_root/.editorconfig" "$HOME/.editorconfig"
+link_file "$repo_root/.vimrc" "$HOME/.vimrc"
+link_file "$repo_root/.vimrc" "$HOME/.config/nvim/init.vim"
+link_file "$repo_root/tmux.conf" "$HOME/.config/tmux/tmux.conf"
+
+if [ -d "$repo_root/.config/ghostty" ]; then
+  link_file "$repo_root/.config/ghostty" "$HOME/.config/ghostty"
 fi
 
-ln -fsn $PWD/git/.gitconfig ~/.gitconfig
-ln -fsn $PWD/git/.gitignore_global ~/.gitignore_global
-ln -fsn $PWD/.curlrc ~/.curlrc
-ln -fsn $PWD/dircolors-solarized/dircolors.ansi-universal ~/.dircolors
-ln -fsn $PWD/.Brewfile ~/.Brewfile
-ln -fsn $PWD/.config/yabai ~/.config/yabai
-ln -fsn $PWD/.config/borders ~/.config/borders
-ln -fsn $PWD/.config/ghostty ~/.config/ghostty
-mkdir -p ~/.config/tmux
-ln -fsn $PWD/tmux.conf ~/.config/tmux/tmux.conf
-
-# set up for neovim
-mkdir -p ~/.config/nvim
-ln -fsn $PWD/.vimrc ~/.config/nvim/init.vim
-ln -fsn $PWD/.vimrc ~/.vimrc
+ensure_file "$HOME/.zshrc.local"
+ensure_file "$HOME/.gitconfig_local"

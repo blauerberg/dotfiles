@@ -1,0 +1,18 @@
+if [[ -z ${ZSH_VERSION:-} ]]; then
+  return 0
+fi
+
+if [[ ! -o interactive ]]; then
+  return 0
+fi
+
+typeset -g DOTFILES_ZSH_DIR="${${(%):-%x}:A:h}"
+
+source "$DOTFILES_ZSH_DIR/lib/env.zsh"
+source "$DOTFILES_ZSH_DIR/lib/oh-my-zsh.zsh"
+source "$DOTFILES_ZSH_DIR/lib/integrations.zsh"
+source "$DOTFILES_ZSH_DIR/lib/tmux.zsh"
+
+if [[ -f "$HOME/.zshrc.local" ]]; then
+  source "$HOME/.zshrc.local"
+fi
