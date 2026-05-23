@@ -4,3 +4,5 @@
 *.swo
 *.bak
 *.bak/
+
+**/.claude/settings.local.json
