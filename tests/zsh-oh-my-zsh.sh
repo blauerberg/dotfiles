@@ -17,6 +17,7 @@ output=$(
   HOME="$tmp_home" \
   ZSH="$tmp_home/.oh-my-zsh" \
   ZSH_THEME="" \
+  ZSH_CUSTOM="" \
   PATH="/bin" \
   DOTFILES_DISABLE_TMUX_AUTO=1 \
   DOTFILES_SKIP_INTEGRATIONS=1 \
@@ -39,6 +40,15 @@ case "$output" in
   * )
     echo "$output" >&2
     echo "DOTFILES_ZSH_THEME was not passed to ZSH_THEME" >&2
+    exit 1
+    ;;
+esac
+
+case "$output" in
+  *"custom=$repo_root/zsh/themes"* ) ;;
+  * )
+    echo "$output" >&2
+    echo "ZSH_CUSTOM was not set to the bundled themes directory" >&2
     exit 1
     ;;
 esac
