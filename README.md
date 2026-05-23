@@ -43,6 +43,26 @@ These files are created if missing and are intentionally not managed here:
 - `~/.zshrc.local`: machine-specific shell settings and secrets.
 - `~/.gitconfig_local`: machine-specific Git includes and identities.
 
+## Prompt Themes
+
+Preview one or more Oh My Zsh themes without changing the current shell:
+
+```
+dot_prompt_preview ys bira robbyrussell
+```
+
+Preview the default shortlist:
+
+```
+dot_prompt_preview
+```
+
+Use a theme for the next zsh only:
+
+```
+DOTFILES_ZSH_THEME=ys zsh
+```
+
 ## Getting Started
 
 ```
@@ -56,6 +76,7 @@ cd ~/.dotfiles
 ```
 sh tests/bootstrap.sh
 sh tests/zsh-oh-my-zsh.sh
+sh tests/zsh-prompt-preview.sh
 zsh -n zsh/zshrc
 ```
 
