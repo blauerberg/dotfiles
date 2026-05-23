@@ -5,7 +5,7 @@ if [[ -z "${DOTFILES_ZSH_THEME:-}" ]]; then
   elif [[ "$OSTYPE" == darwin* ]]; then
     DOTFILES_ZSH_THEME=simple
   elif [[ "$OSTYPE" == linux* ]]; then
-    DOTFILES_ZSH_THEME=bira
+    DOTFILES_ZSH_THEME=ys
   else
     DOTFILES_ZSH_THEME=robbyrussell
   fi
