@@ -42,20 +42,5 @@ if command -v aws_completer >/dev/null 2>&1; then
   complete -C "$(command -v aws_completer)" aws
 fi
 
-if command -v gcloud >/dev/null 2>&1; then
-  for _dotfiles_gcloud_completion in \
-    "$HOME/google-cloud-sdk/completion.zsh.inc" \
-    /usr/share/google-cloud-sdk/completion.zsh.inc \
-    /opt/homebrew/share/google-cloud-sdk/completion.zsh.inc \
-    /usr/local/share/google-cloud-sdk/completion.zsh.inc
-  do
-    if [[ -r "$_dotfiles_gcloud_completion" ]]; then
-      source "$_dotfiles_gcloud_completion"
-      break
-    fi
-  done
-  unset _dotfiles_gcloud_completion
-fi
-
 export AWS_DEFAULT_REGION="${AWS_DEFAULT_REGION:-ap-northeast-1}"
 export CLAUDE_CODE_NO_FLICKER="${CLAUDE_CODE_NO_FLICKER:-1}"
