@@ -59,6 +59,7 @@ cd ~/.dotfiles
 ```
 sh tests/bootstrap.sh
 sh tests/zsh-early-env.sh
+sh tests/zsh-integrations.sh
 sh tests/zsh-lib-boundaries.sh
 sh tests/zsh-oh-my-zsh.sh
 sh tests/zsh-theme-defaults.sh
