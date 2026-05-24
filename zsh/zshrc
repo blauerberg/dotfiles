@@ -12,11 +12,12 @@ if [[ -f "$HOME/.zshrc.env" ]]; then
   source "$HOME/.zshrc.env"
 fi
 
-source "$DOTFILES_ZSH_DIR/lib/env.zsh"
+source "$DOTFILES_ZSH_DIR/lib/base.zsh"
 source "$DOTFILES_ZSH_DIR/lib/oh-my-zsh.zsh"
 if [[ -z ${DOTFILES_SKIP_INTEGRATIONS:-} ]]; then
   source "$DOTFILES_ZSH_DIR/lib/integrations.zsh"
 fi
+source "$DOTFILES_ZSH_DIR/lib/aliases.zsh"
 source "$DOTFILES_ZSH_DIR/lib/tmux.zsh"
 
 if [[ -f "$HOME/.zshrc.local" ]]; then
