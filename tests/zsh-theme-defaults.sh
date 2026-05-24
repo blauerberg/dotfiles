@@ -27,8 +27,8 @@ check_theme() {
   echo "ok [$label]: $actual"
 }
 
-check_theme "darwin"            "OSTYPE=darwin24"      "simple"
-check_theme "linux"             "OSTYPE=linux-gnu"     "bira"
+check_theme "darwin"            "OSTYPE=darwin24"      "amuse"
+check_theme "linux"             "OSTYPE=linux-gnu"     "ys"
 check_theme "unknown OS"        "OSTYPE=cygwin"        "robbyrussell"
 check_theme "REMOTE_CONTAINERS" "OSTYPE=linux-gnu; REMOTE_CONTAINERS=true" "ys"
 check_theme "CODESPACES"        "OSTYPE=linux-gnu; CODESPACES=true"        "ys"
