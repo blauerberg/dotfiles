@@ -5,7 +5,8 @@ to review.
 
 ## Scope
 
-- This repository links and loads configuration only.
+- This repository links and loads configuration, and may manage zsh plugins that
+  are stored under this repository's Oh My Zsh custom directory.
 - Do not add system package, Homebrew package, language runtime, or shell
   framework installation responsibilities here.
 

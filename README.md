@@ -5,8 +5,8 @@ My dotfiles.
 ## Supported Environments
 
 - macOS with Ghostty and cmux
-- Linux hosts, with Ubuntu 24.04 or newer as the primary target
-- Dev Containers based on `mcr.microsoft.com/devcontainers/base:noble`
+- Linux hosts
+- Dev Containers
 
 ## Responsibility
 
@@ -20,19 +20,18 @@ their integration.
 
 ## Optional Tools
 
+Shell integrations live under `zsh/lib/integrations/*.zsh` and load only when
+their commands exist. User-facing controls:
+
 - Oh My Zsh: used when it is already installed. zsh falls back to native
-  completion and a simple prompt when it is not available. A default
-  `DOTFILES_ZSH_THEME` is chosen per environment (macOS, Linux,
-  devcontainer); override it in `~/.zshrc.env` to pick another theme
-  without replacing the upstream `ZSH_THEME` variable directly.
-- Oh My Zsh plugins: managed by `bootstrap.sh`. Set `DOTFILES_OMZ_PLUGINS` to
-  a space-separated plugin list to override the defaults.
-- fzf: loaded when `fzf` exists and the shell has an interactive line editor.
+  completion and a simple prompt when it is not available. Override
+  `DOTFILES_ZSH_THEME` in `~/.zshrc.env` to choose a theme without replacing
+  the upstream `ZSH_THEME` variable directly.
+- Oh My Zsh plugins: repo-managed plugins are installed by `bootstrap.sh`. Set
+  `DOTFILES_OMZ_PLUGINS` to a space-separated plugin list to override the
+  defaults.
 - mise: loaded in shim mode by default. Set `DOTFILES_MISE_MODE=full` before
   zsh starts if you want full `mise activate zsh` hook behavior.
-- awscli: completion is enabled when `aws_completer` exists.
-- Google Cloud CLI: completion is enabled when `gcloud` and a known completion
-  file exist.
 - tmux: auto-attaches on non-macOS interactive zsh sessions when `tmux` exists.
   Set `DOTFILES_DISABLE_TMUX_AUTO=1` to disable this.
 - Tests and one-off checks: set `DOTFILES_SKIP_INTEGRATIONS=1` to skip optional
@@ -57,12 +56,7 @@ cd ~/.dotfiles
 ## Verification
 
 ```
-sh tests/bootstrap.sh
-sh tests/zsh-early-env.sh
-sh tests/zsh-integrations.sh
-sh tests/zsh-lib-boundaries.sh
-sh tests/zsh-oh-my-zsh.sh
-sh tests/zsh-theme-defaults.sh
+for test in tests/*.sh; do sh "$test"; done
 zsh -n zsh/zshrc
 ```
 
