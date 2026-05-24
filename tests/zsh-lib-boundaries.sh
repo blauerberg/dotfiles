@@ -28,30 +28,23 @@ case "$base_output" in
     ;;
 esac
 
-alias_output=$(
+conditional_alias_output=$(
   HOME="$tmp_home" \
   PATH="$fake_bin:/bin" \
-  zsh -f -c "source '$repo_root/zsh/lib/base.zsh'; source '$repo_root/zsh/lib/aliases.zsh'; alias dc; alias vi"
+  zsh -f -c "source '$repo_root/zsh/lib/base.zsh'; source '$repo_root/zsh/lib/aliases.zsh'; alias vi"
 )
 
-case "$alias_output" in
-  *"dc='docker compose'"* ) ;;
-  * )
-    echo "$alias_output" >&2
-    echo "aliases.zsh did not define dc" >&2
-    exit 1
-    ;;
-esac
-
-case "$alias_output" in
+case "$conditional_alias_output" in
   *"vi=nvim"* | *"vi='nvim'"* ) ;;
   * )
-    echo "$alias_output" >&2
+    echo "$conditional_alias_output" >&2
     echo "aliases.zsh did not define vi when nvim exists" >&2
     exit 1
     ;;
 esac
 
+# Use one stable alias as a representative loader check. Do not mirror the
+# whole alias catalog here; only conditional aliases need direct assertions.
 zshrc_output=$(
   HOME="$tmp_home" \
   ZSH="" \

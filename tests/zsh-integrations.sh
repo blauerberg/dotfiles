@@ -18,20 +18,19 @@ if [ -e "$repo_root/zsh/lib/integrations.zsh" ]; then
   exit 1
 fi
 
-for integration in \
-  00-homebrew.zsh \
-  10-mise.zsh \
-  20-fzf.zsh \
-  30-aws.zsh \
-  40-claude-code.zsh
-do
-  path="$repo_root/zsh/lib/integrations/$integration"
-  if [ ! -f "$path" ]; then
-    echo "missing integration: $path" >&2
-    exit 1
+found_integration=0
+for path in "$repo_root"/zsh/lib/integrations/*.zsh; do
+  if [ ! -e "$path" ]; then
+    continue
   fi
+  found_integration=1
   zsh -n "$path"
 done
+
+if [ "$found_integration" -ne 1 ]; then
+  echo "missing integration files under zsh/lib/integrations" >&2
+  exit 1
+fi
 
 enabled_output=$(
   HOME="$tmp_home" \
