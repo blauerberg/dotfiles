@@ -61,7 +61,6 @@ install_managed_checkout() {
 }
 
 mkdir -p "$HOME/.config"
-mkdir -p "$HOME/.config/nvim"
 mkdir -p "$HOME/.config/tmux"
 
 install_zsh_plugin \
@@ -78,8 +77,22 @@ link_file "$repo_root/git/.gitignore_global" "$HOME/.gitignore_global"
 link_file "$repo_root/.curlrc" "$HOME/.curlrc"
 link_file "$repo_root/.editorconfig" "$HOME/.editorconfig"
 link_file "$repo_root/.vimrc" "$HOME/.vimrc"
-link_file "$repo_root/.vimrc" "$HOME/.config/nvim/init.vim"
 link_file "$repo_root/tmux.conf" "$HOME/.config/tmux/tmux.conf"
+
+# Neovim config: symlink the whole directory (Lua tree + lazy-lock.json live here).
+nvim_src="$repo_root/.config/nvim"
+nvim_dst="$HOME/.config/nvim"
+if [ -L "$nvim_dst" ] || [ ! -e "$nvim_dst" ]; then
+  link_file "$nvim_src" "$nvim_dst"
+elif [ -d "$nvim_dst" ]; then
+  # Migrate the previous layout: a real dir that only held the managed init.vim symlink.
+  [ -L "$nvim_dst/init.vim" ] && rm -f "$nvim_dst/init.vim"
+  if rmdir "$nvim_dst" 2>/dev/null; then
+    link_file "$nvim_src" "$nvim_dst"
+  else
+    echo "skip nvim link: $nvim_dst is a non-empty directory; remove it and re-run" >&2
+  fi
+fi
 
 if [ -d "$repo_root/.config/ghostty" ]; then
   link_file "$repo_root/.config/ghostty" "$HOME/.config/ghostty"
