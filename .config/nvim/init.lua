@@ -9,6 +9,15 @@ vim.cmd('source ~/.vimrc')
 -- so 24-bit color is required for any highlighting to show (e.g. Markdown).
 vim.o.termguicolors = true
 
+-- Treesitter-based folding: the syntax tree supplies fold ranges, so functions
+-- and blocks can be collapsed to read a file's structure top-down. Files open
+-- fully expanded (foldlevelstart=99); use zM to collapse all, zR to expand,
+-- za to toggle the fold under the cursor. Core Neovim feature (no plugin); on
+-- filetypes without a parser foldexpr returns no folds, so this is harmless.
+vim.o.foldmethod = 'expr'
+vim.o.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+vim.o.foldlevelstart = 99
+
 -- Bootstrap lazy.nvim (clones itself on first launch).
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 if not (vim.uv or vim.loop).fs_stat(lazypath) then

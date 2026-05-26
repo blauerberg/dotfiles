@@ -16,12 +16,38 @@ return {
       end
     end
 
-    -- Built-in LSP completion (Neovim 0.11+); no completion plugin needed.
     vim.api.nvim_create_autocmd('LspAttach', {
       callback = function(args)
         local client = vim.lsp.get_client_by_id(args.data.client_id)
-        if client and client:supports_method('textDocument/completion') then
-          vim.lsp.completion.enable(true, args.data.client_id, args.buf, { autotrigger = true })
+        if not client then return end
+        local buf = args.buf
+
+        -- Built-in LSP completion (Neovim 0.11+); no completion plugin needed.
+        if client:supports_method('textDocument/completion') then
+          vim.lsp.completion.enable(true, client.id, buf, { autotrigger = true })
+        end
+
+        -- Inlay hints: show inferred types and parameter names inline, which
+        -- makes untyped-looking code readable. Toggle with <leader>ch when noisy.
+        if client:supports_method('textDocument/inlayHint') then
+          vim.lsp.inlay_hint.enable(true, { bufnr = buf })
+          vim.keymap.set('n', '<leader>ch', function()
+            local enabled = vim.lsp.inlay_hint.is_enabled({ bufnr = buf })
+            vim.lsp.inlay_hint.enable(not enabled, { bufnr = buf })
+          end, { buffer = buf, desc = 'Toggle inlay hints' })
+        end
+
+        -- Reference highlight: after the cursor rests (updatetime=500ms), the
+        -- server reports every use of the symbol under the cursor and we paint
+        -- them, so a variable's usage in the buffer is visible at a glance.
+        if client:supports_method('textDocument/documentHighlight') then
+          local group = vim.api.nvim_create_augroup('lsp_doc_highlight_' .. buf, { clear = true })
+          vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
+            group = group, buffer = buf, callback = vim.lsp.buf.document_highlight,
+          })
+          vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
+            group = group, buffer = buf, callback = vim.lsp.buf.clear_references,
+          })
         end
       end,
     })
