@@ -29,6 +29,9 @@ to review.
   public environment controls, conditional branches, bootstrap effects, and a
   small representative sample are better than exhaustive alias or keybinding
   snapshots.
+- Do not add per-file absence checks for removed historical artifacts unless
+  their absence is an explicit current contract; prune tests when the contract
+  they protected no longer exists.
 - Add or update tests only when they protect real dotfiles behavior, shell
   startup behavior, bootstrap behavior, environment-specific branching, or
   regression-prone logic.
