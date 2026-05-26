@@ -8,6 +8,7 @@ setopt hist_reduce_blanks
 setopt inc_append_history
 setopt share_history
 
+export KEYTIMEOUT=100
 export HISTFILE="${HISTFILE:-$HOME/.zsh_history}"
 export HISTSIZE="${HISTSIZE:-1000000}"
 export SAVEHIST="${SAVEHIST:-1000000}"
