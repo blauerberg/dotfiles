@@ -39,6 +39,35 @@ their commands exist. User-facing controls:
 - Tests and one-off checks: set `DOTFILES_SKIP_INTEGRATIONS=1` to skip optional
   command integrations while still loading the base zsh config.
 
+## Neovim
+
+Neovim configuration lives under `.config/nvim` and targets **Neovim 0.11+**
+(it uses the built-in LSP config API and the default LSP/quickfix keymaps).
+Plain Vim uses `~/.vimrc` with no plugins; Neovim sources the same `.vimrc` and
+layers Lua plugins on top via lazy.nvim, which installs itself on first launch.
+
+Ubuntu 24.04's `apt` package is too old (0.9). In Dev Containers, install a
+0.11+ build via one of:
+
+- the official release tarball (`nvim-linux-x86_64.tar.gz`, or
+  `nvim-linux-arm64.tar.gz` on arm64) extracted into `/opt` with its `bin/` on
+  `PATH`;
+- `ppa:neovim-ppa/unstable`;
+- `mise use -g neovim@<version>`.
+
+Language servers are not managed here. Install them on the host, in
+`devcontainer.json`, or in a Dockerfile; Neovim enables only those found on
+`PATH`:
+
+- TypeScript/JavaScript: `npm i -g typescript typescript-language-server`
+- Python: `npm i -g pyright` or `pipx install pyright`
+- Go: `gopls` (ships with the Go toolchain)
+- Rust: `rust-analyzer` (via rustup)
+- Lua: `lua-language-server`
+
+On a fresh, offline container, prime plugins once with
+`nvim --headless "+Lazy! sync" +qa`.
+
 ## Local Files
 
 These files are created if missing and are intentionally not managed here:
