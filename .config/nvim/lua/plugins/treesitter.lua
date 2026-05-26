@@ -7,7 +7,7 @@ return {
   opts = {
     ensure_installed = {
       'typescript', 'tsx', 'javascript', 'python',
-      'lua', 'vim', 'vimdoc', 'json', 'yaml', 'bash', 'markdown',
+      'lua', 'vim', 'vimdoc', 'json', 'yaml', 'bash', 'markdown', 'markdown_inline',
     },
     auto_install = false,
     sync_install = false,
