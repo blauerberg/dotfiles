@@ -25,6 +25,10 @@ to review.
 - Use the smallest command that exercises the changed behavior.
 - Prefer checking supported behavior over asserting that removed or unsupported
   behavior stays absent.
+- Test dotfiles contracts, not full configuration catalogs: loader behavior,
+  public environment controls, conditional branches, bootstrap effects, and a
+  small representative sample are better than exhaustive alias or keybinding
+  snapshots.
 - Add or update tests only when they protect real dotfiles behavior, shell
   startup behavior, bootstrap behavior, environment-specific branching, or
   regression-prone logic.

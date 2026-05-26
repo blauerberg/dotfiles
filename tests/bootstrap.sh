@@ -67,14 +67,6 @@ assert_dir() {
   fi
 }
 
-assert_absent() {
-  path=$1
-  if [ -e "$path" ] || [ -L "$path" ]; then
-    echo "unexpected path: $path" >&2
-    exit 1
-  fi
-}
-
 assert_link "$tmp_home/.zshrc" "$repo_root/zsh/zshrc"
 assert_link "$tmp_home/.gitconfig" "$repo_root/git/.gitconfig"
 assert_link "$tmp_home/.gitignore_global" "$repo_root/git/.gitignore_global"
@@ -90,10 +82,6 @@ assert_file "$tmp_home/.zshrc.env"
 assert_file "$tmp_home/.gitconfig_local"
 assert_dir "$tmp_custom/plugins/zsh-autosuggestions"
 assert_dir "$tmp_vendor/fzf-git.sh"
-assert_absent "$tmp_home/.zprezto"
-assert_absent "$tmp_home/.zpreztorc"
-assert_absent "$tmp_home/.Brewfile"
-assert_absent "$tmp_home/.dircolors"
 
 if ! grep -qx "clone https://github.com/zsh-users/zsh-autosuggestions.git $tmp_custom/plugins/zsh-autosuggestions" "$git_log"; then
   cat "$git_log" >&2
