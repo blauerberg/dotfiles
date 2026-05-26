@@ -10,6 +10,24 @@ return {
       rust_analyzer = 'rust-analyzer',
       lua_ls = 'lua-language-server',
     }
+    -- ts_ls emits no inlay hints unless these preferences are enabled, so opt
+    -- in to the full set; vim.lsp.inlay_hint.enable (below) then renders them.
+    local ts_inlay_hints = {
+      includeInlayParameterNameHints = 'all',
+      includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+      includeInlayFunctionParameterTypeHints = true,
+      includeInlayVariableTypeHints = true,
+      includeInlayPropertyDeclarationTypeHints = true,
+      includeInlayFunctionLikeReturnTypeHints = true,
+      includeInlayEnumMemberValueHints = true,
+    }
+    vim.lsp.config('ts_ls', {
+      settings = {
+        typescript = { inlayHints = ts_inlay_hints },
+        javascript = { inlayHints = ts_inlay_hints },
+      },
+    })
+
     for name, bin in pairs(servers) do
       if vim.fn.executable(bin) == 1 then
         vim.lsp.enable(name)
