@@ -73,7 +73,7 @@ assert_link "$tmp_home/.gitignore_global" "$repo_root/git/.gitignore_global"
 assert_link "$tmp_home/.curlrc" "$repo_root/.curlrc"
 assert_link "$tmp_home/.editorconfig" "$repo_root/.editorconfig"
 assert_link "$tmp_home/.vimrc" "$repo_root/.vimrc"
-assert_link "$tmp_home/.config/nvim/init.vim" "$repo_root/.vimrc"
+assert_link "$tmp_home/.config/nvim" "$repo_root/.config/nvim"
 assert_link "$tmp_home/.config/tmux/tmux.conf" "$repo_root/tmux.conf"
 assert_link "$tmp_home/.config/ghostty" "$repo_root/.config/ghostty"
 
