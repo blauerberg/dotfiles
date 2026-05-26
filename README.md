@@ -30,6 +30,8 @@ their commands exist. User-facing controls:
 - Oh My Zsh plugins: repo-managed plugins are installed by `bootstrap.sh`. Set
   `DOTFILES_OMZ_PLUGINS` to a space-separated plugin list to override the
   defaults.
+- fzf Git bindings: `bootstrap.sh` installs `junegunn/fzf-git.sh` under
+  `vendor/`, and zsh loads it when `fzf` is available.
 - mise: loaded in shim mode by default. Set `DOTFILES_MISE_MODE=full` before
   zsh starts if you want full `mise activate zsh` hook behavior.
 - tmux: auto-attaches on non-macOS interactive zsh sessions when `tmux` exists.

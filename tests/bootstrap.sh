@@ -5,6 +5,7 @@ repo_root=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
 tmp_home=$(mktemp -d)
 trap 'rm -rf "$tmp_home"' EXIT INT TERM
 tmp_custom="$tmp_home/zsh-custom"
+tmp_vendor="$tmp_home/vendor"
 fake_bin="$tmp_home/bin"
 git_log="$tmp_home/git.log"
 
@@ -33,6 +34,7 @@ HOME="$tmp_home" \
 PATH="$fake_bin:$PATH" \
 DOTFILES_TEST_GIT_LOG="$git_log" \
 ZSH_CUSTOM="$tmp_custom" \
+DOTFILES_VENDOR_DIR="$tmp_vendor" \
 "$repo_root/bootstrap.sh"
 
 assert_link() {
@@ -87,6 +89,7 @@ assert_file "$tmp_home/.zshrc.local"
 assert_file "$tmp_home/.zshrc.env"
 assert_file "$tmp_home/.gitconfig_local"
 assert_dir "$tmp_custom/plugins/zsh-autosuggestions"
+assert_dir "$tmp_vendor/fzf-git.sh"
 assert_absent "$tmp_home/.zprezto"
 assert_absent "$tmp_home/.zpreztorc"
 assert_absent "$tmp_home/.Brewfile"
@@ -95,5 +98,11 @@ assert_absent "$tmp_home/.dircolors"
 if ! grep -qx "clone https://github.com/zsh-users/zsh-autosuggestions.git $tmp_custom/plugins/zsh-autosuggestions" "$git_log"; then
   cat "$git_log" >&2
   echo "zsh-autosuggestions was not cloned to the custom plugin directory" >&2
+  exit 1
+fi
+
+if ! grep -qx "clone https://github.com/junegunn/fzf-git.sh.git $tmp_vendor/fzf-git.sh" "$git_log"; then
+  cat "$git_log" >&2
+  echo "fzf-git.sh was not cloned to the vendor directory" >&2
   exit 1
 fi

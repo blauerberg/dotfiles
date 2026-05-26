@@ -38,6 +38,28 @@ install_zsh_plugin() {
   fi
 }
 
+install_managed_checkout() {
+  name=$1
+  url=$2
+  vendor_dir=${DOTFILES_VENDOR_DIR:-"$repo_root/vendor"}
+  checkout_dir="$vendor_dir/$name"
+
+  mkdir -p "$vendor_dir"
+
+  if ! command -v git >/dev/null 2>&1; then
+    echo "git not found; skipping managed checkout install: $name" >&2
+    return 0
+  fi
+
+  if [ -d "$checkout_dir/.git" ]; then
+    git -C "$checkout_dir" pull --ff-only
+  elif [ -e "$checkout_dir" ]; then
+    echo "managed checkout already exists; skipping install: $checkout_dir" >&2
+  else
+    git clone "$url" "$checkout_dir"
+  fi
+}
+
 mkdir -p "$HOME/.config"
 mkdir -p "$HOME/.config/nvim"
 mkdir -p "$HOME/.config/tmux"
@@ -45,6 +67,10 @@ mkdir -p "$HOME/.config/tmux"
 install_zsh_plugin \
   zsh-autosuggestions \
   https://github.com/zsh-users/zsh-autosuggestions.git
+
+install_managed_checkout \
+  fzf-git.sh \
+  https://github.com/junegunn/fzf-git.sh.git
 
 link_file "$repo_root/zsh/zshrc" "$HOME/.zshrc"
 link_file "$repo_root/git/.gitconfig" "$HOME/.gitconfig"

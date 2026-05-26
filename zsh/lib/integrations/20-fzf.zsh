@@ -12,5 +12,9 @@ if [[ -o zle && -t 0 ]] && command -v fzf >/dev/null 2>&1; then
       fi
     done
   fi
-  unset _dotfiles_fzf_file _dotfiles_fzf_init
+  _dotfiles_fzf_git="$DOTFILES_ZSH_DIR/../vendor/fzf-git.sh/fzf-git.sh"
+  if [[ -r "$_dotfiles_fzf_git" ]]; then
+    source "$_dotfiles_fzf_git"
+  fi
+  unset _dotfiles_fzf_file _dotfiles_fzf_git _dotfiles_fzf_init
 fi
