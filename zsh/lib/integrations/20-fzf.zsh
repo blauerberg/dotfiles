@@ -8,8 +8,11 @@ _dotfiles_unbind_fzf_git_control_bindings() {
 }
 
 _dotfiles_filter_fzf_git_options() {
-  local arg bind_arg index
+  local arg bind_arg callback index
   local -a args
+
+  callback=$1
+  shift
 
   for (( index = 1; index <= $#; index++ )); do
     arg="${argv[index]}"
@@ -35,7 +38,19 @@ _dotfiles_filter_fzf_git_options() {
     fi
   done
 
-  _dotfiles_fzf_git_fzf "$args[@]"
+  "$callback" "$args[@]"
+}
+
+_dotfiles_fzf_git_fzf_without_tmux() {
+  fzf --height 50% \
+    --layout reverse --multi --border \
+    --preview-window 'right,50%' \
+    --bind 'ctrl-/:change-preview-window(down,50%|hidden|)' "$@"
+}
+
+_dotfiles_fzf_supports() {
+  fzf "$@" --filter '' </dev/null >/dev/null 2>&1
+  [[ $? -ne 2 ]]
 }
 
 if [[ -o zle && -t 0 ]] && command -v fzf >/dev/null 2>&1; then
@@ -55,9 +70,15 @@ if [[ -o zle && -t 0 ]] && command -v fzf >/dev/null 2>&1; then
   _dotfiles_fzf_git="$DOTFILES_ZSH_DIR/../vendor/fzf-git.sh/fzf-git.sh"
   if [[ -r "$_dotfiles_fzf_git" ]]; then
     source "$_dotfiles_fzf_git"
-    if ! fzf --bind 'alt-r:toggle-raw' --filter '' </dev/null >/dev/null 2>&1; then
+    if ! _dotfiles_fzf_supports --tmux 90%,70%; then
+      if _dotfiles_fzf_supports --bind 'alt-r:toggle-raw'; then
+        _fzf_git_fzf() { _dotfiles_fzf_git_fzf_without_tmux "$@" }
+      else
+        _fzf_git_fzf() { _dotfiles_filter_fzf_git_options _dotfiles_fzf_git_fzf_without_tmux "$@" }
+      fi
+    elif ! _dotfiles_fzf_supports --bind 'alt-r:toggle-raw'; then
       functions -c _fzf_git_fzf _dotfiles_fzf_git_fzf
-      _fzf_git_fzf() { _dotfiles_filter_fzf_git_options "$@" }
+      _fzf_git_fzf() { _dotfiles_filter_fzf_git_options _dotfiles_fzf_git_fzf "$@" }
     fi
     _dotfiles_unbind_fzf_git_control_bindings
   fi
