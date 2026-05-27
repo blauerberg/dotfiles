@@ -9,6 +9,7 @@ return {
       { '<leader>f', group = 'find' },
       { '<leader>g', group = 'git' },
       { '<leader>c', group = 'code' },
+      { '<leader>?', group = 'help' },
     })
   end,
 }

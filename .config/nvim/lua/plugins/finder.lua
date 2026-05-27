@@ -15,6 +15,15 @@ return {
     { '<leader>ct', function() require('fzf-lua').lsp_typedefs() end, desc = 'Type definition' },
     { '<leader>ci', function() require('fzf-lua').lsp_incoming_calls() end, desc = 'Incoming calls (callers)' },
     { '<leader>co', function() require('fzf-lua').lsp_outgoing_calls() end, desc = 'Outgoing calls (callees)' },
+    -- Command palette and discovery helpers. <C-p> mirrors the VSCode/Zed
+    -- command palette: one chord that fuzzy-searches every Ex command and runs
+    -- the chosen one. Ctrl (not ⌘ or Alt) is used so the binding survives every
+    -- layer the keystroke crosses: on macOS app shortcuts live on ⌘, leaving
+    -- Ctrl+letter free to reach nvim through tmux and the VSCode/Zed integrated
+    -- terminals alike. The rarer lookups live under the <leader>? help group.
+    { '<C-p>', function() require('fzf-lua').commands() end, desc = 'Command palette' },
+    { '<leader>?k', function() require('fzf-lua').keymaps() end, desc = 'Keymaps' },
+    { '<leader>?h', function() require('fzf-lua').helptags() end, desc = 'Help tags' },
   },
   opts = {},
 }
