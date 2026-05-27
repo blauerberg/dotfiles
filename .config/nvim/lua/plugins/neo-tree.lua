@@ -10,11 +10,11 @@ return {
   },
   cmd = 'Neotree',
   keys = {
-    -- VSCode's Cmd/Ctrl-B sidebar toggle. <C-b> is a clean control byte so it
-    -- reaches nvim through integrated terminals, but note two costs: it shadows
-    -- the built-in page-back scroll (<C-u> half-page still works), and inside tmux
-    -- it collides with tmux's default C-b prefix, which grabs it first.
-    { '<C-b>', '<cmd>Neotree toggle<cr>', desc = 'Toggle file sidebar' },
+    -- <leader>e (e = explorer) is the de-facto convention for a file-tree toggle
+    -- (LazyVim, AstroNvim, kickstart). Going through the leader avoids the clash
+    -- <C-b> has with tmux's default prefix, and surfaces the binding in which-key.
+    -- Toggling the sidebar is infrequent enough that the extra keystroke is free.
+    { '<leader>e', '<cmd>Neotree toggle<cr>', desc = 'Toggle file sidebar' },
   },
   opts = {
     window = { position = 'left' },
