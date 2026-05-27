@@ -18,6 +18,13 @@ return {
   },
   opts = {
     window = { position = 'left' },
+    -- When opening a file, neo-tree reuses the last-focused normal window
+    -- (open_files_in_last_window, on by default). If you last touched the
+    -- aerial outline on the right, the file would load *there* instead of the
+    -- code window. Listing aerial's filetype makes neo-tree skip that window
+    -- when picking where to open. tbl_deep_extend("force") overwrites this list
+    -- by index rather than appending, so the defaults are restated here.
+    open_files_do_not_replace_types = { 'terminal', 'Trouble', 'qf', 'edgy', 'aerial' },
     filesystem = {
       -- Reveal and highlight the file in the current buffer as you switch buffers,
       -- like VSCode's explorer tracking the active editor.
