@@ -26,6 +26,22 @@ return {
       use_libuv_file_watcher = true,
       -- Take over directory buffers (e.g. `nvim .`) instead of the netrw listing.
       hijack_netrw_behavior = 'open_default',
+      filtered_items = {
+        -- hide_dotfiles judges purely by a leading '.', ignoring git status, so
+        -- it hid tracked dotfiles like .github/.gitignore. Turn it off and let
+        -- hide_gitignored (default true) be the thing that hides ignored files.
+        hide_dotfiles = false,
+        -- .git isn't gitignored, so it would now show; hide it by name. Note
+        -- neo-tree index-merges this list over its default { '.DS_Store',
+        -- 'thumbs.db' }, so the effective value is { '.git', 'thumbs.db' }.
+        hide_by_name = { '.git' },
+      },
+      -- Search (the default '#' fuzzy_sorter) collects matches in find-command
+      -- (fd) output order and stops at this many, then sorts by fzy score. The
+      -- default 50 truncates before scoring, so a file deep in traversal order
+      -- can be cut even when it scores highest. 1000 keeps the target in the
+      -- collected set so the score sort can surface it.
+      search_limit = 1000,
     },
   },
 }
