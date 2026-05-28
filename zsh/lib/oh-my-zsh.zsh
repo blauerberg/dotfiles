@@ -1,6 +1,11 @@
+typeset -g _dotfiles_in_container=
+if [[ -n "${REMOTE_CONTAINERS:-}" || -n "${CODESPACES:-}" || -n "${DEVCONTAINER:-}" ]]; then
+  _dotfiles_in_container=1
+fi
+
 # Per-env default theme. Honors DOTFILES_ZSH_THEME set in ~/.zshrc.env.
 if [[ -z "${DOTFILES_ZSH_THEME:-}" ]]; then
-  if [[ -n "${REMOTE_CONTAINERS:-}" || -n "${CODESPACES:-}" || -n "${DEVCONTAINER:-}" ]]; then
+  if [[ -n "$_dotfiles_in_container" ]]; then
     DOTFILES_ZSH_THEME=ys
   elif [[ "$OSTYPE" == darwin* ]]; then
     DOTFILES_ZSH_THEME=amuse
@@ -10,6 +15,22 @@ if [[ -z "${DOTFILES_ZSH_THEME:-}" ]]; then
     DOTFILES_ZSH_THEME=robbyrussell
   fi
 fi
+
+# Inside containers, prefix the prompt with a colored badge so the shell is easy
+# to tell apart from the host. Inserts after a leading newline (themes like ys
+# start with one) so it lands on the first visible line without adding a row.
+# Override the label with DOTFILES_CONTAINER_BADGE; set it empty to disable.
+_dotfiles_prepend_container_badge() {
+  [[ -n "$_dotfiles_in_container" ]] || return
+  local label="${DOTFILES_CONTAINER_BADGE-🐳 CONTAINER}"
+  [[ -n "$label" ]] || return
+  local badge="%K{red}%F{white} ${label} %f%k "
+  if [[ "$PROMPT" == $'\n'* ]]; then
+    PROMPT=$'\n'"${badge}${PROMPT#$'\n'}"
+  else
+    PROMPT="${badge}${PROMPT}"
+  fi
+}
 
 typeset -ga _dotfiles_omz_candidates
 _dotfiles_omz_candidates=(
@@ -41,3 +62,7 @@ if [[ -z ${DOTFILES_OMZ_LOADED:-} ]]; then
   compinit -iC
   PROMPT="${PROMPT:-%n@%m:%~%# }"
 fi
+
+_dotfiles_prepend_container_badge
+unset -f _dotfiles_prepend_container_badge
+unset _dotfiles_in_container
