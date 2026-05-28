@@ -55,6 +55,14 @@ return {
           end, { buffer = buf, desc = 'Toggle inlay hints' })
         end
 
+        -- Format the buffer on demand (manual, not on save) through whichever
+        -- attached server can format -- gopls, rust_analyzer, lua_ls, etc.
+        if client:supports_method('textDocument/formatting') then
+          vim.keymap.set('n', '<leader>cf', function()
+            vim.lsp.buf.format({ bufnr = buf })
+          end, { buffer = buf, desc = 'Format buffer (LSP)' })
+        end
+
         -- Reference highlight: after the cursor rests (updatetime=500ms), the
         -- server reports every use of the symbol under the cursor and we paint
         -- them, so a variable's usage in the buffer is visible at a glance.
