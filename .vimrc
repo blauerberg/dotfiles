@@ -30,7 +30,7 @@ set pumheight=10
 set hidden
 set updatetime=500
 set backupcopy=yes
-set completeopt=menu,menuone,preview
+set completeopt=menu,menuone,preview,fuzzy
 set showfulltag
 
 " find files across the tree: :find Foo<Tab>
@@ -40,6 +40,13 @@ set path+=**
 " leader
 "
 let mapleader = "\<Space>"
+
+"
+" completion menu: navigate with C-j/C-k (matches fzf-lua's window), falling
+" back to their default insert-mode behavior when no popup menu is showing.
+"
+inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
+inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
 
 "
 " clear search highlight
