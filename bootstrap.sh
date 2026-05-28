@@ -62,6 +62,7 @@ install_managed_checkout() {
 
 mkdir -p "$HOME/.config"
 mkdir -p "$HOME/.config/tmux"
+mkdir -p "$HOME/.claude"
 
 install_zsh_plugin \
   zsh-autosuggestions \
@@ -78,6 +79,7 @@ link_file "$repo_root/.curlrc" "$HOME/.curlrc"
 link_file "$repo_root/.editorconfig" "$HOME/.editorconfig"
 link_file "$repo_root/.vimrc" "$HOME/.vimrc"
 link_file "$repo_root/tmux.conf" "$HOME/.config/tmux/tmux.conf"
+link_file "$repo_root/.claude/statusline.sh" "$HOME/.claude/statusline.sh"
 
 # Neovim config: symlink the whole directory (Lua tree + lazy-lock.json live here).
 nvim_src="$repo_root/.config/nvim"
