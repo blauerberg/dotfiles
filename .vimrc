@@ -98,6 +98,22 @@ augroup last_position
   autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | execute "normal! g`\"" | endif
 augroup END
 
+"
+" highlight trailing whitespace (only end-of-line spaces/tabs, so legitimate
+" indentation tabs are left alone). The InsertEnter pattern excludes the run
+" right before the cursor so spaces aren't flagged mid-typing. Re-set on
+" ColorScheme since :colorscheme clears the highlight group.
+"
+highlight ExtraWhitespace ctermbg=red guibg=#dc322f
+augroup trailing_whitespace
+  autocmd!
+  autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=#dc322f
+  autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+  autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+  autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+  autocmd BufWinLeave * call clearmatches()
+augroup END
+
 filetype plugin indent on
 if has("syntax")
   syntax on
