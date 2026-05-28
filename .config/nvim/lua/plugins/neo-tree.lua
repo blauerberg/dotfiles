@@ -17,7 +17,17 @@ return {
     { '<leader>e', '<cmd>Neotree toggle<cr>', desc = 'Toggle file sidebar' },
   },
   opts = {
-    window = { position = 'left' },
+    window = {
+      position = 'left',
+      -- The '/' fuzzy filter prompt moves its cursor with <C-n>/<C-p> (and
+      -- arrows) by default; add C-j/C-k to match fzf-lua and the insert-mode
+      -- completion menu. neo-tree deep-merges this over its defaults, so the
+      -- built-in C-n/C-p keep working too.
+      fuzzy_finder_mappings = {
+        ['<C-j>'] = 'move_cursor_down',
+        ['<C-k>'] = 'move_cursor_up',
+      },
+    },
     -- When opening a file, neo-tree reuses the last-focused normal window
     -- (open_files_in_last_window, on by default). If you last touched the
     -- aerial outline on the right, the file would load *there* instead of the
