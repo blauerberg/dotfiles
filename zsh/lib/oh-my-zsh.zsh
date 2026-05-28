@@ -38,7 +38,9 @@ _dotfiles_prepend_env_badge() {
     [[ -n "$label" ]] && _dotfiles_prepend_badge "%K{red}%F{white} ${label} %f%k "
   elif [[ "$OSTYPE" == linux* ]]; then
     label="${DOTFILES_HOST_BADGE-🐧 LINUX}"
-    [[ -n "$label" ]] && _dotfiles_prepend_badge "%K{blue}%F{white} ${label} %f%k "
+    # 256-color blue (not the 16-color "blue" name, which some terminal palettes
+    # remap to an unexpected hue).
+    [[ -n "$label" ]] && _dotfiles_prepend_badge "%K{33}%F{white} ${label} %f%k "
   fi
 }
 
