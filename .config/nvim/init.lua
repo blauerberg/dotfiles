@@ -9,6 +9,10 @@ vim.cmd('source ~/.vimrc')
 -- so 24-bit color is required for any highlighting to show (e.g. Markdown).
 vim.o.termguicolors = true
 
+-- Built-in dark colorscheme; higher contrast than solarized, which reads as
+-- washed out on a dimmed display. No plugin needed (ships with Neovim).
+vim.cmd.colorscheme('slate')
+
 -- Treesitter-based folding: the syntax tree supplies fold ranges, so functions
 -- and blocks can be collapsed to read a file's structure top-down. Files open
 -- fully expanded (foldlevelstart=99); use zM to collapse all, zR to expand,
