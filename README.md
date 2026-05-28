@@ -30,10 +30,12 @@ their commands exist. User-facing controls:
 - Oh My Zsh plugins: repo-managed plugins are installed by `bootstrap.sh`. Set
   `DOTFILES_OMZ_PLUGINS` to a space-separated plugin list to override the
   defaults.
-- Container prompt badge: inside containers (detected via `REMOTE_CONTAINERS`,
-  `CODESPACES`, or `DEVCONTAINER`) the prompt is prefixed with a colored badge
-  so the container shell is easy to tell apart from the host. Set
-  `DOTFILES_CONTAINER_BADGE` to change the label, or to an empty string to
+- Prompt badge: the prompt is prefixed with a colored badge so the shell is easy
+  to tell apart by environment. Inside containers (detected via
+  `REMOTE_CONTAINERS`, `CODESPACES`, or `DEVCONTAINER`) it shows a red
+  `🐳 CONTAINER` badge; on a Linux host it shows a blue `🐧 LINUX` badge. The
+  container badge takes precedence. Set `DOTFILES_CONTAINER_BADGE` or
+  `DOTFILES_HOST_BADGE` to change the label, or either to an empty string to
   disable it.
 - fzf Git bindings: `bootstrap.sh` installs `junegunn/fzf-git.sh` under
   `vendor/`, and zsh loads it when `fzf` is available.

@@ -16,19 +16,29 @@ if [[ -z "${DOTFILES_ZSH_THEME:-}" ]]; then
   fi
 fi
 
-# Inside containers, prefix the prompt with a colored badge so the shell is easy
-# to tell apart from the host. Inserts after a leading newline (themes like ys
-# start with one) so it lands on the first visible line without adding a row.
-# Override the label with DOTFILES_CONTAINER_BADGE; set it empty to disable.
-_dotfiles_prepend_container_badge() {
-  [[ -n "$_dotfiles_in_container" ]] || return
-  local label="${DOTFILES_CONTAINER_BADGE-🐳 CONTAINER}"
-  [[ -n "$label" ]] || return
-  local badge="%K{red}%F{white} ${label} %f%k "
+# Prefix the prompt with a colored badge so the shell is easy to tell apart by
+# environment: a red badge inside containers, a Tux badge on a Linux host.
+# Inserts after a leading newline (themes like amuse start with one) so it lands
+# on the first visible line without adding a row. Labels are overridable via
+# DOTFILES_CONTAINER_BADGE / DOTFILES_HOST_BADGE; set either empty to disable.
+_dotfiles_prepend_badge() {
+  local badge=$1
+  [[ -n "$badge" ]] || return
   if [[ "$PROMPT" == $'\n'* ]]; then
     PROMPT=$'\n'"${badge}${PROMPT#$'\n'}"
   else
     PROMPT="${badge}${PROMPT}"
+  fi
+}
+
+_dotfiles_prepend_env_badge() {
+  local label
+  if [[ -n "$_dotfiles_in_container" ]]; then
+    label="${DOTFILES_CONTAINER_BADGE-🐳 CONTAINER}"
+    [[ -n "$label" ]] && _dotfiles_prepend_badge "%K{red}%F{white} ${label} %f%k "
+  elif [[ "$OSTYPE" == linux* ]]; then
+    label="${DOTFILES_HOST_BADGE-🐧 LINUX}"
+    [[ -n "$label" ]] && _dotfiles_prepend_badge "%K{blue}%F{white} ${label} %f%k "
   fi
 }
 
@@ -63,6 +73,6 @@ if [[ -z ${DOTFILES_OMZ_LOADED:-} ]]; then
   PROMPT="${PROMPT:-%n@%m:%~%# }"
 fi
 
-_dotfiles_prepend_container_badge
-unset -f _dotfiles_prepend_container_badge
+_dotfiles_prepend_env_badge
+unset -f _dotfiles_prepend_env_badge _dotfiles_prepend_badge
 unset _dotfiles_in_container
