@@ -6,7 +6,7 @@ fi
 # Per-env default theme. Honors DOTFILES_ZSH_THEME set in ~/.zshrc.env.
 if [[ -z "${DOTFILES_ZSH_THEME:-}" ]]; then
   if [[ -n "$_dotfiles_in_container" ]]; then
-    DOTFILES_ZSH_THEME=amuse
+    DOTFILES_ZSH_THEME=ys
   elif [[ "$OSTYPE" == darwin* ]]; then
     DOTFILES_ZSH_THEME=amuse
   elif [[ "$OSTYPE" == linux* ]]; then
