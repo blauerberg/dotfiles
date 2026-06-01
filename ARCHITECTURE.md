@@ -47,10 +47,11 @@ User-facing controls:
 
 ## Neovim
 
-Neovim configuration lives under `.config/nvim` and targets **Neovim 0.12+**
-(it uses the built-in LSP config API and the default LSP/quickfix keymaps).
+Neovim configuration lives under `.config/nvim` and targets **Neovim 0.12+**.
 Plain Vim uses `~/.vimrc` with no plugins; Neovim sources the same `.vimrc` and
 layers Lua plugins on top via lazy.nvim, which installs itself on first launch.
+Keymaps are discoverable in Neovim through which-key.nvim and the `<leader>?`
+help group.
 
 Neovim itself and language servers are not managed here. Install Neovim 0.12+
 and any language servers with the host package manager, `devcontainer.json`, or
