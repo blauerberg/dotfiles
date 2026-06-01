@@ -17,6 +17,4 @@ jobs:
           sudo apt-get install -y zsh
 
       - name: Run verification commands
-        run: |
-          for test in tests/*.sh; do sh "$test"; done
-          zsh -n zsh/zshrc
+        run: scripts/verify.sh

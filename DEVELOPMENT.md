@@ -21,8 +21,7 @@ exercises the changed behavior.
 - For repository-wide shell checks, run:
 
 ```sh
-for test in tests/*.sh; do sh "$test"; done
-zsh -n zsh/zshrc
+scripts/verify.sh
 ```
 
 Prefer testing dotfiles contracts such as loader behavior, public environment
