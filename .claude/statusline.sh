@@ -102,18 +102,14 @@ GIT_BRANCH=""
 if git -C "$CWD" rev-parse --git-dir > /dev/null 2>&1; then
   BRANCH=$(git -C "$CWD" --no-optional-locks branch --show-current 2>/dev/null)
   if [ -n "$BRANCH" ]; then
-    # Ahead/behind relative to upstream
-    AHEAD=$(git -C "$CWD" rev-list --count @{u}..HEAD 2>/dev/null || echo 0)
-    BEHIND=$(git -C "$CWD" rev-list --count HEAD..@{u} 2>/dev/null || echo 0)
-    # Uncommitted changes
-    HAS_DIFF=$(git -C "$CWD" diff --stat 2>/dev/null | tail -1)
-    if echo "$HAS_DIFF" | grep -q "changed"; then
-      ADDED=$(echo "$HAS_DIFF" | grep -o '[0-9]* insertion' | grep -o '[0-9]*')
-      REMOVED=$(echo "$HAS_DIFF" | grep -o '[0-9]* deletion' | grep -o '[0-9]*')
-    else
-      ADDED=0
-      REMOVED=0
-    fi
+    # Ahead/behind vs upstream in a single rev-list call ("<behind>\t<ahead>")
+    read -r BEHIND AHEAD < <(git -C "$CWD" rev-list --left-right --count @{u}...HEAD 2>/dev/null)
+    : "${BEHIND:=0}" "${AHEAD:=0}"
+    # Uncommitted line changes via numstat: machine-readable, so it does not
+    # depend on git's localized "N insertions(+)" summary wording.
+    read -r ADDED REMOVED < <(git -C "$CWD" diff --numstat 2>/dev/null |
+      awk '{ added += $1; removed += $2 } END { printf "%d %d\n", added, removed }')
+    : "${ADDED:=0}" "${REMOVED:=0}"
     GIT_ICON=""
     if [ "$AHEAD" -gt 0 ] && [ "$BEHIND" -eq 0 ]; then
       GIT_ICON="${GREEN}↑${RESET}"
