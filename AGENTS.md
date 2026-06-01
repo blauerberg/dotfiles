@@ -37,6 +37,19 @@ to review.
   regression-prone logic.
 - For documentation-only changes, proofreading is enough.
 
+## Documentation
+
+- `README.md` is the human-facing entry point: keep it focused on overview,
+  setup, and a small amount of stable operational guidance such as local file
+  locations when that improves usability.
+- `ARCHITECTURE.md` is the canonical document for repository structure,
+  architecture, and developer/agent-facing operational details.
+- Prefer SSOT. When a detail already lives in config, scripts, or source files,
+  docs should point to that authority instead of restating the implementation.
+- Avoid documentation that gets too specific about current implementation
+  details unless the repository intentionally treats that detail as a stable
+  contract.
+
 ## Security
 
 - Do not commit API keys, tokens, passwords, private keys, or machine-specific
