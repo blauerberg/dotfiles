@@ -48,7 +48,7 @@ their commands exist. User-facing controls:
 
 ## Neovim
 
-Neovim configuration lives under `.config/nvim` and targets **Neovim 0.11+**
+Neovim configuration lives under `.config/nvim` and targets **Neovim 0.12+**
 (it uses the built-in LSP config API and the default LSP/quickfix keymaps).
 Plain Vim uses `~/.vimrc` with no plugins; Neovim sources the same `.vimrc` and
 layers Lua plugins on top via lazy.nvim, which installs itself on first launch.
