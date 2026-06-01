@@ -30,9 +30,9 @@ check_theme() {
 check_theme "darwin"            "OSTYPE=darwin24"      "amuse"
 check_theme "linux"             "OSTYPE=linux-gnu"     "amuse"
 check_theme "unknown OS"        "OSTYPE=cygwin"        "robbyrussell"
-check_theme "REMOTE_CONTAINERS" "OSTYPE=linux-gnu; REMOTE_CONTAINERS=true" "amuse"
-check_theme "CODESPACES"        "OSTYPE=linux-gnu; CODESPACES=true"        "amuse"
-check_theme "DEVCONTAINER"      "OSTYPE=linux-gnu; DEVCONTAINER=1"         "amuse"
+check_theme "REMOTE_CONTAINERS" "OSTYPE=linux-gnu; REMOTE_CONTAINERS=true" "ys"
+check_theme "CODESPACES"        "OSTYPE=linux-gnu; CODESPACES=true"        "ys"
+check_theme "DEVCONTAINER"      "OSTYPE=linux-gnu; DEVCONTAINER=1"         "ys"
 check_theme "user override"     "OSTYPE=darwin24; DOTFILES_ZSH_THEME=robbyrussell" "robbyrussell"
 
 # Prompt badge: the prompt is prefixed with a colored badge so the shell is easy
