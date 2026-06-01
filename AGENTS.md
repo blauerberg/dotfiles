@@ -17,9 +17,7 @@ usage, and documentation boundaries, follow `DEVELOPMENT.md`.
 
 ## Testing
 
-- Keep verification lightweight and relevant.
-- Do not add tests just to satisfy a process.
-- Use the smallest command that exercises the changed behavior.
+- Follow `DEVELOPMENT.md` for shared verification policy and commands.
 - Prefer checking supported behavior over asserting that removed or unsupported
   behavior stays absent.
 - Test dotfiles contracts, not full configuration catalogs: loader behavior,
@@ -32,21 +30,12 @@ usage, and documentation boundaries, follow `DEVELOPMENT.md`.
 - Add or update tests only when they protect real dotfiles behavior, shell
   startup behavior, bootstrap behavior, environment-specific branching, or
   regression-prone logic.
-- For documentation-only changes, proofreading is enough.
 
 ## Documentation
 
-- Shared documentation responsibilities are defined in `DEVELOPMENT.md`.
-- `README.md` is the human-facing entry point: keep it focused on overview,
-  setup, and a small amount of stable operational guidance such as local file
-  locations when that improves usability.
-- `ARCHITECTURE.md` is the canonical document for repository structure,
-  architecture, and developer/agent-facing operational details.
-- Prefer SSOT. When a detail already lives in config, scripts, or source files,
-  docs should point to that authority instead of restating the implementation.
-- Avoid documentation that gets too specific about current implementation
-  details unless the repository intentionally treats that detail as a stable
-  contract.
+- Follow `DEVELOPMENT.md` for documentation ownership and SSOT boundaries.
+- In agent-facing docs, prefer stable repository intent over volatile
+  implementation detail.
 
 ## Security
 

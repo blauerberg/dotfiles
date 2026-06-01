@@ -52,27 +52,10 @@ Neovim configuration lives under `.config/nvim` and targets **Neovim 0.12+**
 Plain Vim uses `~/.vimrc` with no plugins; Neovim sources the same `.vimrc` and
 layers Lua plugins on top via lazy.nvim, which installs itself on first launch.
 
-Ubuntu 24.04's `apt` package is too old (0.9). In Dev Containers, install a
-0.11+ build via one of:
-
-- the official release tarball (`nvim-linux-x86_64.tar.gz`, or
-  `nvim-linux-arm64.tar.gz` on arm64) extracted into `/opt` with its `bin/` on
-  `PATH`;
-- `ppa:neovim-ppa/unstable`;
-- `mise use -g neovim@<version>`.
-
-Language servers are not managed here. Install them on the host, in
-`devcontainer.json`, or in a Dockerfile; Neovim enables only those found on
-`PATH`:
-
-- TypeScript/JavaScript: `npm i -g typescript typescript-language-server`
-- Python: `npm i -g pyright` or `pipx install pyright`
-- Go: `gopls` (ships with the Go toolchain)
-- Rust: `rust-analyzer` (via rustup)
-- Lua: `lua-language-server`
-
-On a fresh, offline container, prime plugins once with
-`nvim --headless "+Lazy! sync" +qa`.
+Neovim itself and language servers are not managed here. Install Neovim 0.12+
+and any language servers with the host package manager, `devcontainer.json`, or
+a Dockerfile. The Neovim config enables only language servers whose executables
+are present on `PATH`.
 
 ## Local Files
 
