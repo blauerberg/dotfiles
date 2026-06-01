@@ -1,6 +1,5 @@
 #!/bin/bash
 input=$(cat)
-echo "$input" > /tmp/statusline_input.json 2>/dev/null
 NOW=$(date +%s)
 
 # --- ANSI colors ---
