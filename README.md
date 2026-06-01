@@ -3,8 +3,9 @@
 My dotfiles.
 
 This repository links and loads configuration, and may install zsh plugins
-managed by this repository. For architecture and repository conventions, see
-[ARCHITECTURE.md](ARCHITECTURE.md).
+managed by this repository. For architecture, see
+[ARCHITECTURE.md](ARCHITECTURE.md). For development workflow and documentation
+responsibilities, see [DEVELOPMENT.md](DEVELOPMENT.md).
 
 ## Supported Environments
 

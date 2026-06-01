@@ -12,11 +12,8 @@ to review.
 
 ## Workflow
 
-- Use Conventional Commits for commit messages.
-- Do not create pull requests by default.
-- For small changes, commit directly on the default branch.
-- For larger changes, create a short-lived branch, finish the work there, merge
-  it back into the default branch locally, then push.
+For shared repository workflow such as verification, commit conventions, branch
+usage, and documentation boundaries, follow `DEVELOPMENT.md`.
 
 ## Testing
 
@@ -39,6 +36,7 @@ to review.
 
 ## Documentation
 
+- Shared documentation responsibilities are defined in `DEVELOPMENT.md`.
 - `README.md` is the human-facing entry point: keep it focused on overview,
   setup, and a small amount of stable operational guidance such as local file
   locations when that improves usability.

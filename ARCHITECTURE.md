@@ -2,7 +2,7 @@
 
 This document is the canonical description of the repository's structure and
 runtime behavior. `README.md` stays focused on the human-facing entry point and
-setup flow.
+setup flow, and `DEVELOPMENT.md` covers development workflow and verification.
 
 ## Responsibility
 
@@ -81,13 +81,3 @@ These files are created if missing and are intentionally not managed here:
 - `~/.zshrc.local`: machine-specific shell settings and secrets.
 - `~/.zshrc.env`: early shell environment settings loaded before Oh My Zsh.
 - `~/.gitconfig_local`: machine-specific Git includes and identities.
-
-## Verification
-
-Use the repository shell checks as a lightweight contract test for the dotfiles
-loader and integrations:
-
-```sh
-for test in tests/*.sh; do sh "$test"; done
-zsh -n zsh/zshrc
-```
