@@ -9,7 +9,7 @@ responsibilities, see [DEVELOPMENT.md](DEVELOPMENT.md).
 
 ## Supported Environments
 
-- macOS with Ghostty and cmux
+- macOS with Ghostty
 - Linux hosts
 - Dev Containers
 
