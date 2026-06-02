@@ -56,39 +56,81 @@ format_reset() {
 }
 
 # --- Parse stdin JSON ---
-eval "$(echo "$input" | jq -r '
-  "MODEL=" + (.model.display_name // "Unknown" | @sh),
-  "CTX_SIZE=" + (.context_window.context_window_size // empty | tostring),
-  "CTX_USED_PCT=" + (.context_window.used_percentage // 0 | tostring),
-  "CTX_INPUT=" + ((.context_window.current_usage.input_tokens // 0) | tostring),
-  "CTX_CACHE_CREATE=" + ((.context_window.current_usage.cache_creation_input_tokens // 0) | tostring),
-  "CTX_CACHE_READ=" + ((.context_window.current_usage.cache_read_input_tokens // 0) | tostring),
-  "CTX_HAS_USAGE=" + (if .context_window.current_usage then "1" else "0" end),
-  "CTX_USED_TOKENS=" + ((.context_window.current_usage.input_tokens // 0) + (.context_window.current_usage.cache_creation_input_tokens // 0) + (.context_window.current_usage.cache_read_input_tokens // 0) | tostring),
-  "CTX_TOTAL_TOKENS=" + (.context_window.context_window_size // empty | tostring),
-  "TOTAL_INPUT=" + (.context_window.total_input_tokens // 0 | tostring),
-  "TOTAL_OUTPUT=" + (.context_window.total_output_tokens // 0 | tostring),
-  "LINES_ADD=" + (.cost.total_lines_added // 0 | tostring),
-  "LINES_DEL=" + (.cost.total_lines_removed // 0 | tostring),
-  "FIVE_PCT=" + (.rate_limits.five_hour.used_percentage // empty | floor | tostring),
-  "FIVE_RESET_EPOCH=" + (.rate_limits.five_hour.resets_at // 0 | tostring),
-  "SEVEN_PCT=" + (.rate_limits.seven_day.used_percentage // empty | floor | tostring),
-  "SEVEN_RESET_EPOCH=" + (.rate_limits.seven_day.resets_at // 0 | tostring),
-  "EFFORT=" + (.effort.level // "" | @sh)
-' 2>/dev/null)"
+MODEL="Unknown"
+CTX_SIZE=0
+CTX_USED_PCT=0
+CTX_INPUT=0
+CTX_CACHE_CREATE=0
+CTX_CACHE_READ=0
+CTX_HAS_USAGE=0
+CTX_USED_TOKENS=0
+CTX_TOTAL_TOKENS=0
+TOTAL_INPUT=0
+TOTAL_OUTPUT=0
+LINES_ADD=0
+LINES_DEL=0
+FIVE_PCT=0
+FIVE_RESET_EPOCH=0
+SEVEN_PCT=0
+SEVEN_RESET_EPOCH=0
+CWD="."
+EFFORT=""
+
+if command -v jq >/dev/null 2>&1; then
+  parsed=$(
+    printf '%s\n' "$input" | jq -r '
+      def int_or_zero:
+        if type == "number" then floor
+        elif type == "string" and test("^[0-9]+(\\.[0-9]+)?$") then tonumber | floor
+        else 0
+        end;
+      def string_or($default):
+        if type == "string" and length > 0 then . else $default end;
+
+      [
+        (.model.display_name | string_or("Unknown")),
+        (.context_window.context_window_size | int_or_zero),
+        (.context_window.used_percentage | int_or_zero),
+        (.context_window.current_usage.input_tokens | int_or_zero),
+        (.context_window.current_usage.cache_creation_input_tokens | int_or_zero),
+        (.context_window.current_usage.cache_read_input_tokens | int_or_zero),
+        (if .context_window.current_usage then 1 else 0 end),
+        ((.context_window.current_usage.input_tokens | int_or_zero) + (.context_window.current_usage.cache_creation_input_tokens | int_or_zero) + (.context_window.current_usage.cache_read_input_tokens | int_or_zero)),
+        (.context_window.context_window_size | int_or_zero),
+        (.context_window.total_input_tokens | int_or_zero),
+        (.context_window.total_output_tokens | int_or_zero),
+        (.cost.total_lines_added | int_or_zero),
+        (.cost.total_lines_removed | int_or_zero),
+        (.rate_limits.five_hour.used_percentage | int_or_zero),
+        (.rate_limits.five_hour.resets_at | int_or_zero),
+        (.rate_limits.seven_day.used_percentage | int_or_zero),
+        (.rate_limits.seven_day.resets_at | int_or_zero),
+        (.workspace.current_dir | string_or(".")),
+        (.effort.level // "")
+      ] | @tsv
+    ' 2>/dev/null
+  )
+  if [ -n "$parsed" ]; then
+    IFS=$'\t' read -r \
+      MODEL CTX_SIZE CTX_USED_PCT CTX_INPUT CTX_CACHE_CREATE CTX_CACHE_READ \
+      CTX_HAS_USAGE CTX_USED_TOKENS CTX_TOTAL_TOKENS TOTAL_INPUT TOTAL_OUTPUT \
+      LINES_ADD LINES_DEL FIVE_PCT FIVE_RESET_EPOCH SEVEN_PCT \
+      SEVEN_RESET_EPOCH CWD EFFORT <<< "$parsed"
+  fi
+fi
 
 # --- Per-model default context length ---
-if [ -z "$CTX_SIZE" ] || [ "$CTX_SIZE" = "null" ] || [ "$CTX_SIZE" = "0" ]; then
+if [ "$CTX_SIZE" -eq 0 ]; then
   case "$MODEL" in
     *qwen*|*Qwen*) CTX_SIZE=256000 ;;
   esac
   CTX_TOTAL_TOKENS=$CTX_SIZE
 fi
 
-if [ "$CTX_HAS_USAGE" = "1" ]; then
+if [ "$CTX_HAS_USAGE" = "1" ] && [ "$CTX_SIZE" -gt 0 ]; then
   CTX_PCT=$(( (CTX_INPUT + CTX_CACHE_CREATE + CTX_CACHE_READ) * 100 / CTX_SIZE ))
   CTX_NUM_STR="$(format_tokens $CTX_USED_TOKENS)/$(format_tokens $CTX_TOTAL_TOKENS)"
-elif [ -n "$CTX_SIZE" ] && [ "$CTX_SIZE" != "null" ] && [ "$CTX_SIZE" != "0" ]; then
+elif [ "$CTX_SIZE" -gt 0 ]; then
   CTX_PCT=${CTX_USED_PCT%%.*}
   CTX_NUM_STR="$(format_tokens $CTX_USED_TOKENS)/$(format_tokens $CTX_TOTAL_TOKENS)"
 else
@@ -97,7 +139,6 @@ else
 fi
 
 # --- Git branch & diff ---
-CWD=$(echo "$input" | jq -r '.workspace.current_dir // "."')
 GIT_BRANCH=""
 if git -C "$CWD" rev-parse --git-dir > /dev/null 2>&1; then
   BRANCH=$(git -C "$CWD" --no-optional-locks branch --show-current 2>/dev/null)
