@@ -5,7 +5,7 @@ to review.
 
 ## Scope
 
-- This repository links and loads configuration, and may manage zsh plugins and
+- This repository links and loads configuration, and installs zsh plugins and
   shell integration checkouts that are stored under this repository.
 - Do not add system package, Homebrew package, language runtime, or shell
   framework installation responsibilities here.
@@ -13,7 +13,7 @@ to review.
 ## Workflow
 
 For shared repository workflow such as verification, commit conventions, branch
-usage, and documentation boundaries, follow `DEVELOPMENT.md`.
+usage, and documentation boundaries, follow @DEVELOPMENT.md.
 
 ## Testing
 

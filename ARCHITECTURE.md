@@ -30,12 +30,12 @@ User-facing controls:
   `DOTFILES_OMZ_PLUGINS` to a space-separated plugin list to override the
   defaults.
 - Prompt badge: the prompt is prefixed with a colored badge so the shell is easy
-  to tell apart by environment. Inside containers (detected via
-  `REMOTE_CONTAINERS`, `CODESPACES`, or `DEVCONTAINER`) it shows a red
-  `🐳 CONTAINER` badge; on a Linux host it shows a blue `🐧 LINUX` badge. The
-  container badge takes precedence. Set `DOTFILES_CONTAINER_BADGE` or
-  `DOTFILES_HOST_BADGE` to change the label, or either to an empty string to
-  disable it.
+  to tell apart by environment.
+  - Inside containers (detected via `REMOTE_CONTAINERS`, `CODESPACES`, or
+    `DEVCONTAINER`) it shows a red `🐳 CONTAINER` badge; on a Linux host it shows
+    a blue `🐧 LINUX` badge, and the container badge takes precedence.
+  - Set `DOTFILES_CONTAINER_BADGE` or `DOTFILES_HOST_BADGE` to change the label,
+    or either to an empty string to disable it.
 - fzf Git bindings: `bootstrap.sh` installs `junegunn/fzf-git.sh` under
   `vendor/`, and zsh loads it when `fzf` is available.
 - mise: loaded in shim mode by default. Set `DOTFILES_MISE_MODE=full` before
@@ -47,7 +47,7 @@ User-facing controls:
 
 ## Neovim
 
-Neovim configuration lives under `.config/nvim` and targets **Neovim 0.12+**.
+Neovim configuration lives under `.config/nvim` and targets Neovim 0.12+.
 Plain Vim uses `~/.vimrc` with no plugins; Neovim sources the same `.vimrc` and
 layers Lua plugins on top via lazy.nvim, which installs itself on first launch.
 Keymaps are discoverable in Neovim through which-key.nvim and the `<leader>?`
