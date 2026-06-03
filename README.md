@@ -23,6 +23,9 @@ These files are created if missing and are intentionally not managed here:
 
 ## Getting Started
 
+Running `bootstrap.sh` links repo-managed config into `$HOME` and creates
+ignored local files; review it first if those paths already have local config.
+
 ```
 git clone https://github.com/blauerberg/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
