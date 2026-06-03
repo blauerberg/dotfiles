@@ -6,9 +6,9 @@ setup flow, and `DEVELOPMENT.md` covers development workflow and verification.
 
 ## Responsibility
 
-This repository links and loads configuration, and installs zsh plugins managed
-by this repository. It does not install system packages, Homebrew packages,
-language runtimes, or shell frameworks.
+This repository links and loads configuration, and installs repo-managed zsh
+plugins and shell integration checkouts. It does not install system packages,
+Homebrew packages, language runtimes, or shell frameworks.
 
 Install tools with the host package manager, `devcontainer.json`, or a
 Dockerfile. Shell startup checks whether optional commands exist before loading

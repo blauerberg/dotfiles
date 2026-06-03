@@ -2,8 +2,8 @@
 
 My dotfiles.
 
-This repository links and loads configuration, and may install zsh plugins
-managed by this repository. For architecture, see
+This repository links and loads configuration, and may install zsh plugins and
+shell integration checkouts managed by this repository. For architecture, see
 [ARCHITECTURE.md](ARCHITECTURE.md). For development workflow and documentation
 responsibilities, see [DEVELOPMENT.md](DEVELOPMENT.md).
 
