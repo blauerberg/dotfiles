@@ -35,10 +35,10 @@ check_theme "CODESPACES"        "OSTYPE=linux-gnu; CODESPACES=true"        "ys"
 check_theme "DEVCONTAINER"      "OSTYPE=linux-gnu; DEVCONTAINER=1"         "ys"
 check_theme "user override"     "OSTYPE=darwin24; DOTFILES_ZSH_THEME=robbyrussell" "robbyrussell"
 
-# Prompt badge: the prompt is prefixed with a colored badge so the shell is easy
-# to tell apart by environment -- red inside containers, Tux on a Linux host.
-# Labels are controlled by DOTFILES_CONTAINER_BADGE / DOTFILES_HOST_BADGE (empty
-# disables them).
+# Prompt badge: the prompt is prefixed with an environment icon so the shell is
+# easy to tell apart by environment -- a whale inside containers, a Tux on a
+# Linux host. Labels are controlled by DOTFILES_CONTAINER_BADGE /
+# DOTFILES_HOST_BADGE (empty disables them).
 check_badge() {
   label=$1
   setup=$2
@@ -65,11 +65,11 @@ check_badge() {
   echo "ok [$label]: badge $found"
 }
 
-check_badge "container badge"          "DEVCONTAINER=1"                              present "CONTAINER"
-check_badge "container custom label"   "DEVCONTAINER=1; DOTFILES_CONTAINER_BADGE=dev" present "%K{red}%F{white} dev %f%k"
-check_badge "container badge disabled" "DEVCONTAINER=1; DOTFILES_CONTAINER_BADGE="   absent  "%K{red}"
-check_badge "linux host badge"         "OSTYPE=linux-gnu"                           present "%K{33}%F{white} 🐧 LINUX %f%k"
-check_badge "host custom label"        "OSTYPE=linux-gnu; DOTFILES_HOST_BADGE=tux"  present "%K{33}%F{white} tux %f%k"
-check_badge "host badge disabled"      "OSTYPE=linux-gnu; DOTFILES_HOST_BADGE="     absent  "%K{33}"
-check_badge "container wins over host" "OSTYPE=linux-gnu; DEVCONTAINER=1"           absent  "%K{33}"
-check_badge "no badge on darwin host"  "OSTYPE=darwin24"                            absent  "%K{"
+check_badge "container badge"          "DEVCONTAINER=1"                              present "🐳 "
+check_badge "container custom label"   "DEVCONTAINER=1; DOTFILES_CONTAINER_BADGE=dev" present "dev "
+check_badge "container badge disabled" "DEVCONTAINER=1; DOTFILES_CONTAINER_BADGE="   absent  "🐳"
+check_badge "linux host badge"         "OSTYPE=linux-gnu"                           present "🐧 "
+check_badge "host custom label"        "OSTYPE=linux-gnu; DOTFILES_HOST_BADGE=tux"  present "tux "
+check_badge "host badge disabled"      "OSTYPE=linux-gnu; DOTFILES_HOST_BADGE="     absent  "🐧"
+check_badge "container wins over host" "OSTYPE=linux-gnu; DEVCONTAINER=1"           absent  "🐧"
+check_badge "no badge on darwin host"  "OSTYPE=darwin24"                            absent  "🐳"

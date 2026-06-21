@@ -16,10 +16,10 @@ if [[ -z "${DOTFILES_ZSH_THEME:-}" ]]; then
   fi
 fi
 
-# Prefix the prompt with a colored badge so the shell is easy to tell apart by
-# environment: a red badge inside containers, a Tux badge on a Linux host.
-# Inserts after a leading newline (themes like amuse start with one) so it lands
-# on the first visible line without adding a row. Labels are overridable via
+# Prefix the prompt with an environment icon so the shell is easy to tell apart
+# by environment: a whale inside containers, a Tux on a Linux host. Inserts
+# after a leading newline (themes like amuse start with one) so it lands on the
+# first visible line without adding a row. Labels are overridable via
 # DOTFILES_CONTAINER_BADGE / DOTFILES_HOST_BADGE; set either empty to disable.
 _dotfiles_prepend_badge() {
   local badge=$1
@@ -34,13 +34,11 @@ _dotfiles_prepend_badge() {
 _dotfiles_prepend_env_badge() {
   local label
   if [[ -n "$_dotfiles_in_container" ]]; then
-    label="${DOTFILES_CONTAINER_BADGE-🐳 CONTAINER}"
-    [[ -n "$label" ]] && _dotfiles_prepend_badge "%K{red}%F{white} ${label} %f%k "
+    label="${DOTFILES_CONTAINER_BADGE-🐳}"
+    [[ -n "$label" ]] && _dotfiles_prepend_badge "${label} "
   elif [[ "$OSTYPE" == linux* ]]; then
-    label="${DOTFILES_HOST_BADGE-🐧 LINUX}"
-    # 256-color blue (not the 16-color "blue" name, which some terminal palettes
-    # remap to an unexpected hue).
-    [[ -n "$label" ]] && _dotfiles_prepend_badge "%K{33}%F{white} ${label} %f%k "
+    label="${DOTFILES_HOST_BADGE-🐧}"
+    [[ -n "$label" ]] && _dotfiles_prepend_badge "${label} "
   fi
 }
 

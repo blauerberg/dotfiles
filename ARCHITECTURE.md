@@ -29,11 +29,11 @@ User-facing controls:
 - Oh My Zsh plugins: repo-managed plugins are installed by `bootstrap.sh`. Set
   `DOTFILES_OMZ_PLUGINS` to a space-separated plugin list to override the
   defaults.
-- Prompt badge: the prompt is prefixed with a colored badge so the shell is easy
-  to tell apart by environment.
+- Prompt badge: the prompt is prefixed with an environment icon so the shell is
+  easy to tell apart by environment.
   - Inside containers (detected via `REMOTE_CONTAINERS`, `CODESPACES`, or
-    `DEVCONTAINER`) it shows a red `🐳 CONTAINER` badge; on a Linux host it shows
-    a blue `🐧 LINUX` badge, and the container badge takes precedence.
+    `DEVCONTAINER`) it shows a `🐳` icon prefix; on a Linux host it shows a
+    `🐧` icon prefix, and the container badge takes precedence.
   - Set `DOTFILES_CONTAINER_BADGE` or `DOTFILES_HOST_BADGE` to change the label,
     or either to an empty string to disable it.
 - fzf Git bindings: `bootstrap.sh` installs `junegunn/fzf-git.sh` under
